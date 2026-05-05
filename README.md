@@ -8,7 +8,7 @@ Araf Hoque - F Student (innovator) </br>
 ## Description
 n/a
 
-#### Visit our live site at [n/a]()
+#### Visit our live site at [https://sardines.rocks/]()
 
 ## Install guide
 1) Clone the repo into a local directory:
