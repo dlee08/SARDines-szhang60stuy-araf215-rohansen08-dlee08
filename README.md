@@ -1,7 +1,7 @@
 # p05 by SARDines
 ## Roster:
-David Lee - Project Manager (PM) </br>
-Rohan Sen - F Student (innovator) </br>
+Rohan Sen - Project Manager (PM) </br>
+David Lee - F Student (innovator) </br>
 Sean Zheng - A Student (blue collar) </br>
 Araf Hoque - D Student (entrepeneur) </br>
 
