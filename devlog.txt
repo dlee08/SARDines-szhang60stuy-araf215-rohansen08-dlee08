@@ -2,3 +2,4 @@ davidL -- 2026-04-29 11:38
 - init project repo
 aoanulH -- 2026-05-05 11:13
 - Setup team domains + https 
+- created design.md
