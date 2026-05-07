@@ -12,7 +12,7 @@
 | Name | Email | Primary Role | Secondary Role |
 |---|---|---|---|
 |Rohan Sen |rohans33@nycstudents.net |PM |Backend |
-| | | | |
+|David Lee |davidl542@nycstudents.net |F Student (Innovator)|Trailblazer |
 |Sean Zheng |seanz22@nycstudents.net | | |
 | | | | |
 
