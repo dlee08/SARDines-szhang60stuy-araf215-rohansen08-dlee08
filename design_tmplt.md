@@ -13,7 +13,7 @@
 |---|---|---|---|
 |Rohan Sen |rohans33@nycstudents.net |PM |Backend |
 | | | | |
-| | | | |
+|Sean Zheng |seanz22@nycstudents.net | | |
 | | | | |
 
 ---
@@ -29,7 +29,7 @@
 
 Who will use this system?
 
-- ____________________________________
+- People who utilize public transportation
 - ____________________________________
 
 
@@ -42,20 +42,20 @@ Who will use this system?
 
 ## Core Features (Required for Final Submission)
 Features that **must** be completed:
-1. 
-1. 
-1. 
+1.
+1.
+1.
 
 ## Stretch Features (Only if MVP is Complete)
-1. 
-1. 
-1. 
+1.
+1.
+1.
 
 ## Explicit Non-Goals
 
 Features intentionally excluded:
-- 
-- 
+-
+-
 
 ---
 
