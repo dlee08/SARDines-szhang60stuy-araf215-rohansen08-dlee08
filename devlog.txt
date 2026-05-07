@@ -5,3 +5,6 @@ aoanulH -- 2026-05-05 11:13
 - created design.md
 rohanS -- 2026-05-05 22:46
 - basic flask app so I can deploy droplet
+rohanS -- 2026-05-07 11:44
+- design doc
+- mockup UI
