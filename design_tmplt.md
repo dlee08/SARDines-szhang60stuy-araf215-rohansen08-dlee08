@@ -30,7 +30,7 @@
 Who will use this system?
 
 - People who utilize public transportation
-- ____________________________________
+- People who like cool maps
 
 
 ## Why This Project Matters
