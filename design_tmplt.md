@@ -63,11 +63,11 @@ Features intentionally excluded:
 
 | Layer | Selected Tool |
 |---|---|
-| Backend Framework | Flask / Node.js (choose one) |
-| Frontend Framework | none / bootstrap / foundation / tailwind / other? (seek clearance) |
-| Database | SQLite / MongoDB |
-| Authentication | Flask sessions unless you have good reason/need to deviate |
-| ORM / DB Library | optionally SQLAlchemy; initiate clearance protocol if interested |
+| Backend Framework | Flask |
+| Frontend Framework | bootstrap |
+| Database | SQLite |
+| Authentication | Flask sessions |
+| ORM / DB Library | SQLAlchemy |
 
 ## Why This Stack Was Chosen
 {your summary/recap of team discussions here}
