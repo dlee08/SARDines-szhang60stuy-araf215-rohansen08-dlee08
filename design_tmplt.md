@@ -20,10 +20,10 @@
 
 
 # Summary
-{Keep it tight. Concise. 1 sentence. Really need more? 3 max.}
+A one-stop shop for frequent commuters, or in other words, a multi-purpose transit system guide targetting city folks.
 
 ## Problem Being Solved
-
+We are solving the limited functionality provided by simple transit maps provided by apps such as Google or Apple Maps, which are often delayed in updating and timing.
 
 ## Target Users
 
@@ -31,7 +31,6 @@ Who will use this system?
 
 - People who utilize public transportation
 - People who like cool maps
-
 
 ## Why This Project Matters
 
@@ -42,8 +41,8 @@ Who will use this system?
 
 ## Core Features (Required for Final Submission)
 Features that **must** be completed:
-1.
-1.
+1. An interactive map showcasing transit routes in a given area (likely a city)
+1. 
 1.
 
 ## Stretch Features (Only if MVP is Complete)
