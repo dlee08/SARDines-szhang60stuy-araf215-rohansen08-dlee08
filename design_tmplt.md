@@ -14,8 +14,7 @@
 |Rohan Sen |rohans33@nycstudents.net |PM |Backend |
 |David Lee |davidl542@nycstudents.net |F Student (Innovator)|Trailblazer |
 |Sean Zheng |seanz22@nycstudents.net |F Student (Innovator) |Clicky Clicky |
-|Araf Hoque |aoanulh2789@nycstudents.net |F Student (Innovator) ladies man |Frontend
-|
+|Araf Hoque |aoanulh2789@nycstudents.net |ladies man |Frontend |
 
 ---
 
@@ -43,15 +42,16 @@ Who will use this system?
 ## Core Features (Required for Final Submission)
 Features that **must** be completed:
 1. An interactive map showcasing transit routes in a given area (likely a city)
-1. 
-1.
+2. List of active delays across the city
+3. Wayfinding between different stops 
 
 ## Stretch Features (Only if MVP is Complete)
-1.
-1.
-1.
+1. Add LIRR Support
+2. Customizeable Interface (Pin lines, change UI parameters, etc)
+3. Map changes based on delays
 
 ## Explicit Non-Goals
+We don't want to recreate google maps. Our intent is to develop a more in-depth transit map, rather than just a clone.
 
 Features intentionally excluded:
 -
