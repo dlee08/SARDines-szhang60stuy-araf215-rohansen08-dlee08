@@ -14,7 +14,7 @@
 |Rohan Sen |rohans33@nycstudents.net |PM |Backend |
 |David Lee |davidl542@nycstudents.net |F Student (Innovator)|Trailblazer |
 |Sean Zheng |seanz22@nycstudents.net |F Student (Innovator) |Clicky Clicky |
-|Araf Hoque |aoanulh2789@nycstudents.net |ladies man |Frontend |
+|Araf Hoque |aoanulh2789@nycstudents.net |ladies man |Tung Tung Tung Sahur |
 
 ---
 
@@ -54,7 +54,7 @@ Features that **must** be completed:
 We don't want to recreate google maps. Our intent is to develop a more in-depth transit map, rather than just a clone.
 
 Features intentionally excluded:
--
+- 
 -
 
 ---
@@ -108,13 +108,13 @@ Dashboard
 
 ## Key User Stories
 ### eg0
-As a __________, I want to __________ so that...
+As a nerd, I want to watch the trains move around the map so that I can see the city moving around in real-time.
 
 ### eg1
-As a __________, I want to __________ so that...
+As a New Yorker, I want to see where my train is so that I know how long I have to wait in the station, since the time estimates aren't as accurate.
 
 ### eg2
-As a __________, I want to __________ so that...
+As a parent, I want to track a specific train so that I can watch my kids come home.
 
 
 
@@ -127,9 +127,9 @@ As a __________, I want to __________ so that...
 {Delineate here your plan for testing each component}
 
 # Timeline
-## Week 1 Goals:
-## Week 2 Goals:
-## Week 3 Goals:
+## Week 1 Goals: Basic map functionality, pull data from the MTA and other APIs.
+## Week 2 Goals: Plotting trains on the map, rendering their movement, use websockets.
+## Week 3 Goals: UI perfection, debugging, hopefully no major features pending.
 ## Internal Deadlines:
 {List milestones your team has identified, in the order they must be completed. Set a target completion date for each.}
 
