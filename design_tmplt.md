@@ -28,12 +28,11 @@ We are solving the limited functionality provided by simple transit maps provide
 ## Target Users
 
 Who will use this system?
-
 - People who utilize public transportation
 - People who like cool maps
 
 ## Why This Project Matters
-
+Many transit applications such as those integrated into Google/Apple Maps are often unreliable and inaccurate for some unknwon reason (they don't disclose what metrics they use to time the arrivals/departures, i.e. ghost trains, etc.); we want to provide a stable, structured way to deliver transit times to users.
 
 ---
 
@@ -54,7 +53,7 @@ Features that **must** be completed:
 We don't want to recreate google maps. Our intent is to develop a more in-depth transit map, rather than just a clone.
 
 Features intentionally excluded:
-- 
+-
 -
 
 ---
