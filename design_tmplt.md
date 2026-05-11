@@ -40,7 +40,7 @@ Many transit applications such as those integrated into Google/Apple Maps are of
 
 ## Core Features (Required for Final Submission)
 Features that **must** be completed:
-1. An interactive map showcasing transit routes in a given area (likely a city)
+1. An interactive map showcasing transit routes in a given area (NYC)
 2. List of active delays across the city
 3. Wayfinding between different stops 
 
@@ -50,11 +50,10 @@ Features that **must** be completed:
 3. Map changes based on delays
 
 ## Explicit Non-Goals
-We don't want to recreate google maps. Our intent is to develop a more in-depth transit map, rather than just a clone.
+We don't want to recreate Google/Apple Maps. Our intent is to develop a more in-depth transit map, rather than just a clone.
 
 Features intentionally excluded:
--
--
+- Multiple cities being integrated, since we want to focus on NYC's needs specifically and its unique system
 
 ---
 
@@ -140,10 +139,10 @@ Project is considered complete when all of the following are true:
 1.
 
 # Open Questions
-{Delineate anything undecided here}
+None at the moment.
 
 # Appendix
-{Any relevant info that is useful but would have interrupted narrative flow above, or cluttered the information portrayed}
+None at the moment.
 
 # Other
-{Put here anything that did not sensibly fit under above headings. This section will inform evolution of SoftDev.}
+None at the moment.
