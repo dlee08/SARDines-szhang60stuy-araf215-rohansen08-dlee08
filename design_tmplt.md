@@ -14,7 +14,7 @@
 |Rohan Sen |rohans33@nycstudents.net |PM |Backend |
 |David Lee |davidl542@nycstudents.net |F Student (Innovator)|Trailblazer |
 |Sean Zheng |seanz22@nycstudents.net |F Student (Innovator) |Clicky Clicky |
-|Araf Hoque |aoanulh2789@nycstudents.net |ladies man |Tung Tung Tung Sahur |
+|Araf Hoque |aoanulh2789@nycstudents.net |Ladies' Man |Tung Tung Tung Sahur |
 
 ---
 
