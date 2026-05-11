@@ -13,3 +13,6 @@ rohanS -- 2026-05-07 11:44
 
 davidL -- 2026-05-08 01:36
 - updated blueprint (aka. dd) info on summary and stuff about our MVP and more descs
+
+davidL -- 2026-05-11 11:22
+- finished blueprint and printed it out (late devlog update)
