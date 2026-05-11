@@ -116,9 +116,25 @@ As a parent, I want to track a specific train so that I can watch my kids come h
 
 
 # Database Design
-|users (a master list of all users)|
+## users
 |TEXT|username|PK|unique identifier of user|
+|TEXT|password|||
+|DATE|creation_date|||
+|TEXT|saved_routes||routes user's saved/favorited|
 
+## transit_stops
+|TEXT|stop_name|PK|unique identifier of transit stop|
+|TEXT|possible_trains||all possible trains that can stop here|
+|TEXT|stopped_trains||status of trains currently stopped here|
+|TEXT|directions||direction of train stopped (uptown/downtown), corresponds w/ stopped_trains|
+|TEXT|delays||any delays relayed by API calls|
+
+## trains
+|TEXT|train|PK|what train line it is|
+|INT|train_id||considering dupes of trains|
+|TEXT|arrival_times||arrival times for this specific train|
+|TEXT|departure_times||departure times for this specific train|
+|TEXT|delays||delays for this line (overall) or train in specific (running behind schedule)|
 
 # Testing Plan
 - Have members from other teams test our transit map animations, get feedback for client-side before near-final deadine so we can tweak and adjust
