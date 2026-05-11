@@ -117,6 +117,7 @@ As a parent, I want to track a specific train so that I can watch my kids come h
 
 # Database Design
 ## users
+|DATA_TYPE|VAR_NAME|KEY_STATUS|NOTES|
 |---|---|---|---|
 |TEXT|username|PK|unique identifier of user|
 |TEXT|password|||
@@ -124,6 +125,7 @@ As a parent, I want to track a specific train so that I can watch my kids come h
 |TEXT|saved_routes||routes user's saved/favorited|
 
 ## transit_stops
+|DATA_TYPE|VAR_NAME|KEY_STATUS|NOTES|
 |---|---|---|---|
 |TEXT|stop_name|PK|unique identifier of transit stop|
 |TEXT|possible_trains||all possible trains that can stop here|
@@ -132,6 +134,7 @@ As a parent, I want to track a specific train so that I can watch my kids come h
 |TEXT|delays||any delays relayed by API calls|
 
 ## trains
+|DATA_TYPE|VAR_NAME|KEY_STATUS|NOTES|
 |---|---|---|---|
 |TEXT|train|PK|what train line it is|
 |INT|train_id||considering dupes of trains|
