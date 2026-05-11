@@ -78,10 +78,10 @@ Each member must own meaningful deliverables.
 
 | Team Member | Primary Ownership | Secondary Ownership | Specific Deliverables |
 |---|---|---|---|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
+| Rohan Sen | Frontend (transit map anims) | Backend (transit API integration) | Get the transit map of NYC up and running, toggle options |
+| David Lee | Backend (transit API integration) | Frontend (UI/UX) | Get data pipeline up and running, backend to frontend comms |
+| Sean Chen | Backend (any other API integrations) | Frontend (UI/UX) | Along with David, get API integrations running |
+| Araf Hoque | Frontend (transit map) | Frontend (UI/UX) | Help Rohan on transit map animations (has prior exp.), help on frontend too |
 
 ---
 
@@ -121,7 +121,9 @@ As a parent, I want to track a specific train so that I can watch my kids come h
 
 
 # Testing Plan
-{Delineate here your plan for testing each component}
+- Have members from other teams test our transit map animations, get feedback for client-side before near-final deadine so we can tweak and adjust
+- Rigorously test UI/UX for different screens and dimensions so the animations are not buggy on diff. devices (especially transit map); important to make UI/UX not stagnant on the singular windows dim. we're working on
+- Ensure API calls on both dev and user ends work so it doesn't magically break during demos, etc. by testing multiple times before, during, and after changes to codebase
 
 # Timeline
 ## Week 1 Goals: Basic map functionality, pull data from the MTA and other APIs.
@@ -133,9 +135,9 @@ As a parent, I want to track a specific train so that I can watch my kids come h
 
 # Completion Criteria (_a.k.a._ "Definition of 'Done'")
 Project is considered complete when all of the following are true:
-1.
-1.
-1.
+1. Transit map of NYC is fully interactable and viewable of transit disruption panel, destination tracking/steps
+2. API calls work 24/7 whenever service is called upon to use, doesn't take too long to load each call
+3. Frontend UI/UX is intuitive and easy to work with for users, not just the devos who made the service.
 
 # Open Questions
 - Will we try to implement multiple cities? Presumably, if we can implement NYC transit tracking, we could for other cities, too.
