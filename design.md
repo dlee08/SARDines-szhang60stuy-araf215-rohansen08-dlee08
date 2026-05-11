@@ -87,7 +87,7 @@ Each member must own meaningful deliverables.
 
 # Component map
 
-{Insert your mermaid(or equivalent)-generated diagram here}
+![Component map](CompMap.png)
 
 # Site map
 
