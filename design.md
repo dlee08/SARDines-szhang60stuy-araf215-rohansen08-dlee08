@@ -91,18 +91,7 @@ Each member must own meaningful deliverables.
 
 # Site map
 
-{Insert your mermaid(or equivalent)-generated diagram here}
-eg...
-```
-Landing Page
-   ↓
-Login / Register
-   ↓
-Dashboard
-   ├── Feature A
-   ├── Feature B
-   └── Profile
-```
+![Component map](SiteMap.png)
 
 ## Key User Stories
 ### eg0
