@@ -70,7 +70,7 @@ Features intentionally excluded:
 | ORM / DB Library | SQLAlchemy |
 
 ## Why This Stack Was Chosen
-{your summary/recap of team discussions here}
+We chose this stack because it matches our team’s experience and project needs. Flask is powerful enough to handle routes, API requests, sessions, and transit data without being too complex. Bootstrap helps us quickly build a clean, responsive interface using pre-styled components. SQLite works well because we have more experience with it than MongoDB, and it can store data like users, saved stops, pinned routes, and preferences. Flask sessions support basic login and user-specific features, while SQLAlchemy helps us connect our Python code to the database in a cleaner and more organized way. Overall, this stack lets us focus on building NerdyMap’s transit features instead of spending too much time learning unfamiliar tools.
 
 ---
 
