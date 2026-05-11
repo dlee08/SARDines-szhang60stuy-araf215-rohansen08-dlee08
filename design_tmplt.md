@@ -130,8 +130,13 @@ As a parent, I want to track a specific train so that I can watch my kids come h
 ## Week 2 Goals: Plotting trains on the map, rendering their movement, use websockets.
 ## Week 3 Goals: UI perfection, debugging, hopefully no major features pending.
 ## Internal Deadlines:
-{List milestones your team has identified, in the order they must be completed. Set a target completion date for each.}
-
+- Determine all the APIs we need (5/15/26)
+- Have API keys, test calls set up (5/18/26)
+- Basic map functionality up on frontend (5/22/26)
+- More complex and detailed functionalities/tools up on frontend (5/25/26)
+- Catch-up week on any functionalities that need more work or incomplete (5/29/26)
+- Work on UI/UX to make it intuitive and easy to work with (5/29/26)
+- Expand to other cities (BIG IF: 5/30/26 - deadline)
 
 # Completion Criteria (_a.k.a._ "Definition of 'Done'")
 Project is considered complete when all of the following are true:
