@@ -115,7 +115,6 @@ As a New Yorker, I want to see where my train is so that I know how long I have 
 As a parent, I want to track a specific train so that I can watch my kids come home.
 
 
-
 # Database Design
 
 {Insert your table/document organizational structure here}
@@ -139,7 +138,7 @@ Project is considered complete when all of the following are true:
 1.
 
 # Open Questions
-None at the moment.
+- Will we try to implement multiple cities? Presumably, if we can implement NYC transit tracking, we could for other cities, too.
 
 # Appendix
 None at the moment.
