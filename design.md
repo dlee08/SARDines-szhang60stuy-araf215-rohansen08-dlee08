@@ -116,8 +116,8 @@ As a parent, I want to track a specific train so that I can watch my kids come h
 
 
 # Database Design
-
-{Insert your table/document organizational structure here}
+|users (a master list of all users)|
+|TEXT|username|PK|unique identifier of user|
 
 
 # Testing Plan
