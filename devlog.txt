@@ -22,3 +22,7 @@ INITIAL DD REVIEW -- 2026-05-12 00:50
 - clarified testing protocol in Testing section of DD
 - clarified testimonials, some other text as well
 - clarified on "more in-depth, " (live map of the subway trains, detailed stats like crowding, speed, elevator status)
+
+rohanS -- 2026-05-12 11:46
+- improved design doc
+- made a mockup in Figma to help readers understand what we're going for

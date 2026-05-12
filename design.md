@@ -93,6 +93,10 @@ Each member must own meaningful deliverables.
 
 ![Component map](SiteMap.png)
 
+
+# Mockup
+![UI](Mockup.png)
+
 ## Key User Stories
 ### eg0
 As a nerd, I want to watch the trains move around the map so that I can see the city moving around in real-time.
