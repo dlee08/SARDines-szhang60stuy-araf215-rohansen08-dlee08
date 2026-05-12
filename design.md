@@ -13,8 +13,8 @@
 |---|---|---|---|
 |Rohan Sen |rohans33@nycstudents.net |PM |Backend |
 |David Lee |davidl542@nycstudents.net |F Student (Innovator)|Trailblazer |
-|Sean Zheng |seanz22@nycstudents.net |F Student (Innovator) |Clicky Clicky |
-|Araf Hoque |aoanulh2789@nycstudents.net |Ladies' Man |Tung Tung Tung Sahur |
+|Sean Zheng |seanz22@nycstudents.net |F Student (Innovator) |Trailblazer |
+|Araf Hoque |aoanulh2789@nycstudents.net |D Student |Ladies' Man |
 
 ---
 
@@ -81,7 +81,7 @@ Each member must own meaningful deliverables.
 | Rohan Sen | Frontend (transit map anims) | Backend (transit API integration) | Get the transit map of NYC up and running, toggle options |
 | David Lee | Backend (transit API integration) | Frontend (UI/UX) | Get data pipeline up and running, backend to frontend comms |
 | Sean Chen | Backend (any other API integrations) | Frontend (UI/UX) | Along with David, get API integrations running |
-| Araf Hoque | Frontend (transit map) | Frontend (UI/UX) | Help Rohan on transit map animations (has prior exp.), help on frontend too |
+| Araf Hoque | Frontend (transit map) | Frontend (UI/UX) | Help Rohan on transit map animations (has prior exp from personal passion project), help on frontend too |
 
 ---
 
@@ -101,7 +101,7 @@ As a nerd, I want to watch the trains move around the map so that I can see the 
 As a New Yorker, I want to see where my train is so that I know how long I have to wait in the station, since the time estimates aren't as accurate.
 
 ### eg2
-As a parent, I want to track a specific train so that I can watch my kids come home.
+As a parent, I would want to track a specific train so that I can watch my kids come home and prepare for them to do so.
 
 
 # Database Design
@@ -134,7 +134,7 @@ As a parent, I want to track a specific train so that I can watch my kids come h
 # Testing Plan
 - Have members from other teams test our transit map animations, get feedback for client-side before near-final deadine so we can tweak and adjust
 - Rigorously test UI/UX for different screens and dimensions so the animations are not buggy on diff. devices (especially transit map); important to make UI/UX not stagnant on the singular windows dim. we're working on
-- Ensure API calls on both dev and user ends work so it doesn't magically break during demos, etc. by testing multiple times before, during, and after changes to codebase
+- Ensure API calls on both dev and user ends work so it doesn't magically break during demos, etc. by testing multiple times before, during, and after changes to codebase (A/B testing)
 
 # Timeline
 ## Week 1 Goals: Basic map functionality, pull data from the MTA and other APIs.
