@@ -2,7 +2,7 @@
 
 ## TNPG: SARDines
 ## project: NerdyMap
-## Target ship date: {2026-06-xx}
+## Target ship date: {2026-06-01}
 
 ---
 
@@ -20,7 +20,7 @@
 
 
 # Summary
-A one-stop shop for frequent commuters, or in other words, a multi-purpose transit system guide targetting city folks.
+A one-stop shop for frequent nyc commuters, or in other words, a multi-purpose transit system guide targetting city folks.
 
 ## Problem Being Solved
 We are solving the limited functionality provided by simple transit maps provided by apps such as Google or Apple Maps, which are often delayed in updating and timing.
@@ -32,7 +32,7 @@ Who will use this system?
 - People who like cool maps
 
 ## Why This Project Matters
-Many transit applications such as those integrated into Google/Apple Maps are often unreliable and inaccurate for some unknwon reason (they don't disclose what metrics they use to time the arrivals/departures, i.e. ghost trains, etc.); we want to provide a stable, structured way to deliver transit times to users.
+Many transit applications such as those integrated into Google/Apple Maps are often unreliable and inaccurate for some unknown reason (they don't disclose what metrics they use to time the arrivals/departures, i.e. ghost trains, etc.); we want to provide a stable, structured way to deliver transit times to users.
 
 ---
 
@@ -40,7 +40,7 @@ Many transit applications such as those integrated into Google/Apple Maps are of
 
 ## Core Features (Required for Final Submission)
 Features that **must** be completed:
-1. An interactive map showcasing transit routes in a given area (NYC)
+1. An interactive map showcasing transit routes in a given area, with realtime train positions mapped (NYC)
 2. List of active delays across the city
 3. Wayfinding between different stops 
 
@@ -50,7 +50,7 @@ Features that **must** be completed:
 3. Map changes based on delays
 
 ## Explicit Non-Goals
-We don't want to recreate Google/Apple Maps. Our intent is to develop a more in-depth transit map, rather than just a clone.
+We don't want to recreate Google/Apple Maps. Our intent is to develop a more in-depth transit map, rather than just a clone. We'll have real-time delay information pinned to the side of the screen, a live map of subway trains moving around the city, and more detailed stats for each station/train (crowding, speed, elevator status, etc).
 
 Features intentionally excluded:
 - Multiple cities being integrated, since we want to focus on NYC's needs specifically and its unique system
@@ -125,7 +125,7 @@ As a parent, I would want to track a specific train so that I can watch my kids 
 ## trains
 |DATA_TYPE|VAR_NAME|KEY_STATUS|NOTES|
 |---|---|---|---|
-|TEXT|train|PK|what train line it is|
+|TEXT|train||what train line it is|
 |INT|train_id||considering dupes of trains|
 |TEXT|arrival_times||arrival times for this specific train|
 |TEXT|departure_times||departure times for this specific train|
