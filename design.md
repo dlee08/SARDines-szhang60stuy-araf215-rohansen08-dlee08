@@ -23,7 +23,7 @@
 A one-stop shop for frequent nyc commuters, or in other words, a multi-purpose transit system guide targetting city folks.
 
 ## Problem Being Solved
-We are solving the limited functionality provided by simple transit maps provided by apps such as Google or Apple Maps, which are often delayed in updating and timing.
+Simple transit maps provided by apps such as Google or Apple Maps provide limited functionality and are often delayed in updating and timing. We are solving this limited functionality through incorporating visualization of trains' live positions, more interactivity, and more specific details. 
 
 ## Target Users
 
@@ -42,7 +42,7 @@ Many transit applications such as those integrated into Google/Apple Maps are of
 Features that **must** be completed:
 1. An interactive map showcasing transit routes in a given area, with realtime train positions mapped (NYC)
 2. List of active delays across the city
-3. Wayfinding between different stops 
+3. Wayfinding between different stops
 
 ## Stretch Features (Only if MVP is Complete)
 1. Add LIRR Support
