@@ -26,3 +26,6 @@ INITIAL DD REVIEW -- 2026-05-12 00:50
 rohanS -- 2026-05-12 11:46
 - improved design doc
 - made a mockup in Figma to help readers understand what we're going for
+
+seanZ -- 2026-05-12 11:47
+- reworded and added to "problem being solved" in design doc
