@@ -95,7 +95,7 @@ Each member must own meaningful deliverables.
 
 
 # Mockup
-![UI](SiteMap.png)
+![UI](Mockup.png)
 
 ## Key User Stories
 ### eg0
