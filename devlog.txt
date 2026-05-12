@@ -2,7 +2,7 @@ davidL -- 2026-04-29 11:38
 - init project repo
 
 aoanulH -- 2026-05-05 11:13
-- Setup team domains + https 
+- Setup team domains + https
 - created design.md
 
 rohanS -- 2026-05-05 22:46
@@ -21,3 +21,4 @@ INITIAL DD REVIEW -- 2026-05-12 00:50
 - clarified Araf's prior exp. on transit system anims thru his personal passion project + how it helps us going forward with his prior exp.
 - clarified testing protocol in Testing section of DD
 - clarified testimonials, some other text as well
+- clarified on "more in-depth, " (live map of the subway trains, detailed stats like crowding, speed, elevator status)
