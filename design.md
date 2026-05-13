@@ -109,12 +109,12 @@ As a parent, I would want to track a specific train so that I can watch my kids 
 
 # APIs (pending)
 ## MTA
-https://api.mta.info/#/subwayRealTimeFeeds
-https://api.mta.info/#/serviceAlerts
-https://api.mta.info/#/EAndEFeeds
+https://api.mta.info/#/subwayRealTimeFeeds  
+https://api.mta.info/#/serviceAlerts  
+https://api.mta.info/#/EAndEFeeds  
 ## Google Maps
-https://developers.google.com/maps/documentation/javascript/overview
-https://developers.google.com/maps/documentation/routes/transit-route
+https://developers.google.com/maps/documentation/javascript/overview  
+https://developers.google.com/maps/documentation/routes/transit-route. 
 
 # Database Design
 ## users
