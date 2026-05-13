@@ -38,3 +38,8 @@ seanZ -- 2026-5-13 0:35
 	- aspects of the styleguide most applicable to python are its rules regarding indentation, importing, naming (variables, constants, methods), whitespace (like in parenthesis and brackets), comments, and programming (like using "is None" instead of "== None" and keeping code under "try: " minimal)
 	- Aspects most useful/appreciated were the programming recommendations and comment usage (inline vs block)
 	- app/__init__.py line 1, follows import styling rules
+aoanulH -- 2026-5-13 0:53
+- Javascript Style
+	- the style guide aspects most applicable to our codebase are using let/const instead of var, writing useful comments, using === instead of ==, and using safe DOM updates like textContent instead of innerHTML.
+	- the most useful/appreciated parts were the naming and comment rules because they make frontend code easier for people to read.
+	- `design.md ` under APIs (pending) references the Google Maps JavaScript API, so JavaScript will be applicable when we build the frontend map features. We are probably using JavaScript for the interactive map, displaying route or delay information, and supporting wayfinding between stops. The style guide applies here because our frontend code should use clear variable names, consistent formatting, useful comments, and safer DOM updates like textContent instead of directly inserting text with innerHTML. This would make the map code easier to read, debug, and update.
