@@ -6,7 +6,7 @@ Sean Zheng - A Student (blue collar) </br>
 Araf Hoque - D Student (entrepeneur) </br>
 
 ## Description
-n/a
+A one-stop shop for frequent nyc commuters, or in other words, a multi-purpose transit system guide targetting city folks. Simple transit maps provided by apps such as Google or Apple Maps provide limited functionality. We are solving this limited functionality through incorporating visualization of trains' live positions, live delays, elevator/escalator status, and more specific details.
 
 #### Visit our live site at [https://sardines.rocks/]()
 
