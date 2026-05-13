@@ -32,7 +32,7 @@ Who will use this system?
 - People who like cool maps
 
 ## Why This Project Matters
-Many transit applications such as those integrated into Google/Apple Maps are often unreliable and inaccurate for some unknown reason (they don't disclose what metrics they use to time the arrivals/departures, i.e. ghost trains, etc.); we want to provide a stable, structured way to deliver transit times to users.
+Many transit applications such as those integrated into Google/Apple Maps show limited information about the subway system, and isn't immediately intuitive. With NerdyMap, users can see valuable information like live train positions, delays, and station-specific information right at a glance.
 
 ---
 
