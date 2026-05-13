@@ -32,3 +32,9 @@ seanZ -- 2026-05-12 11:47
 
 rohanS -- 2026-05-12 23:56
 - added API links to discuss with team tomorrow (will request from El Señor Mykolyk asap)
+
+seanZ -- 2026-5-13 0:35
+- Python Style
+	- aspects of the styleguide most applicable to python are its rules regarding indentation, importing, naming (variables, constants, methods), whitespace (like in parenthesis and brackets), comments, and programming (like using "is None" instead of "== None" and keeping code under "try: " minimal)
+	- Aspects most useful/appreciated were the programming recommendations and comment usage (inline vs block)
+	- app/__init__.py line 1, follows import styling rules
