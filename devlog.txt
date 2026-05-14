@@ -52,3 +52,6 @@ TODO: make the post, update DD, have working demo of map for tmrw
 
 seanZ -- 2026-05-13 11:41
 - added temporary test.py for api fiddling
+
+rohanS -- 2026-05-13 20:20
+- map working locally, pending key and Mr. Mykolyk's permission

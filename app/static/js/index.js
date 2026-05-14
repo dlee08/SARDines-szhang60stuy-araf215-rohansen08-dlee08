@@ -7,9 +7,7 @@
 
 // [START maps_advanced_markers_accessibility]
 const mapElement = document.querySelector('gmp-map');
-const transitLayer = new google.maps.TransitLayer();
 
-  transitLayer.setMap(mapElement);
 
 async function init() {
     // Request needed libraries.
@@ -18,32 +16,6 @@ async function init() {
             google.maps.importLibrary('maps'),
             google.maps.importLibrary('marker'),
         ]);
-
-    // Set LatLng and title text for the markers. The first marker (Boynton Pass)
-    // receives the initial focus when tab is pressed. Use arrow keys to move
-    // between markers; press tab again to cycle through the map controls.
-    const tourStops = [
-        {
-            position: { lat: 34.8791806, lng: -111.8265049 },
-            title: 'Boynton Pass',
-        },
-        {
-            position: { lat: 34.8559195, lng: -111.7988186 },
-            title: 'Airport Mesa',
-        },
-        {
-            position: { lat: 34.832149, lng: -111.7695277 },
-            title: 'Chapel of the Holy Cross',
-        },
-        {
-            position: { lat: 34.823736, lng: -111.8001857 },
-            title: 'Red Rock Crossing',
-        },
-        {
-            position: { lat: 34.800326, lng: -111.7665047 },
-            title: 'Bell Rock',
-        },
-    ];
 
     // Create an info window to share between markers.
     const infoWindow = new InfoWindow();
