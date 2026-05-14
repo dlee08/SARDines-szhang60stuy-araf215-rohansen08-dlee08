@@ -10,6 +10,7 @@ def call():
         raw_data = response.read()
     data = json.loads(raw_data)
     meat = data['entity']
+    #pprint(meat[3])
     cleaned_meat = []
     print(len(meat))
     for item in meat:
@@ -21,13 +22,17 @@ def call():
         trains = []
         for i in alert["informed_entity"]:
             if "route_id" in i:
-                trains.append(i["route_id"])
+                if i["route_id"] not in trains:
+                    trains.append(i["route_id"])
+        type = alert['transit_realtime.mercury_alert']['alert_type']
         cleaned_alert = {
             "id": item["id"],
             "trains": trains,
             "title":  title,
-            "desc": desc
+            "desc": desc,
+            "type": type # 'No Scheduled Service', 'Reduced Service', 'Delays', 'Express to Local'
         }
         cleaned_meat.append(cleaned_alert)
     return  cleaned_meat
 pprint(call())
+#call()
