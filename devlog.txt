@@ -62,3 +62,6 @@ aoanulH -- 2026-05-13 22:23
 
 davidL -- 2026-05-13 23:53
 - added kb entry on MTA API, posted on Piazza request to use MTA API as wel
+
+seanZ -- 2026-05-14 11:46
+- filter filter filter for MTA API
