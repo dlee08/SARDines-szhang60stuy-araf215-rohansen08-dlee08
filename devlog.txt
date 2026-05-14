@@ -55,3 +55,7 @@ seanZ -- 2026-05-13 11:41
 
 rohanS -- 2026-05-13 20:20
 - map working locally, pending key and Mr. Mykolyk's permission
+
+aoanulH -- 2026-95-13 22:23
+- Updated Sean's code to fetch each alert and display its description, route id, title, and train line
+- Still observing the data and how to appropiately error handle when we get a null value.
