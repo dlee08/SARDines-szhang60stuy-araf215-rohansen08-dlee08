@@ -62,3 +62,7 @@ aoanulH -- 2026-05-13 22:23
 
 davidL -- 2026-05-13 23:53
 - added kb entry on MTA API, posted on Piazza request to use MTA API as wel
+
+rohanS -- 2026-05-14 11:47
+- maps now functional on school computers
+- transit layer, controls
