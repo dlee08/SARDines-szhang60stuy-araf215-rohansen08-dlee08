@@ -16,35 +16,30 @@ async function init() {
             google.maps.importLibrary('maps'),
             google.maps.importLibrary('marker'),
         ]);
+        const innerMap = mapElement.innerMap;
 
-    // Create an info window to share between markers.
-    const infoWindow = new InfoWindow();
-
-    // Create the markers.
-    tourStops.forEach(({ position, title }, i) => {
-        // [START maps_advanced_markers_accessibility_marker]
-        const pin = new PinElement({
-            glyphText: `${i + 1}`,
-            scale: 1.5,
+        innerMap.setOptions({
+            // Disable the default UI.
+            disableDefaultUI: true,
+            renderingType: 'RASTER',
         });
-        const marker = new AdvancedMarkerElement({
-            position,
-            title: `${i + 1}. ${title}`,
-            gmpClickable: true,
-        });
-        marker.append(pin);
-        mapElement.append(marker);
-
-        // [END maps_advanced_markers_accessibility_marker]
-        // [START maps_advanced_markers_accessibility_event_listener]
-        // Add a click listener for each marker, and set up the info window.
-        marker.addEventListener('gmp-click', () => {
-            infoWindow.close();
-            infoWindow.setContent(marker.title);
-            infoWindow.open(marker.map, marker);
-        });
-        // [END maps_advanced_markers_accessibility_event_listener]
-    });
+        const styles = {
+          default: [],
+          hide: [
+              {
+                  featureType: 'poi.business',
+                  stylers: [{ visibility: 'off' }],
+              },
+              {
+                  featureType: 'transit',
+                  elementType: 'labels.icon',
+                  stylers: [{ visibility: 'off' }],
+              },
+          ],
+        };
+        innerMap.setOptions({ styles: styles.hide });
+        const transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(innerMap);
 }
 
 void init();
