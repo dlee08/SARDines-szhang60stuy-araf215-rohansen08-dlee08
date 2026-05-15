@@ -1,2 +1,4 @@
 app/sardines/
 app/__pycache__/
+app/.env
+venv/

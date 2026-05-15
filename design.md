@@ -107,11 +107,13 @@ As a New Yorker, I want to see where my train is so that I know how long I have 
 ### eg2
 As a parent, I would want to track a specific train so that I can watch my kids come home and prepare for them to do so.
 
-# APIs (pending)
+# APIs
 ## MTA
 https://api.mta.info/#/subwayRealTimeFeeds  
 https://api.mta.info/#/serviceAlerts  
-https://api.mta.info/#/EAndEFeeds  
+https://api.mta.info/#/EAndEFeeds 
+https://api.mta.info/#/serviceAlerts
+
 ## Google Maps
 https://developers.google.com/maps/documentation/javascript/overview  
 https://developers.google.com/maps/documentation/routes/transit-route. 
