@@ -6,8 +6,6 @@
  */
 
 // [START maps_advanced_markers_accessibility]
-const mapElement = document.querySelector('gmp-map');
-
 
 async function init() {
     // Request needed libraries.
@@ -16,29 +14,30 @@ async function init() {
             google.maps.importLibrary('maps'),
             google.maps.importLibrary('marker'),
         ]);
+        const mapElement = document.querySelector('gmp-map');
         const innerMap = mapElement.innerMap;
 
         innerMap.setOptions({
             // Disable the default UI.
             disableDefaultUI: true,
-
+            renderingType: 'RASTER',
+            styles: styles.hide
         });
-        const styles = {
-          default: [],
-          hide: [
-              {
-                  featureType: 'poi.business',
-                  stylers: [{ visibility: 'off' }],
-              },
-              {
-                  featureType: 'transit',
-                  elementType: 'labels.icon',
-                  stylers: [{ visibility: 'off' }],
-              },
-          ],
-        };
-        innerMap.setOptions({ styles: styles.hide });
 }
 
+const styles = {
+    default: [],
+    hide: [
+        {
+            featureType: 'poi.business',
+            stylers: [{ visibility: 'off' }],
+        },
+        {
+            featureType: 'transit',
+            elementType: 'labels.icon',
+            stylers: [{ visibility: 'off' }],
+        },
+    ],
+};
 void init();
 // [END maps_advanced_markers_accessibility]
