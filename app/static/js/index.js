@@ -21,7 +21,7 @@ async function init() {
         innerMap.setOptions({
             // Disable the default UI.
             disableDefaultUI: true,
-            renderingType: 'RASTER',
+
         });
         const styles = {
           default: [],
@@ -38,8 +38,6 @@ async function init() {
           ],
         };
         innerMap.setOptions({ styles: styles.hide });
-        const transitLayer = new google.maps.TransitLayer();
-        transitLayer.setMap(innerMap);
 }
 
 void init();
