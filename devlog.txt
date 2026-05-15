@@ -91,3 +91,7 @@ seanZ -- 2026-05-15 11:37
 - api.py filters out the alert types that are not current (for example Planned Maintenance in a few days)
 - api.py then takes the alert types we want to work with (current stuff like delays and local-express) and returns data we want to work with, such as the title,description, train(s) affected, and id(might not be needed)
 - api.py also renames shuttle names to our own definition
+
+davidL -- 2026-05-15 11:41
+- Tested MTA Subway API for real-time train feeds (GTFS-feed parsed by Python with imports), explored data format to prepare to integrate into project
+- update reqs
