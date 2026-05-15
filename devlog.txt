@@ -7,6 +7,7 @@ aoanulH -- 2026-05-05 11:13
 
 rohanS -- 2026-05-05 22:46
 - basic flask app so I can deploy droplet
+
 rohanS -- 2026-05-07 11:44
 - design doc
 - mockup UI
@@ -74,3 +75,12 @@ aoanulH -- 2026-05-14 20:27
 - Added alert types filter (basically letting us filter all the alerts to the ones we want to display)
 - Added a conversion sheet b/c mta api has trains like the rockaway park shuttle labeled  as H?? So I added a conversion sheet to know what shuttle is which without the MTA abbreviations. Code automatically does this conversion.
 
+DD TIMELINE MODIFICATIONS -- 2026-05-14 23:55
+- No major modifications to timeline
+  - All APIs needed settled (for now, with entries appropriately situated in kb)
+  - Ahead of schedule, API keys and test calls set up for both GMaps (JS) and MTA (service alerts) API
+  - Currently working on breakdown of MTA API, what APIs are usable vs nonparsable, etc. (Araf/Sean)
+  - Ahead of schedule: Map functionality up on frontend (localhost)
+
+davidL -- 2026-05-14 23:58
+- update DD timeline (check things off, add more foreseeable deadlines), print HC DD for tmrw
