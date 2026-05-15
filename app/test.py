@@ -12,6 +12,18 @@ def call():
     meat = data['entity']
     #pprint(meat[3])
     cleaned_meat = []
+    alert_types_filter =  {
+        "No Scheduled Service",
+        "Reduced Service",
+        "Delays",
+        "Express to Local"
+    }
+    route_names = {
+    "GS": "S",      # 42nd st shuttle 
+    "FS": "S",      # Franklin ave shuttle
+    "H": "S",       # Rockaway park shuttle
+    "SI": "SIR"     # Staten island railway
+    }
     print(len(meat))
     for item in meat:
         alert = item["alert"]
@@ -22,9 +34,14 @@ def call():
         trains = []
         for i in alert["informed_entity"]:
             if "route_id" in i:
-                if i["route_id"] not in trains:
+                route = i["route_id"]
+                if route in route_names:
+                    route =  route_names[route]
+                if route not in trains:
                     trains.append(i["route_id"])
         type = alert['transit_realtime.mercury_alert']['alert_type']
+        if type not in alert_types_filter:
+            continue
         cleaned_alert = {
             "id": item["id"],
             "trains": trains,
