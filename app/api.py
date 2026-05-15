@@ -10,7 +10,7 @@ def call():
         raw_data = response.read()
     data = json.loads(raw_data)
     meat = data['entity']
-    #pprint(meat[3])
+    #pprint(meat[2])
     cleaned_meat = []
     alert_types_filter =  {
         "No Scheduled Service",
@@ -19,9 +19,9 @@ def call():
         "Express to Local"
     }
     route_names = {
-    "GS": "S",      # 42nd st shuttle 
-    "FS": "S",      # Franklin ave shuttle
-    "H": "S",       # Rockaway park shuttle
+    "GS": "42nd Street Shuttle",      # 42nd st shuttle
+    "FS": "Franklin ave Shuttle",      # Franklin ave shuttle
+    "H": "Rockaway Park Shuttle",       # Rockaway park shuttle
     "SI": "SIR"     # Staten island railway
     }
     print(len(meat))
@@ -38,7 +38,7 @@ def call():
                 if route in route_names:
                     route =  route_names[route]
                 if route not in trains:
-                    trains.append(i["route_id"])
+                    trains.append(route)
         type = alert['transit_realtime.mercury_alert']['alert_type']
         if type not in alert_types_filter:
             continue
