@@ -85,13 +85,6 @@ DD TIMELINE MODIFICATIONS -- 2026-05-14 23:55
 davidL -- 2026-05-14 23:58
 - update DD timeline (check things off, add more foreseeable deadlines), print HC DD for tmrw
 
-seanZ -- 2026-05-15 11:37
-- Clarification on filtering service alerts API
-- API spits out a list of subway alerts for both current services/delays and planned services
-- api.py filters out the alert types that are not current (for example Planned Maintenance in a few days)
-- api.py then takes the alert types we want to work with (current stuff like delays and local-express) and returns data we want to work with, such as the title,description, train(s) affected, and id(might not be needed)
-- api.py also renames shuttle names to our own definition
-
-davidL -- 2026-05-15 11:41
-- Tested MTA Subway API for real-time train feeds (GTFS-feed parsed by Python with imports), explored data format to prepare to integrate into project
-- update reqs
+rohanS -- 2026-05-14 11:48
+- clean map now rendering
+- weekend plan i'll commit later, pd ending
