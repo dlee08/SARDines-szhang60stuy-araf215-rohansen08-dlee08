@@ -70,3 +70,7 @@ rohanS -- 2026-05-14 11:47
 seanZ -- 2026-05-14 11:46
 - filter filter filter for MTA API
 
+aoanulH -- 2026-05-14 20:27
+- Added alert types filter (basically letting us filter all the alerts to the ones we want to display)
+- Added a conversion sheet b/c mta api has trains like the rockaway park shuttle labeled  as H?? So I added a conversion sheet to know what shuttle is which without the MTA abbreviations. Code automatically does this conversion.
+
