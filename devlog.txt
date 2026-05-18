@@ -108,3 +108,16 @@ aoanulH -- 2026-05-17  21:05
 - added icon support via the svg's devo rohan provided. Basically improved alerts.py, so that its easier to implement for the devos working on frontend.
 - added a flask route for the alerts endpoint. This may not be strictly necessary yet, but it makes the alert data easier to access from the frontend and sets us up for future features like automatic refreshes or polling for updated service alerts.
 - updated requirements.txt with the new necessary packages required
+
+seanZ -- 2026-05-17 23:47
+ - Added epoch_to_local(time) to subway_api.py to translate epoch time to a list formatted by [hour, minute, second]
+ - Reformatted parsing code into function parse_mta() for use in __init__ and made it return a list of dictionaries 
+ - Each dictionary contains: 
+ - "arrive" - stop id for the station a specific train is going to
+ - "depart" - stop id of the station the train is leaving
+ - "arrive_time" - time formatted using epoch_to_local() for ETA of train at the station it is going to
+ - "depart_time" - same thing but ETA of train leaving a station
+ - "route_id" - the route of the train/vehicle like 2 or A train
+ 
+ - fields containing stop_id still need to be translated, for example 902N and 902S
+ - parse_mta() will be sent to js after said translating is done
