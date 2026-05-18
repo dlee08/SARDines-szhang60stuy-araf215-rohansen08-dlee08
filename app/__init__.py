@@ -30,6 +30,7 @@ def parse_stations():
         stops.insert()
 
 stops = pd.read_csv("static/MTA_Subway_Stations_20260515.csv")
+stops = pd.read_csv("static/MTA_Subway_Station_Complexes_20260518.csv")
 stations_json = stops[['Stop Name', 'GTFS Latitude', 'GTFS Longitude', 'Daytime Routes']].to_json(orient='records')
 
 
