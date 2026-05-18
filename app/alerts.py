@@ -1,6 +1,7 @@
 import urllib.request
 import json
 from pprint import pprint
+from stations import get_station_by_stop_id, parse_stop_id
 
 URL="https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/camsys%2Fsubway-alerts.json"
 
@@ -75,14 +76,28 @@ def clean_alert(item):
     description = get_translation_text(alert.get("description_text"))
 
     routes = []
+    stops = []
     seen_routes = set()
+    seen_stops = set()
 
     for entity in alert.get("informed_entity", []):
         route_id = entity.get("route_id")
+        stop_id = entity.get("stop_id")
 
         if route_id and route_id not in seen_routes:
             routes.append(clean_route(route_id))
             seen_routes.add(route_id)
+
+        if stop_id and stop_id not in seen_stops:
+            parsed_stop = parse_stop_id(stop_id)
+            stops.append({
+                "full_stop_id": parsed_stop["full_stop_id"],
+                "stop_id": parsed_stop["stop_id"],
+                "direction": parsed_stop["direction"],
+                "direction_name": parsed_stop["direction_name"],
+                "station": get_station_by_stop_id(stop_id)
+            })
+            seen_stops.add(stop_id)
 
     return {
         "id": item.get("id"),
@@ -91,7 +106,9 @@ def clean_alert(item):
         "title": title,
         "description": description,
         "routes": routes,
-        "route_count": len(routes)
+        "route_count": len(routes),
+        "stops": stops,
+        "stop_count": len(stops)
     }
 
 

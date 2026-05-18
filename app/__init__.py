@@ -2,18 +2,10 @@ import csv
 
 from flask import Flask, render_template, jsonify
 from alerts import get_clean_alerts
-from google.transit import gtfs_realtime_pb2
+from subway_api import parse_mta
 import sqlalchemy as db
 import pandas as pd
-import requests
 app = Flask(__name__)
-
-feed = gtfs_realtime_pb2.FeedMessage()
-response = requests.get('https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs-ace')
-feed.ParseFromString(response.content)
-for entity in feed.entity:
-  if entity.HasField('trip_update'):
-    print(entity.trip_update)
 
 env = open(".env")
 key = env.readline().strip()
@@ -49,6 +41,11 @@ def hello():
 def api_alerts():
     alerts = get_clean_alerts()
     return jsonify(alerts)
+
+@app.route("/api/trains")
+def api_trains():
+    trains = parse_mta()
+    return jsonify(trains)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')

@@ -121,3 +121,7 @@ seanZ -- 2026-05-17 23:47
  
  - fields containing stop_id still need to be translated, for example 902N and 902S
  - parse_mta() will be sent to js after said translating is done
+
+davidL -- 2026-05-18 00:54
+- Parsed MTA API to match stop IDs with service alert API, making it easier to access both
+- Parsed MTA API to info from station CSV to combine into a dict of stations in stations.py
