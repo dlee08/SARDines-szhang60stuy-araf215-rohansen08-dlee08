@@ -9,7 +9,8 @@
     <head>
         <title>Add a Map</title>
 
-        <link rel="stylesheet" type="text/css" href="static/style.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+        <script>const STATIONS = {{ stations | safe }};</script>
         <script type="module" src="static/js/index.js"></script>
         <script>
             // prettier-ignore
@@ -19,7 +20,7 @@
         </script>
     </head>
     <body>
-        <gmp-map center="40.735932643521714, -73.94962373756917" zoom="12" map-id="NERDY_MAP" mapTypeId="transit">
+        <gmp-map center="40.735932643521714, -73.94962373756917" zoom="12" map-id="{{ map_key }}">
             <div id="controls" slot="control-inline-start-block-start">
                 <h3>NerdyMap</h3>
             </div>

@@ -84,3 +84,44 @@ DD TIMELINE MODIFICATIONS -- 2026-05-14 23:55
 
 davidL -- 2026-05-14 23:58
 - update DD timeline (check things off, add more foreseeable deadlines), print HC DD for tmrw
+
+rohanS -- 2026-05-14 11:48
+- clean map now rendering
+
+WEEKEND PLAN:
+- rohan will get stations plotted onto the map
+- david will work on fetching the real-time train data
+- araf will work on the delay data
+- sean will work on parsing MTA data
+
+rohans -- 2026-05-17 20:48
+- using MTA data all subway stops now display on map
+- data from csv parsed to show the corresponding line icons
+- basic sqlalchemy skeleton
+- custom map expanded upon, using google maps api more styling added
+- custom pin styling so the stations look more aesthetically pleasing
+
+aoanulH -- 2026-05-17  21:05
+- Updated alerts.py (instead of everything being in one function I seperated everything into their own functions)
+- added basic documentation in alerts.py for fellow devos
+- added a custom severity sheet in alerts.py (basically delays are labeled as high severity, while express to local is low)
+- added icon support via the svg's devo rohan provided. Basically improved alerts.py, so that its easier to implement for the devos working on frontend.
+- added a flask route for the alerts endpoint. This may not be strictly necessary yet, but it makes the alert data easier to access from the frontend and sets us up for future features like automatic refreshes or polling for updated service alerts.
+- updated requirements.txt with the new necessary packages required
+
+seanZ -- 2026-05-17 23:47
+ - Added epoch_to_local(time) to subway_api.py to translate epoch time to a list formatted by [hour, minute, second]
+ - Reformatted parsing code into function parse_mta() for use in __init__ and made it return a list of dictionaries 
+ - Each dictionary contains: 
+ - "arrive" - stop id for the station a specific train is going to
+ - "depart" - stop id of the station the train is leaving
+ - "arrive_time" - time formatted using epoch_to_local() for ETA of train at the station it is going to
+ - "depart_time" - same thing but ETA of train leaving a station
+ - "route_id" - the route of the train/vehicle like 2 or A train
+ 
+ - fields containing stop_id still need to be translated, for example 902N and 902S
+ - parse_mta() will be sent to js after said translating is done
+
+davidL -- 2026-05-18 00:54
+- Parsed MTA API to match stop IDs with service alert API, making it easier to access both
+- Parsed MTA API to info from station CSV to combine into a dict of stations in stations.py
