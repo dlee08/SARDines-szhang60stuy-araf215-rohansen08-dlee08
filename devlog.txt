@@ -87,4 +87,16 @@ davidL -- 2026-05-14 23:58
 
 rohanS -- 2026-05-14 11:48
 - clean map now rendering
-- weekend plan i'll commit later, pd ending
+
+WEEKEND PLAN:
+- rohan will get stations plotted onto the map
+- david will work on fetching the real-time train data
+- araf will work on the delay data
+- sean will work on parsing MTA data
+
+rohans -- 2026-05-17 20:48
+- using MTA data all subway stops now display on map
+- data from csv parsed to show the corresponding line icons
+- basic sqlalchemy skeleton
+- custom map expanded upon, using google maps api more styling added
+- custom pin styling so the stations look more aesthetically pleasing
