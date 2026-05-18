@@ -1,6 +1,7 @@
 import csv
 import os
 from functools import lru_cache
+from pprint import pprint
 
 STATIONS_CSV = os.path.join(os.path.dirname(__file__), "static", "MTA_Subway_Stations_20260515.csv")
 STOP_DIRECTIONS = {
@@ -53,3 +54,4 @@ def get_station_lookup():
 def get_station_by_stop_id(stop_id):
   parsed_stop = parse_stop_id(stop_id)
   return get_station_lookup().get(parsed_stop["stop_id"])
+print(get_station_by_stop_id("G35"))
