@@ -100,3 +100,11 @@ rohans -- 2026-05-17 20:48
 - basic sqlalchemy skeleton
 - custom map expanded upon, using google maps api more styling added
 - custom pin styling so the stations look more aesthetically pleasing
+
+aoanulH -- 2026-05-17  21:05
+- Updated alerts.py (instead of everything being in one function I seperated everything into their own functions)
+- added basic documentation in alerts.py for fellow devos
+- added a custom severity sheet in alerts.py (basically delays are labeled as high severity, while express to local is low)
+- added icon support via the svg's devo rohan provided. Basically improved alerts.py, so that its easier to implement for the devos working on frontend.
+- added a flask route for the alerts endpoint. This may not be strictly necessary yet, but it makes the alert data easier to access from the frontend and sets us up for future features like automatic refreshes or polling for updated service alerts.
+- updated requirements.txt with the new necessary packages required
