@@ -12,3 +12,4 @@ urllib3==2.7.0
 Werkzeug==3.1.8
 SQLAlchemy
 gtfs-realtime-bindings
+pandas
