@@ -1,6 +1,7 @@
 import csv
 
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
+from alerts import get_clean_alerts
 from google.transit import gtfs_realtime_pb2
 import sqlalchemy as db
 import pandas as pd
@@ -43,6 +44,11 @@ stations_json = stops[['Stop Name', 'GTFS Latitude', 'GTFS Longitude', 'Daytime 
 @app.route("/")
 def hello():
     return render_template("map_temp.html", api_key=key, map_key=mkey, data=stops, stations=stations_json)
+
+@app.route("/api/alerts")
+def api_alerts():
+    alerts = get_clean_alerts()
+    return jsonify(alerts)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
