@@ -32,9 +32,15 @@ def parse_stations():
         stops.insert()
 
 stops = pd.read_csv("static/MTA_Subway_Stations_20260515.csv")
-complexes = pd.read_csv("static/MTA_Subway_Station_Complexes_20260518.csv")
-stations_json = stops[['Stop Name', 'GTFS Latitude', 'GTFS Longitude', 'Daytime Routes']].to_json(orient='records')
-
+# complexes = pd.read_csv("static/MTA_Subway_Station_Complexes_20260518.csv")
+# concat = ""
+# for cmp in complexes:
+#     df = stops.loc[stops['Complex ID'] == complexes['Complex ID'][0]]
+#     for stop in df:
+#         concat+=" "+df['Daytime Routes'][0]
+#     df[0]['Daytime Routes'] = concat
+#     concat = ''
+stations_json = stops[['Stop Name', 'GTFS Latitude', 'GTFS Longitude', 'Daytime Routes', 'Complex ID']].to_json(orient='records')
 
 @app.route("/")
 def hello():
