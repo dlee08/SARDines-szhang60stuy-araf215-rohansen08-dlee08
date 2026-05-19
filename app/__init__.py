@@ -3,6 +3,8 @@ import csv
 from flask import Flask, render_template, jsonify
 from alerts import get_clean_alerts
 from subway_api import parse_mta
+from live_trains import parse_live_trains
+from elev_esca import parse_elev_esca
 import sqlalchemy as db
 import pandas as pd
 app = Flask(__name__)
@@ -30,7 +32,7 @@ def parse_stations():
         stops.insert()
 
 stops = pd.read_csv("static/MTA_Subway_Stations_20260515.csv")
-stops = pd.read_csv("static/MTA_Subway_Station_Complexes_20260518.csv")
+complexes = pd.read_csv("static/MTA_Subway_Station_Complexes_20260518.csv")
 stations_json = stops[['Stop Name', 'GTFS Latitude', 'GTFS Longitude', 'Daytime Routes']].to_json(orient='records')
 
 
@@ -47,6 +49,14 @@ def api_alerts():
 def api_trains():
     trains = parse_mta()
     return jsonify(trains)
+
+@app.route("/api/live_trains")
+def api_livetrains():
+    return jsonify(parse_live_trains())
+
+@app.route("/api/elevator")
+def api_elevator():
+    return jsonify(parse_elev_esca())
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')

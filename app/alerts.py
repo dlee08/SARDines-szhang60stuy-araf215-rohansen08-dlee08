@@ -115,19 +115,25 @@ def clean_alert(item):
 def get_clean_alerts():
     """
     Gets all alerts and returns only the cleaned wanted ones.
+    If the MTA API fails, return an empty list instead of crashing the app.
     """
-    data = fetch_alert_feed()
-    entities = data.get("entity", [])
+    try:
+        data = fetch_alert_feed()
+        entities = data.get("entity", [])
 
-    cleaned_alerts = []
+        cleaned_alerts = []
 
-    for item in entities:
-        cleaned = clean_alert(item)
+        for item in entities:
+            cleaned = clean_alert(item)
 
-        if cleaned:
-            cleaned_alerts.append(cleaned)
+            if cleaned:
+                cleaned_alerts.append(cleaned)
 
-    return cleaned_alerts
+        return cleaned_alerts
 
-
-pprint(get_clean_alerts())
+    except Exception as e:
+        print("Alert API error:", e)
+        return []
+    
+if __name__ == "__main__":
+    pprint(get_clean_alerts())
