@@ -138,3 +138,8 @@ seanZ -- 2026-05-18 20:06
 
 davidL -- 2026-05-18 23:52
 - worked on live trains in live_trains.py, might have gotten the funct working, takes a bit long tho
+
+aoanulH --  2026-05-18 0:25
+- Added error handling to alerts.py and elev_esca.py for debugging (if needed).
+- Added flask routes for live train and elevator
+- Fixed a naming conflict in __init__.py for the variable "stop".
