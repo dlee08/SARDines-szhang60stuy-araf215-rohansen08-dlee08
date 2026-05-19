@@ -129,3 +129,9 @@ davidL -- 2026-05-18 00:54
 rohanS -- 2026-05-18
 - Began working on merging together station complexes (e.g. Times Square) by merging complex.csv and stations.csv
 - will implement fully tonight
+
+seanZ -- 2026-05-18 20:06
+- Started up elevator and escalator status from MTA API
+- parse_elev_esca() filters the JSON data to only elevator/escalator status that are currently active (or rather inactive).
+- function returns fields that include the type of equipment, estimated time of return to service, date of outage, reason for outage, what/where the elevator/escalator is supposed to serve, station of the outage, and trains affected
+- not all fields might be used
