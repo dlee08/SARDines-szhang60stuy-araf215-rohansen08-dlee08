@@ -135,3 +135,6 @@ seanZ -- 2026-05-18 20:06
 - parse_elev_esca() filters the JSON data to only elevator/escalator status that are currently active (or rather inactive).
 - function returns fields that include the type of equipment, estimated time of return to service, date of outage, reason for outage, what/where the elevator/escalator is supposed to serve, station of the outage, and trains affected
 - not all fields might be used
+
+davidL -- 2026-05-18 23:52
+- worked on live trains in live_trains.py, might have gotten the funct working, takes a bit long tho
