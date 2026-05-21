@@ -148,3 +148,6 @@ aoanulH --  2026-05-20 21:14
 - Implemented frontend for alerts onto map.html (displays the alerts fetched)
 - Shuttle buses still need an svg
 - The text doesn't look as clean (most likely will have to use regex to fix it)
+
+davidL -- 2026-05-21 01:00
+- woohoo, put the live trains onto the map so now they're visible, but there remains a few bugs visually like multiple trains same stop or something

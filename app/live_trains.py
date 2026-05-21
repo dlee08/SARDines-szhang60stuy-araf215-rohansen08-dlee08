@@ -43,6 +43,8 @@ def stop_details(stop_id):
     "direction": parsed["direction"],
     "direction_name": parsed["direction_name"],
     "station_name": station["stop_name"] if station else None,
+    "lat": station["lat"] if station else None,
+    "lng": station["lng"] if station else None,
   }
 
 
@@ -107,6 +109,8 @@ def parse_live_trains():
         "current_direction": current_stop["direction"],
         "current_direction_name": current_stop["direction_name"],
         "current_station_name": current_stop["station_name"],
+        "lat": current_stop["lat"],
+        "lng": current_stop["lng"],
         "next_stop": next_stop,
         "last_updated": epoch_to_local(vehicle.timestamp),
       })

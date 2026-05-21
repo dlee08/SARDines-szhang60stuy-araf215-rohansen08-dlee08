@@ -41,6 +41,116 @@ async function init() {
                 infoWindow.open(innerMap, marker);
             });
         }
+
+        loadLiveTrains(innerMap, AdvancedMarkerElement, infoWindow);
+        setInterval(() => loadLiveTrains(innerMap, AdvancedMarkerElement, infoWindow), 30000);
+}
+
+let liveTrainMarkers = [];
+
+async function loadLiveTrains(map, AdvancedMarkerElement, infoWindow) {
+    try {
+        const response = await fetch('/api/live_trains');
+
+        if (!response.ok) {
+            throw new Error('Live trains could not be fetched');
+        }
+
+        const trains = await response.json();
+        renderLiveTrains(trains, map, AdvancedMarkerElement, infoWindow);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function renderLiveTrains(trains, map, AdvancedMarkerElement, infoWindow) {
+    liveTrainMarkers.forEach(marker => {
+        marker.map = null;
+    });
+    liveTrainMarkers = [];
+
+    trains
+        .filter(train => trainLocation(train))
+        .forEach((train, index) => {
+            const marker = new AdvancedMarkerElement({
+                map,
+                position: liveTrainPosition(train, index),
+                title: liveTrainTitle(train),
+                content: liveTrainDot(train.route_id),
+            });
+
+            marker.addListener('click', () => {
+                infoWindow.close();
+                infoWindow.setContent(buildTrainInfoContent(train));
+                infoWindow.open(map, marker);
+            });
+
+            liveTrainMarkers.push(marker);
+        });
+}
+
+function liveTrainPosition(train, index) {
+    const location = trainLocation(train);
+    const angle = index * 2.399963229728653;
+    const offset = 0.00012 * ((index % 4) + 1);
+
+    return {
+        lat: location.lat + Math.sin(angle) * offset,
+        lng: location.lng + Math.cos(angle) * offset,
+    };
+}
+
+function trainLocation(train) {
+    if (train.lat && train.lng) {
+        return { lat: train.lat, lng: train.lng };
+    }
+
+    if (train.next_stop?.lat && train.next_stop?.lng) {
+        return { lat: train.next_stop.lat, lng: train.next_stop.lng };
+    }
+
+    return null;
+}
+
+function liveTrainDot(route) {
+    const routeKey = routeIconName(route);
+    const color = LINE_COLORS[routeKey?.toUpperCase()] ?? '#111';
+    const dot = document.createElement('div');
+    dot.className = 'live-train-dot';
+    dot.style.background = color;
+    dot.textContent = route || '?';
+    return dot;
+}
+
+function liveTrainTitle(train) {
+    const station = train.current_station_name || train.next_stop?.station_name || 'unknown station';
+    return `${train.route_id || ''} train near ${station}`.trim();
+}
+
+function buildTrainInfoContent(train) {
+    const route = routeIconName(train.route_id)?.toLowerCase();
+    const icon = route ? `<img src="/static/svg/${route}.svg" width="28" height="28" alt="${train.route_id}" title="${train.route_id}">` : '';
+    const station = train.current_station_name || train.next_stop?.station_name || 'Unknown station';
+    const status = train.current_status?.replaceAll('_', ' ').toLowerCase() || 'status unknown';
+    const nextStop = train.next_stop?.station_name ? `<div style="font-size:12px;margin-top:4px">Next: ${train.next_stop.station_name}</div>` : '';
+
+    return `<div style="font-family:sans-serif;padding:4px 2px">
+        <div style="display:flex;gap:6px;align-items:center;margin-bottom:6px">
+            ${icon}
+            <div style="font-weight:600;font-size:14px">${train.route_id || 'Train'} train</div>
+        </div>
+        <div style="font-size:13px">${station}</div>
+        <div style="font-size:12px;color:#555;margin-top:4px">${status}</div>
+        ${nextStop}
+    </div>`;
+}
+
+function routeIconName(route) {
+    if (!route) {
+        return null;
+    }
+
+    return route.toUpperCase() === 'SI' ? 'SIR' : route;
 }
 
 const LINE_COLORS = {
