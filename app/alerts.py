@@ -123,9 +123,11 @@ def is_current(alert):
             #print("passed stage 1")
             if len(active_time) > 1 and active_time['end'] > current_time:
                 #print("end included")
+                print(f"current: {current_time}, start: {start}, end: {active_time['end']}")
                 return True
             else:
                 #print("end not included")
+                print(f"current: {current_time}, start: {start}")
                 return True
     return False
 
@@ -144,7 +146,8 @@ def get_clean_alerts():
             if is_current(item):
                 cleaned = clean_alert(item)
                 cleaned_alerts.append(cleaned)
-        print(len(cleaned_alerts))
+                pprint(cleaned["type"])
+        
         return cleaned_alerts
 
     except Exception as e:
