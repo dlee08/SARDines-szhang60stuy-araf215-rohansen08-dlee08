@@ -143,3 +143,8 @@ aoanulH --  2026-05-18 0:25
 - Added error handling to alerts.py and elev_esca.py for debugging (if needed).
 - Added flask routes for live train and elevator
 - Fixed a naming conflict in __init__.py for the variable "stop".
+
+aoanulH --  2026-05-20 21:14
+- Implemented frontend for alerts onto map.html (displays the alerts fetched)
+- Shuttle buses still need an svg
+- The text doesn't look as clean (most likely will have to use regex to fix it)

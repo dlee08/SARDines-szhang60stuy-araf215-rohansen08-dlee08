@@ -4,27 +4,127 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-/*
- * Always set the map height explicitly to define the size of the div element
- * that contains the map.
- */
-gmp-map {
-    height: 100%;
-}
-
-/*
-   * Optional: Makes the sample page fill the window.
-   */
+/* Makes the page and map fill the full browser window */
 html,
 body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Google map container */
+gmp-map {
+    height: 100%;
+    width: 100%;
+}
+
+/* Left-side title/control box */
+#controls {
+    background-color: white;
+    margin: 12px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
 }
 
 #controls h3 {
-    font-size: 1.5em;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+#alerts-dashboard {
+    width: 360px;
+    max-height: 80vh;
+    overflow-y: auto;
     background-color: white;
-    margin: 8px;
-    padding: 2px;
+    padding: 14px;
+    margin: 12px;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+}
+
+.alerts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.alerts-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+#alerts-status {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 8px 0 10px;
+}
+
+.alert-card {
+    background-color: #f8f8f8;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 10px;
+    border-left: 6px solid #999;
+}
+
+.alert-card.high {
+    border-left-color: #d32f2f;
+}
+
+.alert-card.medium {
+    border-left-color: #f57c00;
+}
+
+.alert-card.low {
+    border-left-color: #fff200;
+}
+
+.alert-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.alert-type {
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.alert-severity {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: #555;
+}
+
+.alert-card h4 {
+    margin: 6px 0;
+    font-size: 1rem;
+}
+
+.alert-card p {
+    font-size: 0.9rem;
+    line-height: 1.35;
+    margin: 8px 0;
+}
+
+.alert-routes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 8px 0;
+}
+
+.route-icon {
+    width: 26px;
+    height: 26px;
+}
+
+.alert-card small {
+    color: #666;
+    font-size: 0.78rem;
 }

@@ -24,6 +24,77 @@
             <div id="controls" slot="control-inline-start-block-start">
                 <h3>NerdyMap</h3>
             </div>
+
+            <div id="alerts-dashboard" slot="control-inline-end-block-start">
+                <div class="alerts-header">
+                    <h3>Alerts</h3>
+                </div>
+
+                <p id="alerts-status">Loading alerts...</p>
+
+                <div id="alerts-list"></div>
+            </div>
         </gmp-map>
     </body>
+        <script>
+            async function loadAlerts() {
+                const alertsList = document.getElementById("alerts-list");
+                const alertsStatus = document.getElementById("alerts-status");
+
+                alertsStatus.textContent = "Loading alerts...";
+                alertsList.innerHTML = "";
+
+                try {
+                    const response = await fetch("/api/alerts");
+
+                    if (!response.ok) {
+                        throw new Error("The alerts couldn't be fetched (probably a mta error)");
+                    }
+
+                    const alerts = await response.json();
+
+                    if (!alerts.length) {
+                        alertsStatus.textContent = "No major alerts right now";
+                        return;
+                    }
+
+                    alertsStatus.textContent = `${alerts.length} active alert(s)`;
+
+                    alerts.forEach(alert => {
+                        const card = document.createElement("div");
+                        card.className = `alert-card ${alert.severity}`;
+
+                        const routeIcons = alert.routes
+                            .map(route => `<img src="${route.icon}" alt="${route.name}" class="route-icon">`)
+                            .join("");
+
+                        card.innerHTML = `
+                            <div class="alert-top-row">
+                                <span class="alert-type">${alert.type}</span>
+                                <span class="alert-severity">${alert.severity}</span>
+                            </div>
+
+                            <h4>${alert.title}</h4>
+
+                            <div class="alert-routes">
+                                ${routeIcons || "<span>No route listed</span>"}
+                            </div>
+
+                            <p>${alert.description}</p>
+
+                            <small>
+                                ${alert.route_count} route(s) affected · ${alert.stop_count} stop(s) affected
+                            </small>
+                        `;
+
+                        alertsList.appendChild(card);
+                    });
+                } catch (error) {
+                    console.error(error);
+                    alertsStatus.textContent = "Couldn't load the alerts";
+                }
+            }
+
+            loadAlerts();
+        </script>
 </html>
