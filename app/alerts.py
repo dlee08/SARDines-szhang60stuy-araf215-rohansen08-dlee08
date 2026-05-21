@@ -1,5 +1,6 @@
 import urllib.request
 import json
+import time
 from pprint import pprint
 from stations import get_station_by_stop_id, parse_stop_id
 
@@ -69,8 +70,8 @@ def clean_alert(item):
 
     alert_type = alert.get("transit_realtime.mercury_alert", {}).get("alert_type")
 
-    if alert_type not in alert_types_filter:
-        return None
+    #if alert_type not in alert_types_filter:
+    #    return None
 
     title = get_translation_text(alert.get("header_text"), "Untitled alert")
     description = get_translation_text(alert.get("description_text"))
@@ -111,13 +112,22 @@ def clean_alert(item):
         "stop_count": len(stops)
     }
 
-def is_current(entity):
-    for alert in entity:
-        full_time = alert.get('alert').get('active_period')
-        length = len(alert.get('alert').get('active_period')[0])
-        pprint(full_time)
-        pprint(length)
-    return True
+def is_current(alert):
+    full_times = alert.get('alert').get('active_period')
+    #pprint(full_times)
+    current_time = int(time.time())
+    for active_time in full_times:
+        start = active_time['start']
+        #print(f"current: {current_time}, start: {start}")
+        if current_time > start:
+            #print("passed stage 1")
+            if len(active_time) > 1 and active_time['end'] > current_time:
+                #print("end included")
+                return True
+            else:
+                #print("end not included")
+                return True
+    return False
 
 def get_clean_alerts():
     """
@@ -131,12 +141,10 @@ def get_clean_alerts():
         cleaned_alerts = []
 
         for item in entities:
-            pprint(item)
-            cleaned = clean_alert(item)
-
-            if cleaned:
+            if is_current(item):
+                cleaned = clean_alert(item)
                 cleaned_alerts.append(cleaned)
-
+        print(len(cleaned_alerts))
         return cleaned_alerts
 
     except Exception as e:
