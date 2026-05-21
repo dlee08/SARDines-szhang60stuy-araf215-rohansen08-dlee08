@@ -157,3 +157,9 @@ arafH -- 2026-05-21 11:16
 
 rohanS -- 2026-05-21 11:16
 - tinker with filtering trains by lines, improving UX
+
+seanZ -- 2026-05-21 18:23
+- reworked alerts filtering by focusing on time rather than alert type
+- result: discovered a couple alerts that weren't there before, but are considered active like boarding change and station notice
+- not sure if some alerts are important enough, easy to remove so discuss tmw
+- also discovered alerts about no scheduled service kind of repeating itself, rework got rid of this
