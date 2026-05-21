@@ -52,7 +52,7 @@ def fetch_alert_feed():
 
 def clean_route(route_id):
     """
-    Returns the route name, which is the route id. 
+    Returns the route name, which is the route id.
     The name field is mainly to convert ids like "GS" to "42nd St Shuttle" via our route_names array.
     """
     return {
@@ -111,6 +111,13 @@ def clean_alert(item):
         "stop_count": len(stops)
     }
 
+def is_current(entity):
+    for alert in entity:
+        full_time = alert.get('alert').get('active_period')
+        length = len(alert.get('alert').get('active_period')[0])
+        pprint(full_time)
+        pprint(length)
+    return True
 
 def get_clean_alerts():
     """
@@ -124,6 +131,7 @@ def get_clean_alerts():
         cleaned_alerts = []
 
         for item in entities:
+            pprint(item)
             cleaned = clean_alert(item)
 
             if cleaned:
@@ -134,6 +142,6 @@ def get_clean_alerts():
     except Exception as e:
         print("Alert API error:", e)
         return []
-    
+
 if __name__ == "__main__":
-    pprint(get_clean_alerts())
+    get_clean_alerts()
