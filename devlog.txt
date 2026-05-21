@@ -151,3 +151,9 @@ aoanulH --  2026-05-20 21:14
 
 davidL -- 2026-05-21 01:00
 - woohoo, put the live trains onto the map so now they're visible, but there remains a few bugs visually like multiple trains same stop or something
+
+arafH -- 2026-05-21 11:16
+- work on fixing service alerts filter
+
+rohanS -- 2026-05-21 11:16
+- tinker with filtering trains by lines, improving UX
