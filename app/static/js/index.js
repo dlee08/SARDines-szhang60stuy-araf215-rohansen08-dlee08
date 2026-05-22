@@ -114,6 +114,7 @@ function trainLocation(train) {
 }
 
 function liveTrainDot(route) {
+    if (route.toUpperCase() === 'GS') route = 'S';
     if (route.toUpperCase() === 'FS') route = 'SF';
     if (route.toUpperCase() === 'H') route = 'SR';
     if (route.toUpperCase() === 'SI') route = 'SIR';
@@ -140,6 +141,7 @@ function buildTrainInfoContent(train) {
     if (train.route_id === 'FS') train.route_id = 'Franklin Shuttle';
     if (train.route_id === 'H') train.route_id = 'Rockaway Shuttle';
     if (train.route_id === 'SI') train.route_id = 'SIR';
+    if (train.route_id === 'GS') train.route_id = 'S';
     return `<div style="font-family:sans-serif;padding:4px 2px">
         <div style="display:flex;gap:6px;align-items:center;margin-bottom:6px">
             ${icon}
