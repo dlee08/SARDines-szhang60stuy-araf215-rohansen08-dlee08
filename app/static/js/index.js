@@ -71,7 +71,7 @@ function renderLiveTrains(trains, map, AdvancedMarkerElement, infoWindow) {
 
     trains
         .filter(train => trainLocation(train))
-        .filter(train => train.current_station_name !== train.next_stop?.station_name)
+        //.filter(train => train.current_station_name !== train.next_stop?.station_name)
         .forEach((train, index) => {
             const marker = new AdvancedMarkerElement({
                 map,
