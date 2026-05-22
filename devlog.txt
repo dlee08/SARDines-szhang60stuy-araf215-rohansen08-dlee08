@@ -168,3 +168,4 @@ rohanS -- 2026-05-21 22:30
 - station complexes (e.g. times square) are now represented as one dot
 - stations with more lines have slightly larger icons since they're larger interchanges
 - fixed the icon issue for the SIR, Rockaway Park, and Franklin Avenue shuttles
+- removed the clutter of trains that reached their last stop and stopped reporting (filter out where next stop = current stop), making things MUCH cleaner by coney island :)
