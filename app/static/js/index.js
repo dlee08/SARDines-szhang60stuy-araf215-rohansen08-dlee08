@@ -157,6 +157,7 @@ function routeIconName(route) {
     if (!route) {
         return null;
     }
+    if (route.toUpperCase() === 'GS') return 'S';
     if (route.toUpperCase() === 'FS') return 'SF';
     if (route.toUpperCase() === 'H') return 'SR';
     return route.toUpperCase() === 'SI' ? 'SIR' : route;
