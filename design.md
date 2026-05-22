@@ -151,15 +151,15 @@ https://developers.google.com/maps/documentation/routes/transit-route.
 - Ensure API calls on both dev and user ends work so it doesn't magically break during demos, etc. by testing multiple times before, during, and after changes to codebase (A/B testing)
 
 # Timeline
-## Week 1 Goals: Basic map functionality, pull data from the MTA and other APIs.
-## Week 2 Goals: Plotting trains on the map, rendering their movement, use websockets.
-## Week 3 Goals: UI perfection, debugging, hopefully no major features pending.
+## Week 1 Goals: Basic map functionality, pull data from the MTA and other APIs. (Fulfilled criteria)
+## Week 2 Goals: Plotting trains on the map, rendering their movement, use websockets. (Fulfilled criteria)
+## Week 3 Goals: UI perfection, debugging, hopefully no major features pending. (Approaching standards)
 ## Internal Deadlines:
 - Determine all the APIs we need (5/15/26 --> 5/15/2026)
 - Have API keys, test calls set up (5/18/26 --> 5/15/26)
 - Basic map functionality up on frontend (5/22/26 --> 5/15/26)
-- More complex and detailed functionalities/tools up on frontend (5/25/26 --> PLANNED: 5/22/26)
-- Catch-up week on any functionalities that need more work or incomplete (5/29/26 --> PLANNED: 5/22/26)
+- More complex and detailed functionalities/tools up on frontend (5/25/26 --> 5/22/26)
+- Catch-up week on any functionalities that need more work or incomplete (5/29/26 --> 5/22/26)
 - Work on UI/UX to make it intuitive and easy to work with (5/29/26 --> PLANNED: 5/25/26)
 - Expand to other cities (BIG IF)
 
@@ -171,6 +171,7 @@ Project is considered complete when all of the following are true:
 
 # Open Questions
 - Will we try to implement multiple cities? Presumably, if we can implement NYC transit tracking, we could for other cities, too.
+UPDATE: No, we will not try to implement multiple cities, we will focus on NYC metro transit.
 
 # Appendix
 None at the moment.
