@@ -1,17 +1,14 @@
 import urllib.request
 import json
 import time
+import re
+import html
 from pprint import pprint
 from stations import get_station_by_stop_id, parse_stop_id
 
 URL="https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/camsys%2Fsubway-alerts.json"
 
-alert_types_filter =  {
-    "No Scheduled Service",
-    "Reduced Service",
-    "Delays",
-    "Express to Local"
-}
+
 
 route_names = {
  "GS": "42nd Street Shuttle",      # 42nd st shuttle
@@ -20,12 +17,34 @@ route_names = {
  "SI": "Staten Island Railway"     # Staten island railway
 }
 
-alert_severity =  {
-    "Delays": "high",
-    "No Scheduled Service": "high",
-    "Reduced Service": "medium",
-    "Express to Local": "low"
-}
+def format_route_list(routes):
+    if not routes:
+        return ""
+
+    if len(routes) == 1:
+        return routes[0]
+    if len(routes) == 2:
+        return f"{routes[0]} and {routes[1]}"
+
+    return ", ".join(routes[:-1]) + f", and {routes[-1]}"
+
+def clean_text(text):
+    if not text:
+        return "No information available"
+
+    text = html.unescape(text)
+    text = re.sub(r"<br\s*/?>", " ", text, flags=re.IGNORECASE)
+    text = re.sub(r"<[^>]+>", " ", text)
+
+    def replace_bracket_group(match):
+        group = match.group(0)
+        routes = re.findall(r"\[([A-Z0-9]+)\]", group)
+        return format_route_list(routes)
+
+    text = re.sub(r"(?:\[[A-Z0-9]+\])+", replace_bracket_group, text)
+    text = re.sub(r"\s+", " ", text).strip()
+
+    return text
 
 def get_translation_text(field, fallback="No information available"):
     """
@@ -70,11 +89,9 @@ def clean_alert(item):
 
     alert_type = alert.get("transit_realtime.mercury_alert", {}).get("alert_type")
 
-    #if alert_type not in alert_types_filter:
-    #    return None
 
-    title = get_translation_text(alert.get("header_text"), "Untitled alert")
-    description = get_translation_text(alert.get("description_text"))
+    title = clean_text(get_translation_text(alert.get("header_text"), "Untitled alert"))
+    description = clean_text(get_translation_text(alert.get("description_text")))
 
     routes = []
     stops = []
@@ -103,7 +120,6 @@ def clean_alert(item):
     return {
         "id": item.get("id"),
         "type": alert_type,
-        "severity": alert_severity.get(alert_type, "low"),
         "title": title,
         "description": description,
         "routes": routes,
@@ -113,21 +129,19 @@ def clean_alert(item):
     }
 
 def is_current(alert):
-    full_times = alert.get('alert').get('active_period')
+    full_times = alert.get('alert', {}).get('active_period', [])
     #pprint(full_times)
     current_time = int(time.time())
     for active_time in full_times:
-        start = active_time['start']
-        #print(f"current: {current_time}, start: {start}")
-        if current_time > start:
-            #print("passed stage 1")
-            if len(active_time) > 1 and active_time['end'] > current_time:
+        start = active_time.get('start')
+        end = active_time.get('end')
+        #print(f"current: {current_time}, start: {start}")          
+        if start is None:
+            continue 
+        if current_time >= start:
+            if end is None or end > current_time:
                 #print("end included")
-                print(f"current: {current_time}, start: {start}, end: {active_time['end']}")
-                return True
-            else:
-                #print("end not included")
-                print(f"current: {current_time}, start: {start}")
+                print(f"current: {current_time}, start: {start}, end: {end}")
                 return True
     return False
 
