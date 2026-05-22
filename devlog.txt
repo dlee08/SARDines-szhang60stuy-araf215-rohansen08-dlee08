@@ -1,7 +1,7 @@
 davidL -- 2026-04-29 11:38
 - init project repo
 
-aoanulH -- 2026-05-05 11:13
+arafH -- 2026-05-05 11:13
 - Setup team domains + https
 - created design.md
 
@@ -40,7 +40,7 @@ seanZ -- 2026-5-13 0:35
 	- Aspects most useful/appreciated were the programming recommendations and comment usage (inline vs block)
 	- app/__init__.py line 1, follows import styling rules
 
-aoanulH -- 2026-5-13 0:53
+arafH -- 2026-5-13 0:53
 - Javascript Style
 	- the style guide aspects most applicable to our codebase are using let/const instead of var, writing useful comments, using === instead of ==, and using safe DOM updates like textContent instead of innerHTML.
 	- the most useful/appreciated parts were the naming and comment rules because they make frontend code easier for people to read.
@@ -57,7 +57,7 @@ seanZ -- 2026-05-13 11:41
 rohanS -- 2026-05-13 20:20
 - map working locally, pending key and Mr. Mykolyk's permission
 
-aoanulH -- 2026-05-13 22:23
+arafH -- 2026-05-13 22:23
 - Updated Sean's code to fetch each alert and display its description, route id, title, and train line
 - Still observing the data and how to appropiately error handle when we get a null value.
 
@@ -71,7 +71,7 @@ rohanS -- 2026-05-14 11:47
 seanZ -- 2026-05-14 11:46
 - filter filter filter for MTA API
 
-aoanulH -- 2026-05-14 20:27
+arafH -- 2026-05-14 20:27
 - Added alert types filter (basically letting us filter all the alerts to the ones we want to display)
 - Added a conversion sheet b/c mta api has trains like the rockaway park shuttle labeled  as H?? So I added a conversion sheet to know what shuttle is which without the MTA abbreviations. Code automatically does this conversion.
 
@@ -101,7 +101,7 @@ rohans -- 2026-05-17 20:48
 - custom map expanded upon, using google maps api more styling added
 - custom pin styling so the stations look more aesthetically pleasing
 
-aoanulH -- 2026-05-17  21:05
+arafH -- 2026-05-17  21:05
 - Updated alerts.py (instead of everything being in one function I seperated everything into their own functions)
 - added basic documentation in alerts.py for fellow devos
 - added a custom severity sheet in alerts.py (basically delays are labeled as high severity, while express to local is low)
@@ -139,12 +139,12 @@ seanZ -- 2026-05-18 20:06
 davidL -- 2026-05-18 23:52
 - worked on live trains in live_trains.py, might have gotten the funct working, takes a bit long tho
 
-aoanulH --  2026-05-18 0:25
+arafH --  2026-05-18 0:25
 - Added error handling to alerts.py and elev_esca.py for debugging (if needed).
 - Added flask routes for live train and elevator
 - Fixed a naming conflict in __init__.py for the variable "stop".
 
-aoanulH --  2026-05-20 21:14
+arafH --  2026-05-20 21:14
 - Implemented frontend for alerts onto map.html (displays the alerts fetched)
 - Shuttle buses still need an svg
 - The text doesn't look as clean (most likely will have to use regex to fix it)
@@ -169,3 +169,10 @@ rohanS -- 2026-05-21 22:30
 - stations with more lines have slightly larger icons since they're larger interchanges
 - fixed the icon issue for the SIR, Rockaway Park, and Franklin Avenue shuttles
 - removed the clutter of trains that reached their last stop and stopped reporting (filter out where next stop = current stop), making things MUCH cleaner by coney island :)
+
+arafH -- 2026-05-21 23:06
+- Implemented regex for text clean up: [E][F] = E and F
+- Alerts now display only active alerts
+- Got rid of alert severity
+- Revised the CSS
+- Problem: Difficulties implementing bootstrap CSS into html most likely because of the google map.  Will have to consult fellow devos on this matter.
