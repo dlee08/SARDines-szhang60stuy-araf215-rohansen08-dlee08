@@ -8,7 +8,10 @@
 <html>
     <head>
         <title>Add a Map</title>
-
+        <link 
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+            rel="stylesheet"
+        >
         <link rel="stylesheet" type="text/css" href="static/css/style.css" />
         <script>const STATIONS = {{ stations | safe }};</script>
         <script type="module" src="static/js/index.js"></script>
@@ -18,6 +21,8 @@
                 key: "{{api_key}}"
             });
         </script>
+
+
     </head>
     <body>
         <gmp-map center="40.735932643521714, -73.94962373756917" zoom="12" map-id="{{ map_key }}">
@@ -26,12 +31,8 @@
             </div>
 
             <div id="alerts-dashboard" slot="control-inline-end-block-start">
-                <div class="alerts-header">
-                    <h3>Alerts</h3>
-                </div>
-
+                <h3>Alerts</h3>
                 <p id="alerts-status">Loading alerts...</p>
-
                 <div id="alerts-list"></div>
             </div>
         </gmp-map>
@@ -54,7 +55,7 @@
                     const alerts = await response.json();
 
                     if (!alerts.length) {
-                        alertsStatus.textContent = "No major alerts right now";
+                        alertsStatus.textContent = "No active alerts right now";
                         return;
                     }
 
@@ -62,31 +63,26 @@
 
                     alerts.forEach(alert => {
                         const card = document.createElement("div");
-                        card.className = `alert-card ${alert.severity}`;
-
+                        card.className = "alert-card";
                         const routeIcons = alert.routes
                             .map(route => `<img src="${route.icon}" alt="${route.name}" class="route-icon">`)
                             .join("");
 
                         card.innerHTML = `
-                            <div class="alert-top-row">
-                                <span class="alert-type">${alert.type}</span>
-                                <span class="alert-severity">${alert.severity}</span>
-                            </div>
+                            <div class="alert-type">${alert.type}</div>
 
                             <h4>${alert.title}</h4>
 
                             <div class="alert-routes">
-                                ${routeIcons || "<span>No route listed</span>"}
+                                ${routeIcons || '<span class="no-route">No route listed</span>'}
                             </div>
 
-                            <p>${alert.description}</p>
+                            <p class="alert-description">${alert.description}</p>
 
-                            <small>
+                            <p class="alert-meta">
                                 ${alert.route_count} route(s) affected · ${alert.stop_count} stop(s) affected
-                            </small>
+                            </p>
                         `;
-
                         alertsList.appendChild(card);
                     });
                 } catch (error) {
