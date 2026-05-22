@@ -163,3 +163,8 @@ seanZ -- 2026-05-21 18:23
 - result: discovered a couple alerts that weren't there before, but are considered active like boarding change and station notice
 - not sure if some alerts are important enough, easy to remove so discuss tmw
 - also discovered alerts about no scheduled service kind of repeating itself, rework got rid of this
+
+rohanS -- 2026-05-21 22:30
+- station complexes (e.g. times square) are now represented as one dot
+- stations with more lines have slightly larger icons since they're larger interchanges
+- fixed the icon issue for the SIR, Rockaway Park, and Franklin Avenue shuttles

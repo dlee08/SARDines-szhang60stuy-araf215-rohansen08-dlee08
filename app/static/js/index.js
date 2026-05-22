@@ -113,6 +113,9 @@ function trainLocation(train) {
 }
 
 function liveTrainDot(route) {
+    if (route.toUpperCase() === 'FS') route = 'SF';
+    if (route.toUpperCase() === 'H') route = 'SR';
+    if (route.toUpperCase() === 'SI') route = 'SIR';
     const routeKey = routeIconName(route);
     const color = LINE_COLORS[routeKey?.toUpperCase()] ?? '#111';
     const dot = document.createElement('div');
@@ -128,12 +131,14 @@ function liveTrainTitle(train) {
 }
 
 function buildTrainInfoContent(train) {
-    const route = routeIconName(train.route_id)?.toLowerCase();
+    let route = routeIconName(train.route_id)?.toLowerCase();
     const icon = route ? `<img src="/static/svg/${route}.svg" width="28" height="28" alt="${train.route_id}" title="${train.route_id}">` : '';
     const station = train.current_station_name || train.next_stop?.station_name || 'Unknown station';
     const status = train.current_status?.replaceAll('_', ' ').toLowerCase() || 'status unknown';
     const nextStop = train.next_stop?.station_name ? `<div style="font-size:12px;margin-top:4px">Next: ${train.next_stop.station_name}</div>` : '';
-
+    if (train.route_id === 'FS') train.route_id = 'Franklin Shuttle';
+    if (train.route_id === 'H') train.route_id = 'Rockaway Shuttle';
+    if (train.route_id === 'SI') train.route_id = 'SIR';
     return `<div style="font-family:sans-serif;padding:4px 2px">
         <div style="display:flex;gap:6px;align-items:center;margin-bottom:6px">
             ${icon}
@@ -177,7 +182,7 @@ function stationDot(routes) {
     const color = LINE_COLORS[firstRoute] ?? '#555';
     const dot = document.createElement('div');
     dot.style.cssText = [
-        `width:${10+routeCount*2}px`, `height:${10+routeCount*2}px`, 'border-radius:50%',
+        `width:${10+routeCount}px`, `height:${10+routeCount}px`, 'border-radius:50%',
         `background:${color}`, 'border:1.5px solid white',
         'box-shadow:0 1px 3px rgba(0,0,0,0.35)', 'cursor:pointer',
     ].join(';');
