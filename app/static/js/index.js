@@ -149,7 +149,8 @@ function routeIconName(route) {
     if (!route) {
         return null;
     }
-
+    if (route.toUpperCase() === 'FS') return 'SF';
+    if (route.toUpperCase() === 'H') return 'SR';
     return route.toUpperCase() === 'SI' ? 'SIR' : route;
 }
 
@@ -171,10 +172,12 @@ const LINE_COLORS = {
 
 function stationDot(routes) {
     const firstRoute = routes.split(' ')[0].toUpperCase();
+    let routeCount = routes.split(' ').length
+    if (routeCount <= 2) routeCount = 0;
     const color = LINE_COLORS[firstRoute] ?? '#555';
     const dot = document.createElement('div');
     dot.style.cssText = [
-        'width:10px', 'height:10px', 'border-radius:50%',
+        `width:${10+routeCount*2}px`, `height:${10+routeCount*2}px`, 'border-radius:50%',
         `background:${color}`, 'border:1.5px solid white',
         'box-shadow:0 1px 3px rgba(0,0,0,0.35)', 'cursor:pointer',
     ].join(';');

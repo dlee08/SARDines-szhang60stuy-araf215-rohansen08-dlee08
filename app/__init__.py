@@ -13,35 +13,27 @@ env = open(".env")
 key = env.readline().strip()
 mkey = env.readline().strip()
 
-engine = db.create_engine("sqlite:///NerdyMap.sqlite")
-conn = engine.connect()
-metadata = db.MetaData()
-
-stops = db.Table('stops', metadata,
-              db.Column('Id', db.Integer(),primary_key=True),
-              db.Column('Name', db.String(255), nullable=False),
-              db.Column('Major', db.String(255), default="Math"),
-              db.Column('Pass', db.Boolean(), default=True)
-              )
-
-metadata.create_all(engine)
-
-def parse_stations():
-    with open("static/MTA_Subway_Stations_20260515.csv") as csvfile:
-        csvreader = csv.reader(csvfile, delimiter=',')
-        stops.insert()
-
 stops = pd.read_csv("static/MTA_Subway_Stations_20260515.csv")
-# complexes = pd.read_csv("static/MTA_Subway_Station_Complexes_20260518.csv")
-# concat = ""
-# for cmp in complexes:
-#     df = stops.loc[stops['Complex ID'] == complexes['Complex ID'][0]]
-#     for stop in df:
-#         concat+=" "+df['Daytime Routes'][0]
-#     df[0]['Daytime Routes'] = concat
-#     concat = ''
-stations_json = stops[['Stop Name', 'GTFS Latitude', 'GTFS Longitude', 'Daytime Routes', 'Complex ID']].to_json(orient='records')
 
+def merge_routes(series):
+    routes = []
+    for val in series:
+        routes.extend(val.split())
+    return " ".join(sorted(set(routes)))
+
+complex_stops = (
+    stops.groupby("Complex ID", as_index=False)
+    .agg({
+        "Stop Name": "first",
+        "GTFS Latitude": "first",
+        "GTFS Longitude": "first",
+        "Daytime Routes": merge_routes
+    })
+)
+
+stations_json = complex_stops[
+    ["Stop Name", "GTFS Latitude", "GTFS Longitude", "Daytime Routes", "Complex ID"]
+].to_json(orient="records")
 @app.route("/")
 def hello():
     return render_template("map_temp.html", api_key=key, map_key=mkey, data=stops, stations=stations_json)
