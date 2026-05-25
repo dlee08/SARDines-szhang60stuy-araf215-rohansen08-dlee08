@@ -69,21 +69,37 @@
                             .join("");
 
                         card.innerHTML = `
-                            <div class="alert-type">${alert.type}</div>
+                        <button class="alert-dropdown-button" type="button">
+                            <span class="alert-dropdown-left">
+                                <span class="alert-type">${alert.type}</span>
+                                <span class="alert-routes">
+                                    ${routeIcons || '<span class="no-route">No route listed</span>'}
+                                </span>
+                            </span>
+                            <span class="alert-card-arrow">▶</span>
+                        </button>
 
+                        <div class="alert-dropdown-content collapsed">
                             <h4>${alert.title}</h4>
-
-                            <div class="alert-routes">
-                                ${routeIcons || '<span class="no-route">No route listed</span>'}
-                            </div>
 
                             <p class="alert-description">${alert.description}</p>
 
                             <p class="alert-meta">
                                 ${alert.route_count} route(s) affected · ${alert.stop_count} stop(s) affected
                             </p>
-                        `;
+                        </div>
+                    `;
+            
                         alertsList.appendChild(card);
+
+                        const button = card.querySelector(".alert-dropdown-button");
+                        const content = card.querySelector(".alert-dropdown-content");
+                        const arrow = card.querySelector(".alert-card-arrow");
+
+                        button.addEventListener("click", () => {
+                            content.classList.toggle("collapsed");
+                            arrow.textContent = content.classList.contains("collapsed") ? "▶" : "▼";
+                        });
                     });
                 } catch (error) {
                     console.error(error);

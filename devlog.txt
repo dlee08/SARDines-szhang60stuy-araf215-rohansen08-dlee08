@@ -180,3 +180,6 @@ arafH -- 2026-05-21 23:06
 rohanS -- 2026-05-22 11:44
 - worked with david to debug duplicate train issues
 - fixes to UI where needed
+
+arafH -- 2026-05-25 0:35
+- Added a dropdown button on each alert card.

@@ -43,6 +43,33 @@ gmp-map {
     border-radius: 12px;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
 }
+.alert-dropdown-button {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.alert-dropdown-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.alert-dropdown-content.collapsed {
+    display: none;
+}
+
+.alert-card-arrow {
+    font-size: 1rem;
+    margin-left: 8px;
+}
 .live-train-dot {
     width: 22px;
     height: 22px;
