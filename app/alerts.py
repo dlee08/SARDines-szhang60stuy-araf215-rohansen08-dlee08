@@ -75,6 +75,10 @@ def clean_route(route_id):
     Returns the route name, which is the route id.
     The name field is mainly to convert ids like "GS" to "42nd St Shuttle" via our route_names array.
     """
+    if (route_id.lower()=="gs") route_id="s";
+    if (route_id.lower()=="si") route_id="sir";
+    if (route_id.lower()=="fs") route_id="sf";
+    if (route_id.lower()=="rs") route_id="sr"; 
     return {
         "route id": route_id,
         "name": route_names.get(route_id, route_id),
@@ -135,9 +139,9 @@ def is_current(alert):
     for active_time in full_times:
         start = active_time.get('start')
         end = active_time.get('end')
-        #print(f"current: {current_time}, start: {start}")          
+        #print(f"current: {current_time}, start: {start}")
         if start is None:
-            continue 
+            continue
         if current_time >= start:
             if end is None or end > current_time:
                 #print("end included")
@@ -161,7 +165,7 @@ def get_clean_alerts():
                 cleaned = clean_alert(item)
                 cleaned_alerts.append(cleaned)
                 pprint(cleaned["type"])
-        
+
         return cleaned_alerts
 
     except Exception as e:
