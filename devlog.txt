@@ -187,3 +187,6 @@ arafH -- 2026-05-25 0:35
 rohanS -- 2026-05-26 00:09
 - Fixed the 6X, SIR, and Shuttles within delays
 - Alert the user if the MTA night schedule is active
+
+davidL -- 2026-05-26 02:31
+- Not sure if I did it properly, but deduped terminal train stops displaying multiple trains sitting on termianl stop by removing ghosts (setting time restrictions)
