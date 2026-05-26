@@ -18,6 +18,8 @@ FEEDS = {
   "si": "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs-si",
 }
 
+MAX_VEHICLE_AGE_SECONDS = 900
+
 
 def epoch_to_local(timestamp):
   if not timestamp:
@@ -79,6 +81,63 @@ def vehicle_status_name(status):
   return gtfs_realtime_pb2.VehiclePosition.VehicleStopStatus.Name(status)
 
 
+def is_live_vehicle(vehicle, now):
+  if not vehicle.timestamp:
+    return False
+
+  age = now - vehicle.timestamp
+  return 0 <= age <= MAX_VEHICLE_AGE_SECONDS
+
+
+def is_self_targeting_report(current_stop, next_stop):
+  if not next_stop:
+    return True
+
+  return current_stop["full_stop_id"] == next_stop["full_stop_id"]
+
+
+def trip_stop_ids(trip_update):
+  if not trip_update:
+    return []
+
+  return [stop_time.stop_id for stop_time in trip_update.stop_time_update]
+
+
+def is_trip_endpoint_report(current_stop, trip_update):
+  stop_ids = trip_stop_ids(trip_update)
+  current_stop_id = current_stop["full_stop_id"]
+
+  if not current_stop_id or not stop_ids:
+    return False
+
+  return current_stop_id == stop_ids[0] or current_stop_id == stop_ids[-1]
+
+
+def updated_timestamp(train):
+  if not train["last_updated"]:
+    return 0
+
+  return int(datetime.fromisoformat(train["last_updated"]).timestamp())
+
+
+def remove_terminal_pileups(trains):
+  terminal_trains = {}
+  filtered_trains = []
+
+  for train in trains:
+    if not train["is_terminal_report"]:
+      filtered_trains.append(train)
+      continue
+
+    key = (train["current_full_stop_id"], train["route_id"])
+    existing_train = terminal_trains.get(key)
+
+    if not existing_train or updated_timestamp(train) > updated_timestamp(existing_train):
+      terminal_trains[key] = train
+
+  return filtered_trains + list(terminal_trains.values())
+
+
 def parse_live_trains():
   now = int(datetime.now(timezone.utc).timestamp())
   trains = []
@@ -92,10 +151,16 @@ def parse_live_trains():
         continue
 
       vehicle = entity.vehicle
+      if not is_live_vehicle(vehicle, now):
+        continue
+
       trip_id = vehicle.trip.trip_id
       trip_update = trip_updates.get(trip_id)
       current_stop = stop_details(vehicle.stop_id) if vehicle.stop_id else stop_details(None)
       next_stop = first_future_stop(trip_update, now) if trip_update else None
+      endpoint_report = is_trip_endpoint_report(current_stop, trip_update)
+      if is_self_targeting_report(current_stop, next_stop) and not endpoint_report:
+        continue
 
       trains.append({
         "feed": feed_name,
@@ -113,9 +178,10 @@ def parse_live_trains():
         "lng": current_stop["lng"],
         "next_stop": next_stop,
         "last_updated": epoch_to_local(vehicle.timestamp),
+        "is_terminal_report": endpoint_report,
       })
 
-  return trains
+  return remove_terminal_pileups(trains)
 
 
 if __name__ == "__main__":
