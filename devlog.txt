@@ -183,3 +183,7 @@ rohanS -- 2026-05-22 11:44
 
 arafH -- 2026-05-25 0:35
 - Added a dropdown button on each alert card.
+
+rohanS -- 2026-05-26 00:09
+- Fixed the 6X, SIR, and Shuttles within delays
+- Alert the user if the MTA night schedule is active

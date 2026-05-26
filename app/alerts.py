@@ -11,10 +11,10 @@ URL="https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/camsys%2Fsubway-aler
 
 
 route_names = {
- "GS": "42nd Street Shuttle",      # 42nd st shuttle
- "FS": "Franklin Avenue Shuttle",      # Franklin ave shuttle
- "H": "Rockaway Park Shuttle",       # Rockaway park shuttle
- "SI": "Staten Island Railway"     # Staten island railway
+ "GS": "S",      # 42nd st shuttle
+ "FS": "SF",      # Franklin ave shuttle
+ "H": "SR",       # Rockaway park shuttle
+ "SI": "SIR"     # Staten island railway
 }
 
 def format_route_list(routes):

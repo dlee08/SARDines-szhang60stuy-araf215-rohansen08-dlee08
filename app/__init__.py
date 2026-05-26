@@ -7,6 +7,7 @@ from live_trains import parse_live_trains
 from elev_esca import parse_elev_esca
 import sqlalchemy as db
 import pandas as pd
+from datetime import time, datetime
 app = Flask(__name__)
 
 env = open(".env")
@@ -36,7 +37,9 @@ stations_json = complex_stops[
 ].to_json(orient="records")
 @app.route("/")
 def hello():
-    return render_template("map_temp.html", api_key=key, map_key=mkey, data=stops, stations=stations_json)
+    now = datetime.now().time()
+    is_late_night = now >= time(23, 0) or now < time(5, 0)
+    return render_template("map_temp.html", api_key=key, map_key=mkey, data=stops, stations=stations_json, night=is_late_night)
 
 @app.route("/api/alerts")
 def api_alerts():
