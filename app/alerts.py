@@ -75,10 +75,14 @@ def clean_route(route_id):
     Returns the route name, which is the route id.
     The name field is mainly to convert ids like "GS" to "42nd St Shuttle" via our route_names array.
     """
-    if (route_id.lower()=="gs") route_id="s";
-    if (route_id.lower()=="si") route_id="sir";
-    if (route_id.lower()=="fs") route_id="sf";
-    if (route_id.lower()=="rs") route_id="sr"; 
+    if route_id.lower()=="gs":
+        route_id="s";
+    if route_id.lower()=="si":
+        route_id="sir";
+    if route_id.lower()=="fs":
+        route_id="sf";
+    if route_id.lower()=="rs":
+        route_id="sr"; 
     return {
         "route id": route_id,
         "name": route_names.get(route_id, route_id),
