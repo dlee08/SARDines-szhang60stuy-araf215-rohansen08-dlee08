@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 import json
+from pprint import pprint
 
 import requests
 from google.transit import gtfs_realtime_pb2
@@ -183,6 +184,25 @@ def parse_live_trains():
 
   return remove_terminal_pileups(trains)
 
+def get_times():
+    trains = parse_live_trains()
+    seen_stations = []
+    result = []
+    count = 0
+    for train in trains:
+        count += 1
+        print(count)
+        #pprint(train)
+        route = train['route_id']
+        direction = train['current_direction_name']
+        status = train['current_status']
+        if train['next_stop']:
+            print("true")
+            #next_stop = train['next_stop']['station_name']
+        #next_time = train['next_stop']['arrival_time']
+        #print(route, direction, status)
+
 
 if __name__ == "__main__":
-  print(json.dumps(parse_live_trains(), indent=2))
+  #print(json.dumps(parse_live_trains(), indent=2))
+  print(get_times())
