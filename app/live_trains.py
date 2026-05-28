@@ -63,7 +63,11 @@ def first_future_stop(trip_update, now):
         "arrival_time": epoch_to_local(arrival_time),
         "departure_time": epoch_to_local(departure_time),
         "epoch_arrival": arrival_time,
+<<<<<<< HEAD
         "epoch_departure": departure_time
+=======
+        "epoch_departure": departure_time,
+>>>>>>> 5423228df0fa57b2ca9f92066f9af6e1854e23a8
       }
 
   return None
@@ -201,7 +205,7 @@ def get_times():
         "current" : train['current_station_name'],
         "next_stop" : next_stop[0],
         "local_time" : train['next_stop']['departure_time'],
-        "time_to_arrive" : str(round((next_time - now) / 60)) + " min"
+        "time_to_arrive" : str(round((next_time - now) / 60)) + " min",
         }
       #pprint(data)
       next_stop = data["next_stop"]
@@ -212,9 +216,6 @@ def get_times():
         result[next_stop].append(data)
   return result
 
-
-
-
 if __name__ == "__main__":
-  #print(json.dumps(parse_live_trains(), indent=2))
+  print(json.dumps(parse_live_trains(), indent=2))
   pprint(get_times())
