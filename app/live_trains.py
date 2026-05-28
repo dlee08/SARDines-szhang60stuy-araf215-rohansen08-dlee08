@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 import json
+from pprint import pprint
 
 import requests
 from google.transit import gtfs_realtime_pb2
@@ -61,6 +62,8 @@ def first_future_stop(trip_update, now):
         **stop_details(stop_time.stop_id),
         "arrival_time": epoch_to_local(arrival_time),
         "departure_time": epoch_to_local(departure_time),
+        "epoch_arrival": arrival_time,
+        "epoch_departure": departure_time,
       }
 
   return None
@@ -183,6 +186,32 @@ def parse_live_trains():
 
   return remove_terminal_pileups(trains)
 
+def get_times():
+  now = int(datetime.now(timezone.utc).timestamp())
+  trains = parse_live_trains()
+  result = {}
+  for train in trains:
+    #pprint(train)
+    if train['next_stop'] and train['next_stop']['epoch_arrival']:
+      next_time = int(train['next_stop']['epoch_arrival'])
+      next_stop = train['next_stop']['station_name'],
+      data = {
+        "route" : train['route_id'],
+        "direction" : train['current_direction_name'],
+        "current" : train['current_station_name'],
+        "next_stop" : next_stop[0],
+        "local_time" : train['next_stop']['departure_time'],
+        "time_to_arrive" : str(round((next_time - now) / 60)) + " min",
+        }
+      #pprint(data)
+      next_stop = data["next_stop"]
+      if next_stop in result:
+        result[next_stop].append(data)
+      else:
+        result[next_stop] = []
+        result[next_stop].append(data)
+  return result
 
 if __name__ == "__main__":
   print(json.dumps(parse_live_trains(), indent=2))
+  pprint(get_times())

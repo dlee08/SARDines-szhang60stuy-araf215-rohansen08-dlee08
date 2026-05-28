@@ -190,3 +190,7 @@ rohanS -- 2026-05-26 00:09
 
 davidL -- 2026-05-26 02:31
 - Not sure if I did it properly, but deduped terminal train stops displaying multiple trains sitting on termianl stop by removing ghosts (setting time restrictions)
+
+seanZ -- 2026-05-27 23:27
+- added get_times() which returns a dictionary where each key is a station name, returning a list of dictionaries of incoming trains (gives number of minutes until arrival to the station used as a key). 
+- fix tmw: used data from parse_live_trains which only contains the very next stop for each train -> only trains closest to a station are used. This is prob a quick fix
