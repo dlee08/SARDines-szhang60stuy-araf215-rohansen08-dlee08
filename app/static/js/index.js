@@ -26,6 +26,8 @@ async function init() {
         transitLayer.setMap(innerMap);
 
         const infoWindow = new InfoWindow();
+        const elevatorResponse = await fetch('/api/elevator');
+        const elevatorOutage = await elevatorResponse.json();
 
         for (const station of STATIONS) {
             const marker = new AdvancedMarkerElement({
@@ -37,7 +39,7 @@ async function init() {
 
             marker.addListener('click', () => {
                 infoWindow.close();
-                infoWindow.setContent(buildInfoContent(station));
+                infoWindow.setContent(buildInfoContent(station, elevatorOutage));
                 infoWindow.open(innerMap, marker);
             });
         }
@@ -193,7 +195,23 @@ function stationDot(routes) {
     return dot;
 }
 
-function buildInfoContent(station) {
+function buildInfoContent(station, elevatorOutage) {
+    const outage = elevatorOutage.filter(o =>
+    o.station.toLowerCase() === station['Stop Name'].toLowerCase()
+    );
+    const outageHtml = outage.length ? outage.map(outage => `
+    <hr style="margin:8px 0">
+    <div style="font-size:13px">
+        <div><b>Type:</b> ${outage.type === 'EL' ? 'Elevator' : 'Escalator'}</div>
+        <div><b>Reason:</b> ${outage.reason}</div>
+        <div><b>Outage started:</b> ${outage.outage_date}</div>
+        <div><b>Estimated return:</b> ${outage.est_return}</div>
+        <div style="margin-top:5px"><b>Affected path:</b> ${outage.serving_info}</div>
+    </div>
+    `).join('') : `
+        <hr style="margin:8px 0">
+        <div style="font-size:13px;color:#555">No current elevator/escalator outage found.</div>
+    `;
     const icons = station['Daytime Routes']
         .split(' ')
         .map(r => `<img src="/static/svg/${r.toLowerCase()}.svg" width="28" height="28" alt="${r}" title="${r}">`)
@@ -201,6 +219,7 @@ function buildInfoContent(station) {
     return `<div style="font-family:sans-serif;padding:4px 2px">
         <div style="font-weight:600;font-size:14px;margin-bottom:6px">${station['Stop Name']}</div>
         <div style="display:flex;gap:4px;align-items:center">${icons}</div>
+        ${outageHtml}
     </div>`;
 }
 
