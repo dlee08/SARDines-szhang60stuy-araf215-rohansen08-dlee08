@@ -20,12 +20,18 @@ async function init() {
         innerMap.setOptions({
             // Disable the default UI.
             disableDefaultUI: true,
-            styles: styles.hide
+            clickableIcons: false,
+            styles: styles.hide,
         });
         const transitLayer = new google.maps.TransitLayer();
         transitLayer.setMap(innerMap);
 
-        const infoWindow = new InfoWindow();
+        const infoWindow = new InfoWindow({
+            headerDisabled: true,
+        });
+        innerMap.addListener('click', () => {
+            infoWindow.close();
+        });
         const elevatorResponse = await fetch('/api/elevator');
         const elevatorOutage = await elevatorResponse.json();
 
@@ -201,7 +207,7 @@ function buildInfoContent(station, elevatorOutage) {
     );
     const outageHtml = outage.length ? outage.map(outage => `
     <hr style="margin:8px 0">
-    <div style="font-size:13px">
+    <div style="font-size:13px; max-width: 250px">
         <div><b>Type:</b> ${outage.type === 'EL' ? 'Elevator' : 'Escalator'}</div>
         <div><b>Reason:</b> ${outage.reason}</div>
         <div><b>Outage started:</b> ${outage.outage_date}</div>
@@ -209,8 +215,7 @@ function buildInfoContent(station, elevatorOutage) {
         <div style="margin-top:5px"><b>Affected path:</b> ${outage.serving_info}</div>
     </div>
     `).join('') : `
-        <hr style="margin:8px 0">
-        <div style="font-size:13px;color:#555">No current elevator/escalator outage found.</div>
+        <div style="font-size:13px;color:#555"></div>
     `;
     const icons = station['Daytime Routes']
         .split(' ')
