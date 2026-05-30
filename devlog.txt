@@ -202,3 +202,8 @@ rohanS -- 2025-05-29 00:23
 - Improved the station info tab
 - Allow the user to toggle the delays tab
 - Cleaned up the elevator/escalator alerts, so they don't take up the entire page
+
+seanZ -- 2025-05-29 21:12
+- Fixed up get_times(), now accounts for more stops than just the very next stop for each train. 
+- Rohan can implement this into frontend now
+- Since get_times() calls parse_live_trains(), it might be better to just move get_times() inside parse_live_trains() and return both stuff together? 
