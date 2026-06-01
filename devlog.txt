@@ -198,12 +198,16 @@ seanZ -- 2026-05-27 23:27
 arafH -- 2026-05-28 23:00
 - Added elevator/escalator status on station dots. Users can now know if there is an elevator/escalator outage at whatever station dot they click on.
 
-rohanS -- 2025-05-29 00:23
+rohanS -- 2026-05-29 00:23
 - Improved the station info tab
 - Allow the user to toggle the delays tab
 - Cleaned up the elevator/escalator alerts, so they don't take up the entire page
 
-seanZ -- 2025-05-29 21:12
+seanZ -- 2026-05-29 21:12
 - Fixed up get_times(), now accounts for more stops than just the very next stop for each train. 
 - Rohan can implement this into frontend now
-- Since get_times() calls parse_live_trains(), it might be better to just move get_times() inside parse_live_trains() and return both stuff together? 
+- Since get_times() calls parse_live_trains(), it might be better to just move get_times() inside parse_live_trains() and return both stuff together?
+
+rohanS -- 2026-06-01 01:54
+- began experimenting with adding stop times (broken code not pushed), identified issues to resolve tomorrow
+- more ui stuff regarding the rockaway shuttle

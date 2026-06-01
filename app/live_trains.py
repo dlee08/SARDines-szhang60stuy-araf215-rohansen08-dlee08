@@ -223,7 +223,7 @@ def get_times():
                 "local_time": stop["departure_time"],
                 "time_to_arrive": str(round((next_time - now) / 60)) + " min",
             }
-            station = stop["station_name"]
+            station = stop["station_id"]
             result.setdefault(station, []).append(data)
     return result
 
