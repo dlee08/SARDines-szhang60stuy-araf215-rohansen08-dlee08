@@ -151,7 +151,7 @@ def is_current(alert):
         if current_time >= start:
             if end is None or end > current_time:
                 #print("end included")
-                print(f"current: {current_time}, start: {start}, end: {end}")
+                #print(f"current: {current_time}, start: {start}, end: {end}")
                 return True
     return False
 
@@ -170,13 +170,24 @@ def get_clean_alerts():
             if is_current(item):
                 cleaned = clean_alert(item)
                 cleaned_alerts.append(cleaned)
-                pprint(cleaned)
+                #pprint(cleaned)
 
-        return cleaned_alerts
+        return sort_alerts(cleaned_alerts)
 
     except Exception as e:
         print("Alert API error:", e)
         return []
 
+def sort_alerts(alerts):
+    sorted = []
+    for targ_alert in alerts:
+        print(targ_alert['routes'])
+        targ_route = targ_alert['routes'][0]['route id']
+        print(targ_route)
+        for alert in sorted:
+            route = alert['routes'][0]['route_id']
+    return alerts
+
 if __name__ == "__main__":
+    #pprint(get_clean_alerts())
     get_clean_alerts()
