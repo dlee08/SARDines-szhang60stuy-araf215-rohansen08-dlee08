@@ -111,14 +111,14 @@ arafH -- 2026-05-17  21:05
 
 seanZ -- 2026-05-17 23:47
  - Added epoch_to_local(time) to subway_api.py to translate epoch time to a list formatted by [hour, minute, second]
- - Reformatted parsing code into function parse_mta() for use in __init__ and made it return a list of dictionaries 
- - Each dictionary contains: 
+ - Reformatted parsing code into function parse_mta() for use in __init__ and made it return a list of dictionaries
+ - Each dictionary contains:
  - "arrive" - stop id for the station a specific train is going to
  - "depart" - stop id of the station the train is leaving
  - "arrive_time" - time formatted using epoch_to_local() for ETA of train at the station it is going to
  - "depart_time" - same thing but ETA of train leaving a station
  - "route_id" - the route of the train/vehicle like 2 or A train
- 
+
  - fields containing stop_id still need to be translated, for example 902N and 902S
  - parse_mta() will be sent to js after said translating is done
 
@@ -190,3 +190,39 @@ rohanS -- 2026-05-26 00:09
 
 davidL -- 2026-05-26 02:31
 - Not sure if I did it properly, but deduped terminal train stops displaying multiple trains sitting on termianl stop by removing ghosts (setting time restrictions)
+
+seanZ -- 2026-05-27 23:27
+- added get_times() which returns a dictionary where each key is a station name, returning a list of dictionaries of incoming trains (gives number of minutes until arrival to the station used as a key).
+- fix tmw: used data from parse_live_trains which only contains the very next stop for each train -> only trains closest to a station are used. This is prob a quick fix
+
+arafH -- 2026-05-28 23:00
+- Added elevator/escalator status on station dots. Users can now know if there is an elevator/escalator outage at whatever station dot they click on.
+
+rohanS -- 2026-05-29 00:23
+- Improved the station info tab
+- Allow the user to toggle the delays tab
+- Cleaned up the elevator/escalator alerts, so they don't take up the entire page
+
+seanZ -- 2026-05-29 21:12
+- Fixed up get_times(), now accounts for more stops than just the very next stop for each train.
+- Rohan can implement this into frontend now
+- Since get_times() calls parse_live_trains(), it might be better to just move get_times() inside parse_live_trains() and return both stuff together?
+
+rohanS -- 2026-06-01 01:54
+- began experimenting with adding stop times (broken code not pushed), identified issues to resolve tomorrow
+- more ui stuff regarding the rockaway shuttle
+
+rohanS -- 2026-06-01 11:35
+in class feedback:
+- animate movement when data fetched
+- add fun fact stats
+- time permitting mobile
+
+DEVELOPER PREVIEWS: The Aftermath -- 2026-06-02 00:19
+- THINGS DONE WELL: presentation clarity and enunciation, having the bulk of our app working to be presented, clear boundaries established in team member roles and what's left to do
+- THINGS TO WORK ON: UI/UX features not fully implemented yet, establishing clear order when presenting of features one by one (rather than piggybacking)
+- Best feedback from peer devos: Implement zoom in/out constraints to NYC, establish current location (ask for Allow Location), add directionality and movement to train entities (i.e. south/northbound, moving anim before updating to next location), filter by trains
+
+rohanS -- 2026-06-02 00:53
+- train times now implemented for each station
+- the UI is VERY BAD right now, need to improve tomorrow

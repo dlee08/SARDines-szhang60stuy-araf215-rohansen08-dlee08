@@ -76,13 +76,15 @@ def clean_route(route_id):
     The name field is mainly to convert ids like "GS" to "42nd St Shuttle" via our route_names array.
     """
     if route_id.lower()=="gs":
-        route_id="s";
+        route_id="s"
     if route_id.lower()=="si":
-        route_id="sir";
+        route_id="sir"
     if route_id.lower()=="fs":
-        route_id="sf";
+        route_id="sf"
     if route_id.lower()=="rs":
-        route_id="sr"; 
+        route_id="sr"
+    if route_id.lower()=="h":
+        route_id="sr"
     return {
         "route id": route_id,
         "name": route_names.get(route_id, route_id),
@@ -168,7 +170,7 @@ def get_clean_alerts():
             if is_current(item):
                 cleaned = clean_alert(item)
                 cleaned_alerts.append(cleaned)
-                pprint(cleaned["type"])
+                pprint(cleaned)
 
         return cleaned_alerts
 

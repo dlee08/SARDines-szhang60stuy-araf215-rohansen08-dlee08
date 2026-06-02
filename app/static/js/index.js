@@ -20,12 +20,23 @@ async function init() {
         innerMap.setOptions({
             // Disable the default UI.
             disableDefaultUI: true,
-            styles: styles.hide
+            clickableIcons: false,
+            styles: styles.hide,
         });
         const transitLayer = new google.maps.TransitLayer();
         transitLayer.setMap(innerMap);
 
-        const infoWindow = new InfoWindow();
+        const infoWindow = new InfoWindow({
+            headerDisabled: true,
+        });
+        innerMap.addListener('click', () => {
+            infoWindow.close();
+        });
+        const elevatorResponse = await fetch('/api/elevator');
+        const elevatorOutage = await elevatorResponse.json();
+
+        const stopTimes = await fetch('/api/stop_times');
+        const timeJson = await stopTimes.json();
 
         for (const station of STATIONS) {
             const marker = new AdvancedMarkerElement({
@@ -37,7 +48,7 @@ async function init() {
 
             marker.addListener('click', () => {
                 infoWindow.close();
-                infoWindow.setContent(buildInfoContent(station));
+                infoWindow.setContent(buildInfoContent(station, elevatorOutage, timeJson));
                 infoWindow.open(innerMap, marker);
             });
         }
@@ -193,7 +204,26 @@ function stationDot(routes) {
     return dot;
 }
 
-function buildInfoContent(station) {
+function buildInfoContent(station, elevatorOutage, timeJSON) {
+    const outage = elevatorOutage.filter(o =>
+    o.station.toLowerCase() === station['Stop Name'].toLowerCase()
+    );
+    const trains = timeJSON[station['Complex ID']] || [];
+    const trainsHtml = trains.length ? trains.slice(0, 5).map(t =>
+        `<div>${t.route} → ${t.next_stop} (${t.time_to_arrive})</div>`
+    ).join('') : '<div style="color:#555">No upcoming trains</div>';
+    const outageHtml = outage.length ? outage.map(outage => `
+    <hr style="margin:8px 0">
+    <div style="font-size:13px; max-width: 250px">
+        <div><b>Type:</b> ${outage.type === 'EL' ? 'Elevator' : 'Escalator'}</div>
+        <div><b>Reason:</b> ${outage.reason}</div>
+        <div><b>Outage started:</b> ${outage.outage_date}</div>
+        <div><b>Estimated return:</b> ${outage.est_return}</div>
+        <div style="margin-top:5px"><b>Affected path:</b> ${outage.serving_info}</div>
+    </div>
+    `).join('') : `
+        <div style="font-size:13px;color:#555"></div>
+    `;
     const icons = station['Daytime Routes']
         .split(' ')
         .map(r => `<img src="/static/svg/${r.toLowerCase()}.svg" width="28" height="28" alt="${r}" title="${r}">`)
@@ -201,6 +231,8 @@ function buildInfoContent(station) {
     return `<div style="font-family:sans-serif;padding:4px 2px">
         <div style="font-weight:600;font-size:14px;margin-bottom:6px">${station['Stop Name']}</div>
         <div style="display:flex;gap:4px;align-items:center">${icons}</div>
+        <div style="margin-top:8px;font-size:12px">${trainsHtml}</div>
+        ${outageHtml}
     </div>`;
 }
 
