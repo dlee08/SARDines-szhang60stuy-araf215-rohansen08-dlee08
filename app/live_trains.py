@@ -222,7 +222,7 @@ def get_times():
                 "current": train["current_station_name"],
                 "next_stop": stop["station_name"],
                 "local_time": stop["departure_time"],
-                "time_to_arrive": str(round((next_time - now) / 60)) + " min",
+                "time_to_arrive": str(round((next_time - now) / 60)),
             }
             complex_id = stop["complex_id"]
             if complex_id:

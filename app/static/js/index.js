@@ -209,8 +209,11 @@ function buildInfoContent(station, elevatorOutage, timeJSON) {
     o.station.toLowerCase() === station['Stop Name'].toLowerCase()
     );
     const trains = timeJSON[station['Complex ID']] || [];
-    const trainsHtml = trains.length ? trains.slice(0, 5).map(t =>
-        `<div>${t.route} → ${t.next_stop} (${t.time_to_arrive})</div>`
+    trains.sort(function (a, b) {
+      return a.time_to_arrive.localeCompare(b.time_to_arrive, undefined, {'numeric': true});
+    });
+    const trainsHtml = trains.length ? trains.map(t  =>
+        `<div>${t.route} → ${t.direction} (${t.time_to_arrive})</div>`
     ).join('') : '<div style="color:#555">No upcoming trains</div>';
     const outageHtml = outage.length ? outage.map(outage => `
     <hr style="margin:8px 0">
