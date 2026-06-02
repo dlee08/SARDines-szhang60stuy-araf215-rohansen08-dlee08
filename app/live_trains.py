@@ -64,7 +64,11 @@ def first_future_stop(trip_update, now):
         "arrival_time": epoch_to_local(arrival_time),
         "departure_time": epoch_to_local(departure_time),
         "epoch_arrival": arrival_time,
+<<<<<<< HEAD
+        "epoch_departure": departure_time
+=======
         "epoch_departure": departure_time,
+>>>>>>> 5423228df0fa57b2ca9f92066f9af6e1854e23a8
       }
 
   return None
@@ -208,6 +212,7 @@ def parse_live_trains():
   return remove_terminal_pileups(trains)
 
 def get_times():
+<<<<<<< HEAD
     now = int(datetime.now(timezone.utc).timestamp())
     trains = parse_live_trains()
     result = {}
@@ -228,6 +233,32 @@ def get_times():
             if complex_id:
                 result.setdefault(complex_id, []).append(data)
     return result
+=======
+  now = int(datetime.now(timezone.utc).timestamp())
+  trains = parse_live_trains()
+  result = {}
+  for train in trains:
+    #pprint(train)
+    if train['next_stop'] and train['next_stop']['epoch_arrival']:
+      next_time = int(train['next_stop']['epoch_arrival'])
+      next_stop = train['next_stop']['station_name'],
+      data = {
+        "route" : train['route_id'],
+        "direction" : train['current_direction_name'],
+        "current" : train['current_station_name'],
+        "next_stop" : next_stop[0],
+        "local_time" : train['next_stop']['departure_time'],
+        "time_to_arrive" : str(round((next_time - now) / 60)) + " min",
+        }
+      #pprint(data)
+      next_stop = data["next_stop"]
+      if next_stop in result:
+        result[next_stop].append(data)
+      else:
+        result[next_stop] = []
+        result[next_stop].append(data)
+  return result
+>>>>>>> 9e79783fe9d91b5e049d2bafe09742d4fc87d7be
 
 if __name__ == "__main__":
   print(json.dumps(parse_live_trains(), indent=2))
