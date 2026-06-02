@@ -3,7 +3,7 @@ import csv
 from flask import Flask, render_template, jsonify
 from alerts import get_clean_alerts
 from subway_api import parse_mta
-from live_trains import parse_live_trains
+from live_trains import parse_live_trains, get_times
 from elev_esca import parse_elev_esca
 import sqlalchemy as db
 import pandas as pd
@@ -26,6 +26,7 @@ complex_stops = (
     stops.groupby("Complex ID", as_index=False)
     .agg({
         "Stop Name": "first",
+        "Station ID": "first",
         "GTFS Latitude": "first",
         "GTFS Longitude": "first",
         "Daytime Routes": merge_routes
@@ -58,6 +59,10 @@ def api_livetrains():
 @app.route("/api/elevator")
 def api_elevator():
     return jsonify(parse_elev_esca())
+
+@app.route("/api/stop_times")
+def api_stop_times():
+    return jsonify(get_times())
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')

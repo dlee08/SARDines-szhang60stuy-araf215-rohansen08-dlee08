@@ -43,6 +43,7 @@ def stop_details(stop_id):
   return {
     "full_stop_id": parsed["full_stop_id"],
     "station_id": parsed["stop_id"],
+    "complex_id": station["complex_id"] if station else None,
     "direction": parsed["direction"],
     "direction_name": parsed["direction_name"],
     "station_name": station["stop_name"] if station else None,
@@ -223,8 +224,9 @@ def get_times():
                 "local_time": stop["departure_time"],
                 "time_to_arrive": str(round((next_time - now) / 60)) + " min",
             }
-            station = stop["station_id"]
-            result.setdefault(station, []).append(data)
+            complex_id = stop["complex_id"]
+            if complex_id:
+                result.setdefault(complex_id, []).append(data)
     return result
 
 if __name__ == "__main__":

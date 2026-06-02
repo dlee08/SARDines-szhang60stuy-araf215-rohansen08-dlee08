@@ -222,3 +222,7 @@ DEVELOPER PREVIEWS: The Aftermath -- 2026-06-02 00:19
 - THINGS DONE WELL: presentation clarity and enunciation, having the bulk of our app working to be presented, clear boundaries established in team member roles and what's left to do
 - THINGS TO WORK ON: UI/UX features not fully implemented yet, establishing clear order when presenting of features one by one (rather than piggybacking)
 - Best feedback from peer devos: Implement zoom in/out constraints to NYC, establish current location (ask for Allow Location), add directionality and movement to train entities (i.e. south/northbound, moving anim before updating to next location), filter by trains
+
+rohanS -- 2026-06-02 00:53
+- train times now implemented for each station
+- the UI is VERY BAD right now, need to improve tomorrow

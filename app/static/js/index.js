@@ -35,6 +35,9 @@ async function init() {
         const elevatorResponse = await fetch('/api/elevator');
         const elevatorOutage = await elevatorResponse.json();
 
+        const stopTimes = await fetch('/api/stop_times');
+        const timeJson = await stopTimes.json();
+
         for (const station of STATIONS) {
             const marker = new AdvancedMarkerElement({
                 map: innerMap,
@@ -45,7 +48,7 @@ async function init() {
 
             marker.addListener('click', () => {
                 infoWindow.close();
-                infoWindow.setContent(buildInfoContent(station, elevatorOutage));
+                infoWindow.setContent(buildInfoContent(station, elevatorOutage, timeJson));
                 infoWindow.open(innerMap, marker);
             });
         }
@@ -201,10 +204,14 @@ function stationDot(routes) {
     return dot;
 }
 
-function buildInfoContent(station, elevatorOutage) {
+function buildInfoContent(station, elevatorOutage, timeJSON) {
     const outage = elevatorOutage.filter(o =>
     o.station.toLowerCase() === station['Stop Name'].toLowerCase()
     );
+    const trains = timeJSON[station['Complex ID']] || [];
+    const trainsHtml = trains.length ? trains.slice(0, 5).map(t =>
+        `<div>${t.route} → ${t.next_stop} (${t.time_to_arrive})</div>`
+    ).join('') : '<div style="color:#555">No upcoming trains</div>';
     const outageHtml = outage.length ? outage.map(outage => `
     <hr style="margin:8px 0">
     <div style="font-size:13px; max-width: 250px">
@@ -224,6 +231,7 @@ function buildInfoContent(station, elevatorOutage) {
     return `<div style="font-family:sans-serif;padding:4px 2px">
         <div style="font-weight:600;font-size:14px;margin-bottom:6px">${station['Stop Name']}</div>
         <div style="display:flex;gap:4px;align-items:center">${icons}</div>
+        <div style="margin-top:8px;font-size:12px">${trainsHtml}</div>
         ${outageHtml}
     </div>`;
 }
