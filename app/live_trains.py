@@ -212,13 +212,16 @@ def get_times():
     trains = parse_live_trains()
     result = {}
     for train in trains:
-        for stop in train.get("future_stops", []):
+        future_stops = train.get("future_stops", [])
+        destination = future_stops[-1]["station_name"] if future_stops else None
+        for stop in future_stops:
             if not stop.get("epoch_arrival"):
                 continue
             next_time = int(stop["epoch_arrival"])
             data = {
                 "route": train["route_id"],
                 "direction": train["current_direction_name"],
+                "destination": destination,
                 "current": train["current_station_name"],
                 "next_stop": stop["station_name"],
                 "local_time": stop["departure_time"],
@@ -227,6 +230,7 @@ def get_times():
             complex_id = stop["complex_id"]
             if complex_id:
                 result.setdefault(complex_id, []).append(data)
+            print(result.get("6", []))
     return result
 
 if __name__ == "__main__":
