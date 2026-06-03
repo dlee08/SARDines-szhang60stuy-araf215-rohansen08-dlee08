@@ -238,3 +238,6 @@ rohanS -- 2026-06-03 00:23
 arafH -- 2026-06-03 00:36
 - Implemented Mobile support for the alerts (alert button is now bottom centered and has a drop up effect (inspo frm apple maps))
 - Will consult with team on subjective ideas i.e phone width, train icon/station icon sizes, etc
+
+arafH -- 2026-06-03 11:30
+- fixed visual bug for desktop where the alerts are shown at the bottom of the page.
