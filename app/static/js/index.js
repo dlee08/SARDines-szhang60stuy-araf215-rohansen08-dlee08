@@ -47,6 +47,8 @@ async function init() {
             });
 
             marker.addListener('click', () => {
+                console.log('Station:', station);
+                console.log('Stop times:', timeJson[station['Complex ID']]);
                 infoWindow.close();
                 infoWindow.setContent(buildInfoContent(station, elevatorOutage, timeJson));
                 infoWindow.open(innerMap, marker);
@@ -212,8 +214,19 @@ function buildInfoContent(station, elevatorOutage, timeJSON) {
     trains.sort(function (a, b) {
       return a.time_to_arrive.localeCompare(b.time_to_arrive, undefined, {'numeric': true});
     });
-    const trainsHtml = trains.length ? trains.map(t  =>
-        `<div>${t.route} → ${t.direction} (${t.time_to_arrive})</div>`
+
+    // Group trains by route + destination
+    const grouped = {};
+    for (const t of trains) {
+        const key = `${t.route}|${t.destination || t.direction}`;
+        if (!grouped[key]) {
+            grouped[key] = { route: t.route, destination: t.destination || t.direction, times: [] };
+        }
+        grouped[key].times.push(t.time_to_arrive);
+    }
+
+    const trainsHtml = Object.keys(grouped).length ? Object.values(grouped).map(g =>
+        `<div>${g.route} → ${g.destination}: ${g.times.join(', ')} min</div>`
     ).join('') : '<div style="color:#555">No upcoming trains</div>';
     const outageHtml = outage.length ? outage.map(outage => `
     <hr style="margin:8px 0">

@@ -38,4 +38,4 @@ def parse_elev_esca():
 		print("Elevator/Escalator API error:", e)
 		return  []
 
-pprint(parse_elev_esca())
+#pprint(parse_elev_esca())
