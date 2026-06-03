@@ -221,8 +221,26 @@ in class feedback:
 DEVELOPER PREVIEWS: The Aftermath -- 2026-06-02 00:19
 - THINGS DONE WELL: presentation clarity and enunciation, having the bulk of our app working to be presented, clear boundaries established in team member roles and what's left to do
 - THINGS TO WORK ON: UI/UX features not fully implemented yet, establishing clear order when presenting of features one by one (rather than piggybacking)
-- Best feedback from peer devos: Implement zoom in/out constraints to NYC, establish current location (ask for Allow Location), add directionality and movement to train entities (i.e. south/northbound, moving anim before updating to next location), filter by trains
+- Best feedback from peer devos: Implement zoom in/out constraints to NYC, establish current location (ask for Allow Location), add directionality and movement to train entities (i.e. south/northbound, moving anim before updating to next location), filter by trains, add LIRR
 
 rohanS -- 2026-06-02 00:53
 - train times now implemented for each station
 - the UI is VERY BAD right now, need to improve tomorrow
+
+rohanS -- 2026-06-03 00:23
+- I forgot to make a devlog in class but I continued doing the exact same thing at home so this works for both
+- Stop times are now formatted for each station, consolidated by the destination
+(e.g. Jamaica Center: 5, 9, 19, 24 mins)
+- Something is wrong with the api, filter code, or a mysterious third thing, because the times are just flat out inconsistent
+	- 86th street on the Q only shows uptown trains, for example
+	- I'm leaving in some debug code specifically focusing on 39th Ave on the N/W just to keep testing
+
+arafH -- 2026-06-03 00:36
+- Implemented Mobile support for the alerts (alert button is now bottom centered and has a drop up effect (inspo frm apple maps))
+- Will consult with team on subjective ideas i.e phone width, train icon/station icon sizes, etc
+
+arafH -- 2026-06-03 11:30
+- fixed visual bug for desktop where the alerts are shown at the bottom of the page.
+
+seanZ -- 2026-06-03 11:45
+- added sorting to the alerts based on routes, numbered first, then letters, then stuff like SIR
