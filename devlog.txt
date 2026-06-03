@@ -241,3 +241,6 @@ arafH -- 2026-06-03 00:36
 
 arafH -- 2026-06-03 11:30
 - fixed visual bug for desktop where the alerts are shown at the bottom of the page.
+
+seanZ -- 2026-06-03 11:45
+- added sorting to the alerts based on routes, numbered first, then letters, then stuff like SIR
