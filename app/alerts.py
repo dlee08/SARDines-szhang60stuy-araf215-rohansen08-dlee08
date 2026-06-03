@@ -178,16 +178,32 @@ def get_clean_alerts():
         print("Alert API error:", e)
         return []
 
+def find_best_route(targ_alert):
+    targ_routes =[]
+    for targ_route in targ_alert['routes']:
+        targ_routes.append(targ_route['route id'])
+    #print(targ_routes)
+    best_targ_route = targ_routes[0]
+    if len(targ_routes) > 1:
+        for targ_route in targ_routes:
+            if targ_route < best_targ_route:
+                best_targ_route = targ_route
+    #print(best_targ_route)
+    return best_targ_route
+
 def sort_alerts(alerts):
     sorted = []
     for targ_alert in alerts:
-        print(targ_alert['routes'])
-        targ_route = targ_alert['routes'][0]['route id']
-        print(targ_route)
-        for alert in sorted:
-            route = alert['routes'][0]['route_id']
-    return alerts
+        targ_route = find_best_route(targ_alert)
+        sorted.append(targ_alert)
+        for i in range(len(sorted)):
+            curr_route = find_best_route(sorted[i])
+            if targ_route < curr_route:
+                swap = sorted[i]
+                sorted[i] = sorted[len(sorted) - 1]
+                sorted[len(sorted) - 1] = swap
+    return sorted
 
 if __name__ == "__main__":
-    #pprint(get_clean_alerts())
-    get_clean_alerts()
+    pprint(get_clean_alerts())
+    #get_clean_alerts()
