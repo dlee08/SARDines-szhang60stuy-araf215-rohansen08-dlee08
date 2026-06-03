@@ -25,34 +25,7 @@
                 key: "{{api_key}}"
             });
         </script>
-        <style>
-            .alerts-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                gap: 12px;
-            }
-            #alerts-close {
-                border: none;
-                background: transparent;
-                font-size: 24px;
-                line-height: 1;
-                cursor: pointer;
-                padding: 0 4px;
-            }
-            #alerts-open {
-                margin: 12px;
-                border: none;
-                border-radius: 999px;
-                padding: 8px 14px;
-                background: white;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-                font-weight: 600;
-                cursor: pointer;
-            }
-        </style>
-
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <gmp-map center="40.735932643521714, -73.94962373756917" zoom="12" map-id="{{ map_key }}">
@@ -63,8 +36,8 @@
                 <h3>NerdyMap</h3>
                 {% endif %}
             </div>
-
-            <div id="alerts-dashboard" slot="control-inline-end-block-start">
+        </gmp-map>
+            <div id="alerts-dashboard">
                 <div class="alerts-header">
                     <h3>Alerts</h3>
                     <button id="alerts-close" type="button">×</button>
@@ -72,10 +45,9 @@
                 <p id="alerts-status">Loading alerts...</p>
                 <div id="alerts-list"></div>
             </div>
-            <button id="alerts-open" slot="control-inline-end-block-start" type="button">
+            <button id="alerts-open" type="button">
                 Show Alerts
             </button>
-        </gmp-map>
     </body>
         <script>
             async function loadAlerts() {
@@ -152,14 +124,48 @@
             const alertsDashboard = document.getElementById("alerts-dashboard");
             const alertsClose = document.getElementById("alerts-close");
             const alertsOpen = document.getElementById("alerts-open");
-            alertsOpen.style.display = "none";
-            alertsClose.addEventListener("click", () => {
-                alertsDashboard.style.display = "none";
-                alertsOpen.style.display = "block";
-            });
-            alertsOpen.addEventListener("click", () => {
-            alertsDashboard.style.display = "block";
-            alertsOpen.style.display = "none";
-        });
+            function isMobile() {
+                return window.innerWidth <= 900;
+            }
+            function openAlerts() {
+                alertsDashboard.style.display = "block";
+                alertsOpen.style.display = "none";
+
+                if (isMobile()) {
+                    requestAnimationFrame(() => {
+                        alertsDashboard.classList.add("open");
+                    });
+                }
+            }
+            function closeAlerts() {
+                if (isMobile()) {
+                    alertsDashboard.classList.remove("open");
+
+                    setTimeout(() => {
+                        alertsDashboard.style.display = "none";
+                        alertsOpen.style.display = "block";
+                    }, 280);
+                } else {
+                    alertsDashboard.style.display = "none";
+                    alertsOpen.style.display = "block";
+                }
+            }
+            function setupAlertsLayout() {
+                if (isMobile()) {
+                    alertsDashboard.style.display = "none";
+                    alertsDashboard.classList.remove("open");
+                    alertsOpen.style.display = "block";
+                } else {
+                    alertsDashboard.style.display = "block";
+                    alertsDashboard.classList.remove("open");
+                    alertsOpen.style.display = "none";
+                }
+            }
+
+            alertsClose.addEventListener("click", closeAlerts);
+            alertsOpen.addEventListener("click", openAlerts);
+            window.addEventListener("resize", setupAlertsLayout);
+
+            setupAlertsLayout();
         </script>
 </html>

@@ -226,3 +226,7 @@ DEVELOPER PREVIEWS: The Aftermath -- 2026-06-02 00:19
 rohanS -- 2026-06-02 00:53
 - train times now implemented for each station
 - the UI is VERY BAD right now, need to improve tomorrow
+
+arafH -- 2026-06-03 00:36
+- Implemented Mobile support for the alerts (alert button is now bottom centered and has a drop up effect (inspo frm apple maps))
+- Will consult with team on subjective ideas i.e phone width, train icon/station icon sizes, etc
