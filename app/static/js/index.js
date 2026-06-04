@@ -55,6 +55,24 @@ async function init() {
             });
         }
 
+        for (const station of RAILROAD_STATIONS) {
+            const marker = new AdvancedMarkerElement({
+                map: innerMap,
+                position: {
+                    lat: Number(station['Latitude']),
+                    lng: Number(station['Longitude'])
+                },
+                title: station['Station Name'],
+                content: railroadStationDot(station['Railroad']),
+            });
+
+            marker.addListener('click', () => {
+                infoWindow.close();
+                infoWindow.setContent(buildRailroadInfoContent(station));
+                infoWindow.open(innerMap, marker);
+            });
+}
+
         loadLiveTrains(innerMap, AdvancedMarkerElement, infoWindow);
         setInterval(() => loadLiveTrains(innerMap, AdvancedMarkerElement, infoWindow), 30000);
 }
@@ -204,6 +222,53 @@ function stationDot(routes) {
         'box-shadow:0 1px 3px rgba(0,0,0,0.35)', 'cursor:pointer',
     ].join(';');
     return dot;
+}
+
+function railroadStationDot(railroad) {
+    const dot = document.createElement('div');
+
+    const color = railroad === 'LIRR'
+        ? '#0044ff'
+        : '#37ff00';
+
+    dot.style.cssText = [
+        'width:12px',
+        'height:12px',
+        'border-radius:50%',
+        `background:${color}`,
+        'border:1.5px solid white',
+        'box-shadow:0 1px 3px rgba(0,0,0,0.35)',
+        'cursor:pointer',
+    ].join(';');
+
+    return dot;
+}
+
+function buildRailroadInfoContent(station) {
+    const railroadName = station['Railroad'] === 'LIRR'
+        ? 'Long Island Rail Road'
+        : 'Metro-North Railroad';
+
+    return `
+        <div style="font-family:sans-serif;padding:4px 2px;max-width:260px">
+            <div style="font-weight:600;font-size:14px;margin-bottom:6px">
+                ${station['Station Name']}
+            </div>
+
+            <div style="font-size:13px">
+                <div><b>Railroad:</b> ${railroadName}</div>
+                <div><b>Branch:</b> ${station['Branch']}</div>
+                <div><b>Zone:</b> ${station['Zone']}</div>
+                <div><b>Accessibility:</b> ${station['Accessibility']}</div>
+                <div style="margin-top:6px"><b>Outbound:</b> ${station['Outbound Title']}</div>
+                <div><b>Inbound:</b> ${station['Inbound Title']}</div>
+            </div>
+
+            <div style="margin-top:8px">
+                <a href="${station['Station URL']}" target="_blank">Station info</a>
+            </div>
+        </div>
+    `;
 }
 
 function buildInfoContent(station, elevatorOutage, timeJSON) {
