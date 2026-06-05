@@ -227,7 +227,29 @@ def parse_live_lirr():
             "entity_id": entity.vehicle.vehicle.label,
             "lat": entity.vehicle.position.latitude,
             "lng": entity.vehicle.position.longitude,
+            "railroad": "LI"
         })
+
+    feed = fetch_feed("https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/mnr%2Fgtfs-mnr")
+
+    for entity in feed.entity:
+        if not entity.HasField("vehicle"):
+            continue
+        if not entity.vehicle.HasField("position"):
+            continue
+
+        vehicle = entity.vehicle
+        if not is_live_vehicle(vehicle, now):
+            continue
+
+        trains.append({
+            "entity_id": entity.vehicle.vehicle.label,
+            "lat": entity.vehicle.position.latitude,
+            "lng": entity.vehicle.position.longitude,
+            "railroad": "MN"
+        })
+
+
     return trains
 
 

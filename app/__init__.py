@@ -3,7 +3,7 @@ import csv
 from flask import Flask, render_template, jsonify
 from alerts import get_clean_alerts
 from subway_api import parse_mta
-from live_trains import parse_live_trains, get_times
+from live_trains import parse_live_trains, get_times, parse_live_lirr
 from elev_esca import parse_elev_esca
 import sqlalchemy as db
 import pandas as pd
@@ -68,6 +68,11 @@ def api_alerts():
 @app.route("/api/trains")
 def api_trains():
     trains = parse_mta()
+    return jsonify(trains)
+
+@app.route("/api/live_lirr")
+def api_lirr():
+    trains = parse_live_lirr()
     return jsonify(trains)
 
 @app.route("/api/live_trains")
