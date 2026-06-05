@@ -126,7 +126,8 @@ davidL -- 2026-05-18 00:54
 - Parsed MTA API to match stop IDs with service alert API, making it easier to access both
 - Parsed MTA API to info from station CSV to combine into a dict of stations in stations.py
 
-rohanS -- 2026-05-18
+rohanS -- 2026-05-18seanZ -- 2026-06-03 11:45
+- added sorting to the alerts based on routes, numbered first, then letters, then stuff like SIR
 - Began working on merging together station complexes (e.g. Times Square) by merging complex.csv and stations.csv
 - will implement fully tonight
 
@@ -227,20 +228,12 @@ rohanS -- 2026-06-02 00:53
 - train times now implemented for each station
 - the UI is VERY BAD right now, need to improve tomorrow
 
-rohanS -- 2026-06-03 00:23
-- I forgot to make a devlog in class but I continued doing the exact same thing at home so this works for both
-- Stop times are now formatted for each station, consolidated by the destination
-(e.g. Jamaica Center: 5, 9, 19, 24 mins)
-- Something is wrong with the api, filter code, or a mysterious third thing, because the times are just flat out inconsistent
-	- 86th street on the Q only shows uptown trains, for example
-	- I'm leaving in some debug code specifically focusing on 39th Ave on the N/W just to keep testing
-
-arafH -- 2026-06-03 00:36
-- Implemented Mobile support for the alerts (alert button is now bottom centered and has a drop up effect (inspo frm apple maps))
-- Will consult with team on subjective ideas i.e phone width, train icon/station icon sizes, etc
-
-arafH -- 2026-06-03 11:30
-- fixed visual bug for desktop where the alerts are shown at the bottom of the page.
-
 seanZ -- 2026-06-03 11:45
 - added sorting to the alerts based on routes, numbered first, then letters, then stuff like SIR
+
+rohanS -- 2026-06-03 11:52
+- lirr live data
+
+arafH -- 2026-06-04 1:05
+- Added lirr stations onto map (not very good right now)
+- will have to consult with team on what info the lirr station should show.
