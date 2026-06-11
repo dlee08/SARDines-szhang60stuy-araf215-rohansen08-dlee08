@@ -222,9 +222,9 @@ def parse_live_lirr():
         vehicle = entity.vehicle
         if not is_live_vehicle(vehicle, now):
             continue
-
+        print(entity)
         trains.append({
-            "entity_id": entity.vehicle.vehicle.label,
+            "route_id": "LIRR",
             "lat": entity.vehicle.position.latitude,
             "lng": entity.vehicle.position.longitude,
             "railroad": "LI"
@@ -243,7 +243,7 @@ def parse_live_lirr():
             continue
 
         trains.append({
-            "entity_id": entity.vehicle.vehicle.label,
+            "entity_id": "Metro North",
             "lat": entity.vehicle.position.latitude,
             "lng": entity.vehicle.position.longitude,
             "railroad": "MN"

@@ -250,6 +250,7 @@ const LINE_COLORS = {
     'SIR': '#0039A6',
     'T': '#00A1DE',
     'LI': '#0039A6',
+    'MN': '#EE352E',
 };
 
 function stationDot(routes) {
