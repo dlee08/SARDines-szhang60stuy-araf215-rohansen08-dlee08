@@ -14,6 +14,23 @@ async function init() {
             google.maps.importLibrary('maps'),
             google.maps.importLibrary('marker'),
         ]);
+      /*  const center = new google.maps.LatLng({ lat: 40.728474975408446, lng: -73.96241785378106 });
+        const zoom = 4;
+        google.maps.Map(document.getElementById("gmp-map"), {
+          zoom,
+          center,
+          minZoom: zoom - 3,
+          maxZoom: zoom + 3,
+          restriction: {
+            latLngBounds: {
+              north: -10,
+              south: -40,
+              east: 160,
+              west: 100,
+            },
+          },
+      }); */
+
         const mapElement = document.querySelector('gmp-map');
         const innerMap = mapElement.innerMap;
 
