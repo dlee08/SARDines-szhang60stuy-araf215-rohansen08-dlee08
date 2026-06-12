@@ -227,7 +227,8 @@ def parse_live_lirr():
             "route_id": "LIRR",
             "lat": entity.vehicle.position.latitude,
             "lng": entity.vehicle.position.longitude,
-            "railroad": "LI"
+            "railroad": "LI",
+            "trip_id": entity.id
         })
 
     feed = fetch_feed("https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/mnr%2Fgtfs-mnr")
@@ -241,12 +242,13 @@ def parse_live_lirr():
         vehicle = entity.vehicle
         if not is_live_vehicle(vehicle, now):
             continue
-
+        print(entity.vehicle)
         trains.append({
             "entity_id": "Metro North",
             "lat": entity.vehicle.position.latitude,
             "lng": entity.vehicle.position.longitude,
-            "railroad": "MN"
+            "railroad": "MN",
+            "trip_id": entity.id
         })
 
 
@@ -282,4 +284,5 @@ def get_times():
 if __name__ == "__main__":
   #print(json.dumps(parse_live_trains(), indent=2))
   #pprint(get_times())
-  print(parse_live_lirr())
+  pprint(parse_live_lirr())
+  #parse_live_lirr()

@@ -252,6 +252,8 @@ rohanS -- 2026-06-05 11:48
 arafH -- 2026-06-11 11:40
 - Working on zoom and lat/long boundries so that you can't infinitely zoom out.
 
+seanZ - 2026-06-11 22:51
+- Made train markers animate, doesn't follow route exactly tho, just to next position
 rohanS -- 2026-06-11 11:50
 - forgot to push this in class
 - worked on improving the LIRR and MNRR trains
