@@ -14,6 +14,23 @@ async function init() {
             google.maps.importLibrary('maps'),
             google.maps.importLibrary('marker'),
         ]);
+      /*  const center = new google.maps.LatLng({ lat: 40.728474975408446, lng: -73.96241785378106 });
+        const zoom = 4;
+        google.maps.Map(document.getElementById("gmp-map"), {
+          zoom,
+          center,
+          minZoom: zoom - 3,
+          maxZoom: zoom + 3,
+          restriction: {
+            latLngBounds: {
+              north: -10,
+              south: -40,
+              east: 160,
+              west: 100,
+            },
+          },
+      }); */
+
         const mapElement = document.querySelector('gmp-map');
         const innerMap = mapElement.innerMap;
 
@@ -72,17 +89,24 @@ async function init() {
                 infoWindow.open(innerMap, marker);
             });
 }
-
         loadLiveTrains(innerMap, AdvancedMarkerElement, infoWindow);
-        setInterval(() => loadLiveTrains(innerMap, AdvancedMarkerElement, infoWindow), 30000);
+        loadLiveLIRR(innerMap, AdvancedMarkerElement, infoWindow);
+        setInterval(async () => {
+            await Promise.all([
+                loadLiveTrains(innerMap, AdvancedMarkerElement, infoWindow),
+                loadLiveLIRR(innerMap, AdvancedMarkerElement, infoWindow)
+            ]);
+            sweepTrains();
+        }, 30000);
+        //setInterval(() => loadLiveTrains(innerMap, AdvancedMarkerElement, infoWindow), 30000);
+        //setInterval(() => loadLiveLIRR(innerMap, AdvancedMarkerElement, infoWindow), 30000);
 }
 
-let liveTrainMarkers = [];
+let liveTrainMarkers = {};
 
 async function loadLiveTrains(map, AdvancedMarkerElement, infoWindow) {
     try {
         const response = await fetch('/api/live_trains');
-
         if (!response.ok) {
             throw new Error('Live trains could not be fetched');
         }
@@ -94,31 +118,129 @@ async function loadLiveTrains(map, AdvancedMarkerElement, infoWindow) {
     }
 }
 
+async function loadLiveLIRR(map, AdvancedMarkerElement, infoWindow) {
+    try {
+        const response = await fetch('/api/live_lirr');
+        if (!response.ok) {
+            throw new Error('Live lirr could not be fetched');
+        }
+
+        const trains_lirr = await response.json();
+        renderLiveLIRR(trains_lirr, map, AdvancedMarkerElement, infoWindow);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 function renderLiveTrains(trains, map, AdvancedMarkerElement, infoWindow) {
-    liveTrainMarkers.forEach(marker => {
-        marker.map = null;
-    });
-    liveTrainMarkers = [];
+    trains
+        .filter(train => trainLocation(train))
+        //.filter(train => train.current_station_name !== train.next_stop?.station_name)
+        .forEach((train, index) => {
+            const id = train.trip_id;
+            const newPos = liveTrainPosition(train, index);
+            const existing = liveTrainMarkers[id];
+
+            if (existing) {
+                animateMarkerTo(existing.marker, newPos);
+                existing.marker.title = liveTrainTitle(train);
+                existing.train = train;
+                existing.seen = true;
+            } else {
+                const marker = new AdvancedMarkerElement({
+                    map,
+                    position: liveTrainPosition(train, index),
+                    title: liveTrainTitle(train),
+                    content: liveTrainDot(train.route_id),
+                });
+
+                marker.addListener('click', () => {
+                    infoWindow.close();
+                    infoWindow.setContent(buildTrainInfoContent(train));
+                    infoWindow.open(map, marker);
+                });
+
+                liveTrainMarkers[id] = {marker, train, seen: true};
+            }
+        });
+}
+
+function renderLiveLIRR(trains, map, AdvancedMarkerElement, infoWindow) {
 
     trains
         .filter(train => trainLocation(train))
         //.filter(train => train.current_station_name !== train.next_stop?.station_name)
         .forEach((train, index) => {
-            const marker = new AdvancedMarkerElement({
-                map,
-                position: liveTrainPosition(train, index),
-                title: liveTrainTitle(train),
-                content: liveTrainDot(train.route_id),
-            });
+            const id = train.trip_id;
+            const newPos = liveTrainPosition(train, index);
+            const existing = liveTrainMarkers[id];
 
-            marker.addListener('click', () => {
-                infoWindow.close();
-                infoWindow.setContent(buildTrainInfoContent(train));
-                infoWindow.open(map, marker);
-            });
+            if (existing) {
+                animateMarkerTo(existing.marker, newPos);
+                existing.marker.title = liveTrainTitle(train);
+                existing.train = train;
+                existing.seen = true;
+            }
+            else {
+                const marker = new AdvancedMarkerElement({
+                    map,
+                    position: liveTrainPosition(train, index),
+                    title: liveTrainTitle(train),
+                    content: liveTrainDot(train.railroad),
+                });
 
-            liveTrainMarkers.push(marker);
+                marker.addListener('click', () => {
+                    infoWindow.close();
+                    infoWindow.setContent(buildTrainInfoContent(train));
+                    infoWindow.open(map, marker);
+                });
+
+                liveTrainMarkers[id] = {marker, train, seen: true};
+            }
         });
+}
+
+// remove markers for trains that disappeared
+function sweepTrains() {
+    for (const id in liveTrainMarkers) {
+        if (!liveTrainMarkers[id].seen) {
+            liveTrainMarkers[id].marker.map = null;
+            delete liveTrainMarkers[id];
+        }
+        else {
+            liveTrainMarkers[id].seen = false;
+        }
+    }
+}
+
+function animateMarkerTo(marker, newPos, duration = 1000) {
+    const startPos = {
+        lat: marker.position.lat,
+        lng: marker.position.lng,
+    };
+
+    const dist = Math.abs(newPos.lat - startPos.lat) + Math.abs(newPos.lng - startPos.lng);
+    if (dist < 0.000001) return;
+
+    const startTime = performance.now();
+
+    function step(now) {
+        let t = (now - startTime) / duration;
+        if (t > 1) t = 1;
+
+        const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+
+        marker.position = {
+            lat: startPos.lat + (newPos.lat - startPos.lat) * eased,
+            lng: startPos.lng + (newPos.lng - startPos.lng) * eased,
+        };
+
+        if (t < 1) {
+            requestAnimationFrame(step);
+        }
+    }
+
+    requestAnimationFrame(step);
 }
 
 function liveTrainPosition(train, index) {
@@ -208,6 +330,8 @@ const LINE_COLORS = {
     'H': '#0039A6',
     'SIR': '#0039A6',
     'T': '#00A1DE',
+    'LI': '#0039A6',
+    'MN': '#EE352E',
 };
 
 function stationDot(routes) {
