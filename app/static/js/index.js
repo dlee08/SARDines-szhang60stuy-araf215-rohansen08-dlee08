@@ -14,6 +14,23 @@ async function init() {
             google.maps.importLibrary('maps'),
             google.maps.importLibrary('marker'),
         ]);
+      /*  const center = new google.maps.LatLng({ lat: 40.728474975408446, lng: -73.96241785378106 });
+        const zoom = 4;
+        google.maps.Map(document.getElementById("gmp-map"), {
+          zoom,
+          center,
+          minZoom: zoom - 3,
+          maxZoom: zoom + 3,
+          restriction: {
+            latLngBounds: {
+              north: -10,
+              south: -40,
+              east: 160,
+              west: 100,
+            },
+          },
+      }); */
+
         const mapElement = document.querySelector('gmp-map');
         const innerMap = mapElement.innerMap;
 
@@ -55,8 +72,29 @@ async function init() {
             });
         }
 
+        for (const station of RAILROAD_STATIONS) {
+            const marker = new AdvancedMarkerElement({
+                map: innerMap,
+                position: {
+                    lat: Number(station['Latitude']),
+                    lng: Number(station['Longitude'])
+                },
+                title: station['Station Name'],
+                content: railroadStationDot(station['Railroad']),
+            });
+
+            marker.addListener('click', () => {
+                infoWindow.close();
+                infoWindow.setContent(buildRailroadInfoContent(station));
+                infoWindow.open(innerMap, marker);
+            });
+}
+        clearTrains();
         loadLiveTrains(innerMap, AdvancedMarkerElement, infoWindow);
-        setInterval(() => loadLiveTrains(innerMap, AdvancedMarkerElement, infoWindow), 30000);
+        loadLiveLIRR(innerMap, AdvancedMarkerElement, infoWindow);
+        setInterval(() => {clearTrains();loadLiveTrains(innerMap, AdvancedMarkerElement, infoWindow);loadLiveLIRR(innerMap, AdvancedMarkerElement, infoWindow)}, 30000);
+        //setInterval(() => loadLiveTrains(innerMap, AdvancedMarkerElement, infoWindow), 30000);
+        //setInterval(() => loadLiveLIRR(innerMap, AdvancedMarkerElement, infoWindow), 30000);
 }
 
 let liveTrainMarkers = [];
@@ -64,7 +102,6 @@ let liveTrainMarkers = [];
 async function loadLiveTrains(map, AdvancedMarkerElement, infoWindow) {
     try {
         const response = await fetch('/api/live_trains');
-
         if (!response.ok) {
             throw new Error('Live trains could not be fetched');
         }
@@ -76,12 +113,28 @@ async function loadLiveTrains(map, AdvancedMarkerElement, infoWindow) {
     }
 }
 
-function renderLiveTrains(trains, map, AdvancedMarkerElement, infoWindow) {
-    liveTrainMarkers.forEach(marker => {
-        marker.map = null;
-    });
-    liveTrainMarkers = [];
+async function loadLiveLIRR(map, AdvancedMarkerElement, infoWindow) {
+    try {
+        const response = await fetch('/api/live_lirr');
+        if (!response.ok) {
+            throw new Error('Live lirr could not be fetched');
+        }
 
+        const trains_lirr = await response.json();
+        renderLiveLIRR(trains_lirr, map, AdvancedMarkerElement, infoWindow);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function clearTrains() {
+  liveTrainMarkers.forEach(marker => {
+      marker.map = null;
+  });
+  liveTrainMarkers = [];
+}
+
+function renderLiveTrains(trains, map, AdvancedMarkerElement, infoWindow) {
     trains
         .filter(train => trainLocation(train))
         //.filter(train => train.current_station_name !== train.next_stop?.station_name)
@@ -91,6 +144,29 @@ function renderLiveTrains(trains, map, AdvancedMarkerElement, infoWindow) {
                 position: liveTrainPosition(train, index),
                 title: liveTrainTitle(train),
                 content: liveTrainDot(train.route_id),
+            });
+
+            marker.addListener('click', () => {
+                infoWindow.close();
+                infoWindow.setContent(buildTrainInfoContent(train));
+                infoWindow.open(map, marker);
+            });
+
+            liveTrainMarkers.push(marker);
+        });
+}
+
+function renderLiveLIRR(trains, map, AdvancedMarkerElement, infoWindow) {
+
+    trains
+        .filter(train => trainLocation(train))
+        //.filter(train => train.current_station_name !== train.next_stop?.station_name)
+        .forEach((train, index) => {
+            const marker = new AdvancedMarkerElement({
+                map,
+                position: liveTrainPosition(train, index),
+                title: liveTrainTitle(train),
+                content: liveTrainDot(train.railroad),
             });
 
             marker.addListener('click', () => {
@@ -190,6 +266,8 @@ const LINE_COLORS = {
     'H': '#0039A6',
     'SIR': '#0039A6',
     'T': '#00A1DE',
+    'LI': '#0039A6',
+    'MN': '#EE352E',
 };
 
 function stationDot(routes) {
@@ -204,6 +282,53 @@ function stationDot(routes) {
         'box-shadow:0 1px 3px rgba(0,0,0,0.35)', 'cursor:pointer',
     ].join(';');
     return dot;
+}
+
+function railroadStationDot(railroad) {
+    const dot = document.createElement('div');
+
+    const color = railroad === 'LIRR'
+        ? '#0044ff'
+        : '#37ff00';
+
+    dot.style.cssText = [
+        'width:12px',
+        'height:12px',
+        'border-radius:50%',
+        `background:${color}`,
+        'border:1.5px solid white',
+        'box-shadow:0 1px 3px rgba(0,0,0,0.35)',
+        'cursor:pointer',
+    ].join(';');
+
+    return dot;
+}
+
+function buildRailroadInfoContent(station) {
+    const railroadName = station['Railroad'] === 'LIRR'
+        ? 'Long Island Rail Road'
+        : 'Metro-North Railroad';
+
+    return `
+        <div style="font-family:sans-serif;padding:4px 2px;max-width:260px">
+            <div style="font-weight:600;font-size:14px;margin-bottom:6px">
+                ${station['Station Name']}
+            </div>
+
+            <div style="font-size:13px">
+                <div><b>Railroad:</b> ${railroadName}</div>
+                <div><b>Branch:</b> ${station['Branch']}</div>
+                <div><b>Zone:</b> ${station['Zone']}</div>
+                <div><b>Accessibility:</b> ${station['Accessibility']}</div>
+                <div style="margin-top:6px"><b>Outbound:</b> ${station['Outbound Title']}</div>
+                <div><b>Inbound:</b> ${station['Inbound Title']}</div>
+            </div>
+
+            <div style="margin-top:8px">
+                <a href="${station['Station URL']}" target="_blank">Station info</a>
+            </div>
+        </div>
+    `;
 }
 
 function buildInfoContent(station, elevatorOutage, timeJSON) {

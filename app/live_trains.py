@@ -207,6 +207,52 @@ def parse_live_trains():
 
   return remove_terminal_pileups(trains)
 
+def parse_live_lirr():
+    now = int(datetime.now(timezone.utc).timestamp())
+    trains = []
+
+    feed = fetch_feed("https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/lirr%2Fgtfs-lirr")
+
+    for entity in feed.entity:
+        if not entity.HasField("vehicle"):
+            continue
+        if not entity.vehicle.HasField("position"):
+            continue
+
+        vehicle = entity.vehicle
+        if not is_live_vehicle(vehicle, now):
+            continue
+        print(entity)
+        trains.append({
+            "route_id": "LIRR",
+            "lat": entity.vehicle.position.latitude,
+            "lng": entity.vehicle.position.longitude,
+            "railroad": "LI"
+        })
+
+    feed = fetch_feed("https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/mnr%2Fgtfs-mnr")
+
+    for entity in feed.entity:
+        if not entity.HasField("vehicle"):
+            continue
+        if not entity.vehicle.HasField("position"):
+            continue
+
+        vehicle = entity.vehicle
+        if not is_live_vehicle(vehicle, now):
+            continue
+
+        trains.append({
+            "entity_id": "Metro North",
+            "lat": entity.vehicle.position.latitude,
+            "lng": entity.vehicle.position.longitude,
+            "railroad": "MN"
+        })
+
+
+    return trains
+
+
 def get_times():
     now = int(datetime.now(timezone.utc).timestamp())
     trains = parse_live_trains()
@@ -234,5 +280,6 @@ def get_times():
     return result
 
 if __name__ == "__main__":
-  print(json.dumps(parse_live_trains(), indent=2))
-  pprint(get_times())
+  #print(json.dumps(parse_live_trains(), indent=2))
+  #pprint(get_times())
+  print(parse_live_lirr())

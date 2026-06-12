@@ -3,7 +3,7 @@ import csv
 from flask import Flask, render_template, jsonify
 from alerts import get_clean_alerts
 from subway_api import parse_mta
-from live_trains import parse_live_trains, get_times
+from live_trains import parse_live_trains, get_times, parse_live_lirr
 from elev_esca import parse_elev_esca
 import sqlalchemy as db
 import pandas as pd
@@ -15,6 +15,7 @@ key = env.readline().strip()
 mkey = env.readline().strip()
 
 stops = pd.read_csv("static/MTA_Subway_Stations_20260515.csv")
+railroads = pd.read_csv("static/MTA_Rail_Stations_20260604.csv")
 
 def merge_routes(series):
     routes = []
@@ -36,11 +37,28 @@ complex_stops = (
 stations_json = complex_stops[
     ["Stop Name", "GTFS Latitude", "GTFS Longitude", "Daytime Routes", "Complex ID"]
 ].to_json(orient="records")
+
+railroad_stations_json = railroads[
+    [
+        "Railroad",
+        "Code",
+        "Station Name",
+        "Branch",
+        "Latitude",
+        "Longitude",
+        "Outbound Title",
+        "Inbound Title",
+        "Zone",
+        "Accessibility",
+        "Station URL"
+    ]
+].to_json(orient="records")
+
 @app.route("/")
 def hello():
     now = datetime.now().time()
     is_late_night = now >= time(23, 0) or now < time(5, 0)
-    return render_template("map_temp.html", api_key=key, map_key=mkey, data=stops, stations=stations_json, night=is_late_night)
+    return render_template("map_temp.html", api_key=key, map_key=mkey, data=stops, stations=stations_json, railroad_stations=railroad_stations_json, night=is_late_night)
 
 @app.route("/api/alerts")
 def api_alerts():
@@ -50,6 +68,11 @@ def api_alerts():
 @app.route("/api/trains")
 def api_trains():
     trains = parse_mta()
+    return jsonify(trains)
+
+@app.route("/api/live_lirr")
+def api_lirr():
+    trains = parse_live_lirr()
     return jsonify(trains)
 
 @app.route("/api/live_trains")
