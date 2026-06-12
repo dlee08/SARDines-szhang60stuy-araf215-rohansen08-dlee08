@@ -267,3 +267,10 @@ arafH -- 2026-06-11 1:08
 
 davidL -- 2026-06-11 1:20
 - impl location feature for user (asks for location perms first, then rems it)
+
+seanZ --2026-06-12 17:01
+- added arrow that appears after the trains move to indicate direction. 
+- needed improvements tba later:
+	- arrow needs to scale 
+	- rotation or centering a little weird
+	- should filter updating rotation (shouldn't rotate if train barely moves like when getting to a stop)

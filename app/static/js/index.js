@@ -197,7 +197,7 @@ function renderLiveTrains(trains, map, AdvancedMarkerElement, infoWindow) {
             const existing = liveTrainMarkers[id];
 
             if (existing) {
-                animateMarkerTo(existing.marker, newPos);
+                animateMarkerTo(existing.marker, newPos, existing.marker.content);
                 existing.marker.title = liveTrainTitle(train);
                 existing.train = train;
                 existing.seen = true;
@@ -343,7 +343,7 @@ function renderLiveLIRR(trains, map, AdvancedMarkerElement, infoWindow) {
             const existing = liveTrainMarkers[id];
 
             if (existing) {
-                animateMarkerTo(existing.marker, newPos);
+                animateMarkerTo(existing.marker, newPos, existing.marker.content);
                 existing.marker.title = liveTrainTitle(train);
                 existing.train = train;
                 existing.seen = true;
@@ -382,7 +382,19 @@ function sweepTrains() {
     }
 }
 
-function animateMarkerTo(marker, newPos, duration = 1000) {
+function bearingBetween(from, to) {
+    const lat1 = from.lat * Math.PI / 180;
+    const lat2 = to.lat * Math.PI / 180;
+    const dLng = (to.lng - from.lng) * Math.PI / 180;
+
+    const y = Math.sin(dLng) * Math.cos(lat2);
+    const x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLng);
+
+    const bearing  = Math.atan2(y, x) * 180 / Math.PI;
+    return (bearing + 360) % 360; // 0 is north
+}
+
+function animateMarkerTo(marker, newPos, content, duration = 1000) {
     const pos = marker.position;
     const startPos = {
         lat: pos.lat,
@@ -391,6 +403,12 @@ function animateMarkerTo(marker, newPos, duration = 1000) {
 
     const dist = Math.abs(newPos.lat - startPos.lat) + Math.abs(newPos.lng - startPos.lng);
     if (dist < 0.000001) return;
+
+    if (content?._arrow) {
+        const bearing = bearingBetween(startPos, newPos);
+        content._arrow.style.opacity = '1';
+        content._arrow.style.transform = `translate(-50%,6px) rotate(${bearing}deg)`;
+    }
 
     const startTime = performance.now();
 
@@ -447,6 +465,30 @@ function liveTrainDot(route) {
     dot.className = 'live-train-dot';
     dot.style.background = color;
     dot.textContent = route || '?';
+
+    const arrow = document.createElement('div');
+    arrow.className = 'live-train-arrow';
+    arrow.style.cssText = [
+        'position:absolute',
+        'top:-50%',
+        'left:50%',
+        'width:0',
+        'height:0',
+        'border-left:10px solid transparent',
+        'border-right:10px solid transparent',
+        'border-bottom:20px solid black',
+        'transform-origin:50% 100%',
+        'transform:translate(-50%, 6px) rotate(0deg)',
+        'opacity:0',
+        'transition:opacity 0.2s ease',
+        'pointer-events:none',
+        'z-index:-1',
+    ].join(';');
+
+
+    dot.appendChild(arrow);
+    dot._arrow = arrow;
+
     return dot;
 }
 
