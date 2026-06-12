@@ -152,8 +152,7 @@ async function refreshTrains(map, AdvancedMarkerElement, infoWindow) {
     }
 }
 
-
-let liveTrainMarkers = {};
+let liveTrainMarkers = [];
 
 async function loadLiveTrains(map, AdvancedMarkerElement, infoWindow) {
     try {
