@@ -122,6 +122,7 @@ async function init() {
                 infoWindow.open(innerMap, marker);
             });
 }
+        initUserLocation(innerMap, AdvancedMarkerElement, infoWindow);
         refreshTrains(innerMap, AdvancedMarkerElement, infoWindow);
         setInterval(() => refreshTrains(innerMap, AdvancedMarkerElement, infoWindow), 30000);
         //setInterval(() => loadLiveTrains(innerMap, AdvancedMarkerElement, infoWindow), 30000);
@@ -152,6 +153,12 @@ async function refreshTrains(map, AdvancedMarkerElement, infoWindow) {
 }
 
 let liveTrainMarkers = {};
+let userLocationMarker = null;
+let userAccuracyCircle = null;
+let hasCenteredOnUser = false;
+let userLocationWatchId = null;
+let latestUserPosition = null;
+const LOCATION_PREFERENCE_KEY = 'nerdymap-location-preference';
 
 async function loadLiveTrains(map, AdvancedMarkerElement, infoWindow) {
     try {
@@ -214,6 +221,117 @@ function renderLiveTrains(trains, map, AdvancedMarkerElement, infoWindow) {
                 liveTrainMarkers[id] = entry;
             }
         });
+}
+
+function initUserLocation(map, AdvancedMarkerElement, infoWindow) {
+    if (!('geolocation' in navigator)) {
+        return;
+    }
+
+    const preference = localStorage.getItem(LOCATION_PREFERENCE_KEY);
+
+    if (preference === 'denied') {
+        return;
+    }
+
+    const rememberAllowed = () => localStorage.setItem(LOCATION_PREFERENCE_KEY, 'allowed');
+    const rememberDenied = () => localStorage.setItem(LOCATION_PREFERENCE_KEY, 'denied');
+
+    const options = {
+        enableHighAccuracy: true,
+        maximumAge: 10000,
+        timeout: 15000,
+    };
+
+    const startWatching = () => {
+        if (userLocationWatchId) {
+            return;
+        }
+
+        userLocationWatchId = navigator.geolocation.watchPosition(
+            handleLocation,
+            handleError,
+            options
+        );
+    };
+
+    const handleLocation = position => {
+        rememberAllowed();
+        renderUserLocation(position, map, AdvancedMarkerElement, infoWindow);
+        startWatching();
+    };
+
+    const handleError = error => {
+        if (error.code === error.PERMISSION_DENIED) {
+            rememberDenied();
+            return;
+        }
+        console.error('Current location could not be loaded', error);
+    };
+
+    navigator.geolocation.getCurrentPosition(handleLocation, handleError, options);
+}
+
+function renderUserLocation(position, map, AdvancedMarkerElement, infoWindow) {
+    latestUserPosition = position;
+    const location = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+    };
+
+    if (!userLocationMarker) {
+        userLocationMarker = new AdvancedMarkerElement({
+            map,
+            position: location,
+            title: 'You are here.',
+            content: userLocationDot(),
+            zIndex: 1000,
+        });
+
+        userLocationMarker.addListener('click', () => {
+            infoWindow.close();
+            infoWindow.setContent(buildUserLocationInfo(latestUserPosition));
+            infoWindow.open(map, userLocationMarker);
+        });
+    } else {
+        userLocationMarker.position = location;
+    }
+
+    if (!userAccuracyCircle) {
+        userAccuracyCircle = new google.maps.Circle({
+            map,
+            center: location,
+            radius: position.coords.accuracy,
+            strokeColor: '#147EFB',
+            strokeOpacity: 0.28,
+            strokeWeight: 1,
+            fillColor: '#147EFB',
+            fillOpacity: 0.12,
+            clickable: false,
+        });
+    } else {
+        userAccuracyCircle.setCenter(location);
+        userAccuracyCircle.setRadius(position.coords.accuracy);
+    }
+
+    if (!hasCenteredOnUser) {
+        map.panTo(location);
+        map.setZoom(Math.max(map.getZoom(), 15));
+        hasCenteredOnUser = true;
+    }
+}
+
+function userLocationDot() {
+    const dot = document.createElement('div');
+    dot.className = 'user-location-dot';
+    dot.setAttribute('aria-label', 'You are here.');
+    return dot;
+}
+
+function buildUserLocationInfo() {
+    return `<div style="font-family:sans-serif;padding:4px 2px">
+        <div style="font-weight:600;font-size:14px">You are here.</div>
+    </div>`;
 }
 
 function renderLiveLIRR(trains, map, AdvancedMarkerElement, infoWindow) {

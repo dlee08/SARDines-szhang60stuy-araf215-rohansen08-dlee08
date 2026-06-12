@@ -264,3 +264,6 @@ rohanS -- 2026-06-11 11:50
 arafH -- 2026-06-11 1:08
 - Finished Zoom in/Zoom out max and mins. Also finished adding regional boundries on the map via lat and long coordinates.
 - Now there's no infinite zoom or looking into unnecessary areas. We're only showing areas where there's transit lines we covered (nj, metro north, lirr,  mta)
+
+davidL -- 2026-06-11 1:20
+- impl location feature for user (asks for location perms first, then rems it)

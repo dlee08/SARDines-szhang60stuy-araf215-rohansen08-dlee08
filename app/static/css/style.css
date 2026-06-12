@@ -111,6 +111,38 @@ gmp-map {
     font-weight: 700;
     line-height: 1;
 }
+
+.user-location-dot {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    border-radius: 50%;
+    background: #147efb;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.user-location-dot::before {
+    content: "";
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    background: rgba(20, 126, 251, 0.2);
+    animation: user-location-pulse 2s ease-out infinite;
+}
+
+@keyframes user-location-pulse {
+    0% {
+        transform: scale(0.45);
+        opacity: 0.85;
+    }
+
+    100% {
+        transform: scale(1.35);
+        opacity: 0;
+    }
+}
+
 #alerts-dashboard h3 {
     margin: 0;
     font-size: 1.2rem;
