@@ -234,3 +234,7 @@ rohanS -- 2026-06-03 00:23
 - Something is wrong with the api, filter code, or a mysterious third thing, because the times are just flat out inconsistent
 	- 86th street on the Q only shows uptown trains, for example
 	- I'm leaving in some debug code specifically focusing on 39th Ave on the N/W just to keep testing
+
+rohanS -- 2026-06-11 11:50
+- forgot to push this in class
+- worked on improving the LIRR and MNRR trains
