@@ -228,6 +228,7 @@ def parse_live_lirr():
         print(entity)
         station = get_station_by_stop_id_lirr(entity.vehicle.stop_id)
         trains.append({
+            "trip_id": entity.id,
             "route_id": "LIRR",
             "route_number": vehicle.vehicle.label,
             "lat": entity.vehicle.position.latitude,
@@ -235,7 +236,6 @@ def parse_live_lirr():
             "current_status": vehicle_status_name(entity.vehicle.current_status),
             "current_station_name": station["stop_name"] if station else None,
             "railroad": "LI",
-            "trip_id": entity.id
         })
 
     feed = fetch_feed("https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/mnr%2Fgtfs-mnr")
@@ -252,6 +252,7 @@ def parse_live_lirr():
         station = get_station_by_stop_id_mnrr(entity.vehicle.stop_id)
         print(entity.vehicle)
         trains.append({
+            "trip_id": entity.id,
             "route_id": "MNRR",
             "route_number": vehicle.vehicle.label,
             "lat": entity.vehicle.position.latitude,
@@ -259,9 +260,7 @@ def parse_live_lirr():
             "current_status": vehicle_status_name(entity.vehicle.current_status),
             "current_station_name": station["stop_name"] if station else None,
             "railroad": "MN",
-            "trip_id": entity.id
         })
-
 
     return trains
 

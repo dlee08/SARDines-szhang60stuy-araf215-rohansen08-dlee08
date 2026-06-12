@@ -254,6 +254,9 @@ arafH -- 2026-06-11 11:40
 
 seanZ - 2026-06-11 22:51
 - Made train markers animate, doesn't follow route exactly tho, just to next position
+
 rohanS -- 2026-06-11 11:50
 - forgot to push this in class
-- worked on improving the LIRR and MNRR trains
+- completed LIRR and MNRR train view
+- fixed a TON of conflicts
+- added in NJT stops, if we get to using them then cool if not then they'll be cut
