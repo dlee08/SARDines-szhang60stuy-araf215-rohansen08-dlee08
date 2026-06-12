@@ -71,6 +71,35 @@ async function init() {
                 infoWindow.open(innerMap, marker);
             });
         }
+        for (const station of NJLR) {
+            const marker = new AdvancedMarkerElement({
+                map: innerMap,
+                position: { lat: station['LATITUDE'], lng: station['LONGITUDE'] },
+                title: station['STATION'],
+                content: stationDot(station['LINE_CODE']),
+            });
+
+            marker.addListener('click', () => {
+                infoWindow.close();
+                infoWindow.setContent(buildInfoContentNJ(station));
+                infoWindow.open(innerMap, marker);
+            });
+        }
+
+        for (const station of NJT) {
+            const marker = new AdvancedMarkerElement({
+                map: innerMap,
+                position: { lat: station['LATITUDE'], lng: station['LONGITUDE'] },
+                title: station['STATION_ID'],
+                content: stationDot(station['LINE_CODE']),
+            });
+
+            marker.addListener('click', () => {
+                infoWindow.close();
+                infoWindow.setContent(buildInfoContentNJT(station));
+                infoWindow.open(innerMap, marker);
+            });
+        }
 
         for (const station of RAILROAD_STATIONS) {
             const marker = new AdvancedMarkerElement({
@@ -89,12 +118,33 @@ async function init() {
                 infoWindow.open(innerMap, marker);
             });
 }
-        clearTrains();
-        loadLiveTrains(innerMap, AdvancedMarkerElement, infoWindow);
-        loadLiveLIRR(innerMap, AdvancedMarkerElement, infoWindow);
-        setInterval(() => {clearTrains();loadLiveTrains(innerMap, AdvancedMarkerElement, infoWindow);loadLiveLIRR(innerMap, AdvancedMarkerElement, infoWindow)}, 30000);
+        refreshTrains(innerMap, AdvancedMarkerElement, infoWindow);
+        setInterval(() => refreshTrains(innerMap, AdvancedMarkerElement, infoWindow), 30000);
         //setInterval(() => loadLiveTrains(innerMap, AdvancedMarkerElement, infoWindow), 30000);
         //setInterval(() => loadLiveLIRR(innerMap, AdvancedMarkerElement, infoWindow), 30000);
+}
+
+async function refreshTrains(map, AdvancedMarkerElement, infoWindow) {
+    try {
+        const [subwayRes, lirrRes] = await Promise.all([
+            fetch('/api/live_trains'),
+            fetch('/api/live_lirr'),
+        ]);
+
+        if (!subwayRes.ok) throw new Error('Live trains could not be fetched');
+        if (!lirrRes.ok) throw new Error('Live LIRR could not be fetched');
+
+        const [subway, lirr] = await Promise.all([
+            subwayRes.json(),
+            lirrRes.json(),
+        ]);
+
+        clearTrains();
+        renderLiveTrains(subway, map, AdvancedMarkerElement, infoWindow);
+        renderLiveLIRR(lirr, map, AdvancedMarkerElement, infoWindow);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 let liveTrainMarkers = [];
@@ -231,7 +281,19 @@ function buildTrainInfoContent(train) {
     if (train.route_id === 'H') train.route_id = 'Rockaway Shuttle';
     if (train.route_id === 'SI') train.route_id = 'SIR';
     if (train.route_id === 'GS') train.route_id = 'S';
-    return `<div style="font-family:sans-serif;padding:4px 2px">
+    if (train.route_id === 'LIRR' || train.route_id === 'MNRR') {
+        const train_num = train.route_number || 'Unknown route';
+        return `<div style="font-family:sans-serif;padding:4px 2px">
+        <div style="display:flex;gap:6px;align-items:center;margin-bottom:6px">
+            ${icon}
+            <div style="font-weight:600;font-size:14px">${train.route_id || 'Train'} train</div>
+        </div>
+        <div style="font-size:13px">Route#${train_num}</div>
+        <div style="font-size:12px;color:#555;margin-top:4px">${status}</div>
+        <div style="font-size:13px">${station}</div>
+    </div>`;
+    } else {
+        return `<div style="font-family:sans-serif;padding:4px 2px">
         <div style="display:flex;gap:6px;align-items:center;margin-bottom:6px">
             ${icon}
             <div style="font-weight:600;font-size:14px">${train.route_id || 'Train'} train</div>
@@ -240,6 +302,8 @@ function buildTrainInfoContent(train) {
         <div style="font-size:12px;color:#555;margin-top:4px">${status}</div>
         ${nextStop}
     </div>`;
+    }
+
 }
 
 function routeIconName(route) {
@@ -374,6 +438,20 @@ function buildInfoContent(station, elevatorOutage, timeJSON) {
         <div style="display:flex;gap:4px;align-items:center">${icons}</div>
         <div style="margin-top:8px;font-size:12px">${trainsHtml}</div>
         ${outageHtml}
+    </div>`;
+}
+
+function buildInfoContentNJ(station) {
+    return `<div style="font-family:sans-serif;padding:4px 2px">
+        <div style="font-weight:600;font-size:14px;margin-bottom:6px">${station['STATION']}</div>
+        <div style="font-size:13px;color:#555">NJ Transit Light Rail — ${station['LINE_CODE']}</div>
+    </div>`;
+}
+
+function buildInfoContentNJT(station) {
+    return `<div style="font-family:sans-serif;padding:4px 2px">
+        <div style="font-weight:600;font-size:14px;margin-bottom:6px">${station['STATION_ID']}</div>
+        <div style="font-size:13px;color:#555">NJ Transit Light Rail — ${station['LINE_CODE']}</div>
     </div>`;
 }
 

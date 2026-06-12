@@ -7,6 +7,9 @@ from google.transit import gtfs_realtime_pb2
 
 from stations import get_station_by_stop_id, parse_stop_id
 
+from lirr_stations import get_station_by_stop_id_lirr
+from mnrr_stations import get_station_by_stop_id_mnrr
+
 
 FEEDS = {
   "1234567": "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs",
@@ -223,10 +226,14 @@ def parse_live_lirr():
         if not is_live_vehicle(vehicle, now):
             continue
         print(entity)
+        station = get_station_by_stop_id_lirr(entity.vehicle.stop_id)
         trains.append({
             "route_id": "LIRR",
+            "route_number": vehicle.vehicle.label,
             "lat": entity.vehicle.position.latitude,
             "lng": entity.vehicle.position.longitude,
+            "current_status": vehicle_status_name(entity.vehicle.current_status),
+            "current_station_name": station["stop_name"] if station else None,
             "railroad": "LI"
         })
 
@@ -241,11 +248,14 @@ def parse_live_lirr():
         vehicle = entity.vehicle
         if not is_live_vehicle(vehicle, now):
             continue
-
+        station = get_station_by_stop_id_mnrr(entity.vehicle.stop_id)
         trains.append({
-            "entity_id": "Metro North",
+            "route_id": "MNRR",
+            "route_number": vehicle.vehicle.label,
             "lat": entity.vehicle.position.latitude,
             "lng": entity.vehicle.position.longitude,
+            "current_status": vehicle_status_name(entity.vehicle.current_status),
+            "current_station_name": station["stop_name"] if station else None,
             "railroad": "MN"
         })
 

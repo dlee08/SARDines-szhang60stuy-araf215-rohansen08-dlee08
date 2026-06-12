@@ -1,0 +1,166 @@
+﻿OBJECTID_1,STATION_ID,COUNTY,LATITUDE,LONGITUDE,ATIS_ID,SE_ANNO_CAD_DATA,LINE_CODE,LAYER,MUNICIPALITY,RAIL_SERVICE,ADA,LINE_NAME,RAIL_SERVICE_NAME,x,y
+1,Middletown,Monmouth,40.38978,-74.11613,86,System.Byte[],NC,STATIONS,Middletown Twp,NC,YES,North Jersey Coast Line,North Jersey Coast Line,599046.041583829,567129.421739653
+2,Millburn,Essex,40.72563,-74.30381,88,System.Byte[],ME,STATIONS,Millburn Twp,"ME, GL",NO,Morristown Line,"Morristown Line, Gladstone Branch",546498.359933995,689304.806981571
+3,Walnut Street,Essex,40.81724,-74.20962,153,System.Byte[],MC,STATIONS,Montclair Twp,MC,NO,Montclair-Boonton Line,Montclair-Boonton Line,572491.819757994,722750.345405325
+4,Hammonton,Atlantic,39.63167,-74.7995,54,System.Byte[],AC,STATIONS,Hammonton,AC,YES,Atlantic City Line,Atlantic City Line,407776.484491162,290896.974205658
+5,Atlantic City,Atlantic,39.3633,-74.44148,10,System.Byte[],AC,STATIONS,Atlantic City,AC,YES,Atlantic City Line,Atlantic City Line,508670.86997233,193016.984270491
+6,Suffern,"Rockland, NY",41.11354,-74.15344,145,System.Byte[],ML,STATIONS,Suffern,"ML, BC",NO,Main Line,"Main Line, Bergen County Line",587614.015235327,830750.820348822
+7,Mahwah,Bergen,41.09438,-74.14661,78,System.Byte[],ML,STATIONS,Mahwah Twp,"ML, BC",NO,Main Line,"Main Line, Bergen County Line",589523.93858083,823776.287381902
+8,Ho-Ho-Kus,Bergen,40.99737,-74.11352,63,System.Byte[],ML,STATIONS,Ridgewood,"ML, BC",NO,Main Line,"Main Line, Bergen County Line",598799.570291996,788473.528919324
+9,Glen Rock-Main,Bergen,40.96225,-74.13345,52,System.Byte[],ML,STATIONS,Glen Rock,ML,NO,Main Line,Main Line,593352.832825914,775654.20022732
+10,Nanuet,"Rockland, NY",41.09,-74.01471,101,System.Byte[],PV,STATIONS,"Clarkstown, Town Of",PV,YES,Pascack Valley Line,Pascack Valley Line,625885.223797746,822357.623552568
+11,Anderson Street-Hackensack,Bergen,40.89446,-74.04378,5,System.Byte[],PV,STATIONS,Hackensack,PV,NO,Pascack Valley Line,Pascack Valley Line,618246.092422497,751074.940658905
+12,Jersey Avenue,Middlesex,40.4769,-74.46733,64,System.Byte[],NE,STATIONS,New Brunswick,NE,NO,Northeast Corridor,Northeast Corridor Line,501213.228719663,598636.056560904
+13,Middletown,"Orange, NY",41.45734,-74.37036,87,System.Byte[],ST,STATIONS,"Wallkill, Town Of",ST,YES,Southern Tier,Port Jervis Line,527658.740132995,955844.328363404
+14,Harriman,"Orange, NY",41.29338,-74.14002,55,System.Byte[],ST,STATIONS,"Woodbury, Town Of",ST,YES,Southern Tier,Port Jervis Line,591039.75641533,896284.861196488
+15,Perth Amboy,Middlesex,40.50937,-74.2737,120,System.Byte[],NC,STATIONS,Perth Amboy,NC,NO,North Jersey Coast Line,North Jersey Coast Line,555045.146318078,610543.227300324
+16,Plainfield,Union,40.61843,-74.42016,121,System.Byte[],RV,STATIONS,Plainfield,RV,YES,Raritan Valley Line,Raritan Valley Line,514288.970612746,650199.185061738
+17,Lincoln Park,Morris,40.92414,-74.30182,69,System.Byte[],MC,STATIONS,Lincoln Park,MC,NO,Montclair-Boonton Line,Montclair-Boonton Line,546885.252204828,761623.499942325
+18,Lindenwold,Camden,39.83376,-75.00024,71,System.Byte[],AC,STATIONS,Lindenwold,AC,YES,Atlantic City Line,Atlantic City Line,351651.666622911,364755.489217989
+19,Hamilton,Mercer,40.25531,-74.70412,RAIL0163,System.Byte[],NE,STATIONS,Hamilton Twp,NE,YES,Northeast Corridor,Northeast Corridor Line,435157.159388494,517978.645041406
+20,Berkeley Heights,Union,40.68233,-74.44267,17,System.Byte[],GL,STATIONS,Berkeley Heights Twp,GL,NO,Gladstone Branch,Gladstone Branch,508023.982158497,673474.764494739
+21,Maplewood,Essex,40.73116,-74.2754,81,System.Byte[],ME,STATIONS,Maplewood Twp,"ME, GL",NO,Morristown Line,"Morristown Line, Gladstone Branch",554366.040720914,691336.472865738
+22,Atco,Camden,39.78362,-74.90771,9,System.Byte[],AC,STATIONS,Waterford Twp,AC,YES,Atlantic City Line,Atlantic City Line,377552.306750663,346361.713997737
+23,Avenel,Middlesex,40.57769,-74.27746,11,System.Byte[],NC,STATIONS,Woodbridge Twp,NC,NO,North Jersey Coast Line,North Jersey Coast Line,553936.532393578,635426.622743405
+24,Somerville,Somerset,40.56607,-74.61397,139,System.Byte[],RV,STATIONS,Somerville,RV,YES,Raritan Valley Line,Raritan Valley Line,460462.84434133,631137.845231742
+25,Cranford,Union,40.65557,-74.30288,32,System.Byte[],RV,STATIONS,Cranford Twp,RV,YES,Raritan Valley Line,Raritan Valley Line,546814.145391662,663781.679878324
+26,Basking Ridge,Somerset,40.71141,-74.55527,12,System.Byte[],GL,STATIONS,Bernards Twp,GL,NO,Gladstone Branch,Gladstone Branch,476803.208970245,684065.082224824
+27,Mount Olive,Morris,40.90738,-74.73065,94,System.Byte[],ME,STATIONS,Mt Olive Twp,"ME, MC",YES,Morristown Line,"Morristown Line, Montclair-Boonton Line",428376.442963079,755539.676808156
+28,Montclair Heights,Essex,40.85754,-74.20249,90,System.Byte[],MC,STATIONS,Montclair Twp,MC,YES,Montclair-Boonton Line,Montclair-Boonton Line,574416.340515245,737437.27567707
+29,Mountain Avenue,Essex,40.84872,-74.2053,96,System.Byte[],MC,STATIONS,Montclair Twp,MC,NO,Montclair-Boonton Line,Montclair-Boonton Line,573648.685226411,734222.470098823
+30,Watsessing,Essex,40.78271,-74.19844,155,System.Byte[],MC,STATIONS,Bloomfield Twp,MC,NO,Montclair-Boonton Line,Montclair-Boonton Line,575629.237039577,710180.789507739
+31,30th Street Station,"Philadelphia, PA",39.95657,-75.18232,1,System.Byte[],AC,STATIONS,Philadelphia,AC,YES,Atlantic City Line,Atlantic City Line,300860.324636247,409826.927618235
+32,Ramsey,Bergen,41.05691,-74.14205,129,System.Byte[],ML,STATIONS,Ramsey,"ML, BC",YES,Main Line,"Main Line, Bergen County Line",590836.337202746,810130.550893903
+33,Allendale,Bergen,41.03094,-74.13099,3,System.Byte[],ML,STATIONS,Allendale,"ML, BC",NO,Main Line,"Main Line, Bergen County Line",593927.715534411,800682.36145699
+34,Radburn,Bergen,40.93992,-74.12161,127,System.Byte[],BC,STATIONS,Fair Lawn,BC,NO,Bergen County Line,Bergen County Line,596658.777985662,767534.765022658
+35,Park Ridge,Bergen,41.03231,-74.03616,115,System.Byte[],PV,STATIONS,Park Ridge,PV,NO,Pascack Valley Line,Pascack Valley Line,620085.473258164,801308.642684735
+36,Princeton Jct.,Mercer,40.31632,-74.62375,126,System.Byte[],NE,STATIONS,West Windsor Twp,"NE, PRIN",YES,Northeast Corridor,"Northeast Corridor, Princeton Dinky",457618.489137661,540160.405139737
+37,Salisbury Mills-Cornwall,"Orange, NY",41.43708,-74.10187,136,System.Byte[],ST,STATIONS,"Cornwall, Town Of",ST,YES,Southern Tier,Port Jervis Line,601282.336651914,948688.116625987
+38,Annandale,Hunterdon,40.64517,-74.87852,6,System.Byte[],RV,STATIONS,Clinton Twp,RV,NO,Raritan Valley Line,Raritan Valley Line,387091.500598747,660158.777675323
+39,Hoboken Terminal,Hudson,40.73485,-74.02804,62,System.Byte[],ME,STATIONS,Hoboken,"ME, GL, MC, ML, BC, PV",YES,Morristown Line,"Morristown Line, Gladstone Branch, Montclair-Boonton Line, Main Line, Bergen County Line, Pascack Valley Line",622909.883947913,692950.812484823
+40,Wesmont,Bergen,40.85498,-74.09695,43599,System.Byte[],BC,STATIONS,Wood-Ridge,BC,YES,Bergen County Line,Bergen County Line,603612.264734831,736619.244504735
+41,Dover,Morris,40.88342,-74.55581,35,System.Byte[],ME,STATIONS,Dover,"ME, MC",YES,Morristown Line,"Morristown Line, Montclair-Boonton Line",476695.288254328,746731.236747906
+42,Hawthorne,Passaic,40.94254,-74.15241,57,System.Byte[],ML,STATIONS,Hawthorne,ML,NO,Main Line,Main Line,588144.077167328,768452.998750485
+43,South Amboy,Middlesex,40.48431,-74.28014,140,System.Byte[],NC,STATIONS,South Amboy,NC,YES,North Jersey Coast Line,North Jersey Coast Line,553278.92839383,601408.574309818
+44,Pearl River,"Rockland, NY",41.05819,-74.02231,119,System.Byte[],PV,STATIONS,"Orangetown, Town Of",PV,NO,Pascack Valley Line,Pascack Valley Line,623853.904041495,810756.631334655
+45,Towaco,Morris,40.92285,-74.34377,148,System.Byte[],MC,STATIONS,Montville Twp,MC,YES,Montclair-Boonton Line,Montclair-Boonton Line,535295.250122413,761128.326720074
+46,Meadowlands Rail Station,Bergen,40.81302,-74.07205,RAIL0174,System.Byte[],SL,STATIONS,East Rutherford,SL,YES,Sports Line,Meadowlands Line,610575.109732997,721367.790099569
+47,New Providence,Union,40.71211,-74.38644,105,System.Byte[],GL,STATIONS,New Providence,GL,NO,Gladstone Branch,Gladstone Branch,523603.016289078,684338.900246739
+48,Mountain Lakes,Morris,40.88596,-74.43358,97,System.Byte[],MC,STATIONS,Mountain Lakes,MC,NO,Montclair-Boonton Line,Montclair-Boonton Line,510489.377818245,747659.416978158
+49,Broadway,Bergen,40.92251,-74.11523,25,System.Byte[],BC,STATIONS,Fair Lawn,BC,NO,Bergen County Line,Bergen County Line,598447.796061162,761200.100526653
+50,Convent Station,Morris,40.77903,-74.4434,30,System.Byte[],ME,STATIONS,Morris Twp,ME,NO,Morristown Line,Morristown Line,507797.87762383,708699.257037736
+51,Aberdeen-Matawan,Monmouth,40.42017,-74.2237,83,System.Byte[],NC,STATIONS,Matawan,NC,YES,North Jersey Coast Line,North Jersey Coast Line,569653.255553246,577873.640736736
+52,Rahway,Union,40.60639,-74.27682,128,System.Byte[],NE,STATIONS,Rahway,"NE, NC",YES,Northeast Corridor,"Northeast Corridor Line, North Jersey Coast Line",554090.197768662,645883.036213741
+53,Newark Penn Station,Essex,40.73426,-74.16454,108,System.Byte[],NE,STATIONS,Newark,"NE, NC, RV",YES,Northeast Corridor,"Northeast Corridor, North Jersey Coast Line, Raritan Valley Line",585083.768983494,692562.465164408
+54,Bernardsville,Somerset,40.71684,-74.57103,18,System.Byte[],GL,STATIONS,Bernardsville,GL,NO,Gladstone Branch,Gladstone Branch,472435.432928912,686047.65175049
+55,Short Hills,Essex,40.72526,-74.3238,137,System.Byte[],ME,STATIONS,Millburn Twp,"ME, GL",NO,Morristown Line,"Morristown Line, Gladstone Branch",540959.428754661,689158.100910157
+56,Hackettstown,Warren,40.85202,-74.83479,53,System.Byte[],ME,STATIONS,Hackettstown,"ME, MC",YES,Morristown Line,"Morristown Line, Montclair-Boonton Line",399514.698521327,735464.364924736
+57,Chatham,Morris,40.74019,-74.38496,27,System.Byte[],ME,STATIONS,Chatham,ME,NO,Morristown Line,Morristown Line,524000.25466783,694568.15734724
+58,Paterson,Passaic,40.91493,-74.16732,117,System.Byte[],ML,STATIONS,Paterson,ML,YES,Main Line,Main Line,584063.421286661,758377.853546485
+59,Oradell,Bergen,40.95348,-74.02998,112,System.Byte[],PV,STATIONS,Oradell,PV,NO,Pascack Valley Line,Pascack Valley Line,621944.808450244,772596.495384738
+60,Essex Street-Hackensack,Bergen,40.879,-74.05188,43,System.Byte[],PV,STATIONS,Hackensack,PV,YES,Pascack Valley Line,Pascack Valley Line,616033.96430083,745430.746894822
+61,Teterboro-Williams Ave,Bergen,40.86489,-74.06265,147,System.Byte[],PV,STATIONS,Hasbrouck Heights,PV,NO,Pascack Valley Line,Pascack Valley Line,613081.284510661,740276.122033492
+62,New Brunswick,Middlesex,40.49732,-74.44565,104,System.Byte[],NE,STATIONS,New Brunswick,NE,YES,Northeast Corridor,Northeast Corridor Line,507238.48208908,606076.511496238
+63,Trenton,Mercer,40.21852,-74.75392,149,System.Byte[],NE,STATIONS,Trenton,NE,YES,Northeast Corridor,Northeast Corridor Line,421220.885423828,504612.259700738
+64,Rte 17 Ramsey,Bergen,41.07505,-74.14549,RAIL0170,System.Byte[],ML,STATIONS,Ramsey,"ML, BC",YES,Main Line,"Main Line, Bergen County Line",589862.229242828,816737.387089655
+65,Mt Arlington,Morris,40.89659,-74.63273,RAIL0171,System.Byte[],ME,STATIONS,Mt Arlington,"ME, MC",YES,Morristown Line,"Morristown Line, Montclair-Boonton Line",455433.011225164,751550.943315819
+66,Far Hills,Somerset,40.68572,-74.63379,45,System.Byte[],GL,STATIONS,Far Hills,GL,NO,Gladstone Branch,Gladstone Branch,455024.597015746,674729.991971157
+67,Watchung Avenue,Essex,40.82952,-74.20693,154,System.Byte[],MC,STATIONS,Montclair Twp,MC,NO,Montclair-Boonton Line,Montclair-Boonton Line,573221.93378333,727225.007715821
+68,Plauderville,Bergen,40.88494,-74.10268,122,System.Byte[],BC,STATIONS,Garfield,BC,YES,Bergen County Line,Bergen County Line,601976.911050163,747528.081938989
+69,South Orange,Essex,40.7459,-74.26058,141,System.Byte[],ME,STATIONS,South Orange Twp,"ME, GL",YES,Morristown Line,"Morristown Line, Gladstone Branch",558459.231681496,696716.986710988
+70,Point Pleasant Beach,Ocean,40.09272,-74.04819,123,System.Byte[],NC,STATIONS,Point Pleasant Beach,NC,YES,North Jersey Coast Line,North Jersey Coast Line,618521.133867163,459008.903401069
+71,Lebanon,Hunterdon,40.63692,-74.83576,68,System.Byte[],RV,STATIONS,Lebanon,RV,NO,Raritan Valley Line,Raritan Valley Line,398945.644869413,657102.023946323
+72,Long Branch,Monmouth,40.29715,-73.98834,74,System.Byte[],NC,STATIONS,Long Branch,NC,YES,North Jersey Coast Line,North Jersey Coast Line,634837.338439412,533565.813998237
+73,Elizabeth,Union,40.66786,-74.21517,41,System.Byte[],NE,STATIONS,Elizabeth,"NE, NC",YES,Northeast Corridor,"Northeast Corridor Line, North Jersey Coast Line",571133.80836641,668325.007733904
+74,White House,Hunterdon,40.61562,-74.77066,158,System.Byte[],RV,STATIONS,Readington Twp,RV,NO,Raritan Valley Line,Raritan Valley Line,416989.264621995,649281.301726907
+75,North Branch,Somerset,40.59203,-74.68379,109,System.Byte[],RV,STATIONS,Branchburg Twp,RV,NO,Raritan Valley Line,Raritan Valley Line,440949.923065413,640832.998741657
+76,Westfield,Union,40.64946,-74.34762,156,System.Byte[],RV,STATIONS,Westfield,RV,YES,Raritan Valley Line,Raritan Valley Line,534403.600658994,661529.018373154
+77,Peapack,Somerset,40.70878,-74.65846,118,System.Byte[],GL,STATIONS,Peapack,GL,NO,Gladstone Branch,Gladstone Branch,448196.807849828,683143.44988174
+78,Millington,Morris,40.67352,-74.5236,89,System.Byte[],GL,STATIONS,Long Hill Twp,GL,NO,Gladstone Branch,Gladstone Branch,485580.573305245,670261.310619824
+79,Lake Hopatcong,Morris,40.90433,-74.66573,67,System.Byte[],ME,STATIONS,Roxbury Twp,"ME, MC",NO,Morristown Line,"Morristown Line, Montclair-Boonton Line",446316.888381328,754387.691251241
+80,Little Falls,Passaic,40.88067,-74.23537,72,System.Byte[],MC,STATIONS,Little Falls Twp,MC,NO,Montclair-Boonton Line,Montclair-Boonton Line,565295.880409747,745835.628302902
+81,Absecon,Atlantic,39.42432,-74.50209,2,System.Byte[],AC,STATIONS,Absecon,AC,YES,Atlantic City Line,Atlantic City Line,491534.530557413,215235.863389075
+82,Metropark,Middlesex,40.56858,-74.32933,84,System.Byte[],NE,STATIONS,Woodbridge Twp,NE,YES,Northeast Corridor,Northeast Corridor Line,539535.568085328,632074.760352656
+83,Princeton,Mercer,40.34209,-74.65887,125,System.Byte[],PRIN,STATIONS,Princeton,PRIN,YES,Princeton Dinky,Princeton Dinky,447841.848914079,549565.777733155
+84,Manasquan,Monmouth,40.12062,-74.04764,79,System.Byte[],NC,STATIONS,Manasquan,NC,NO,North Jersey Coast Line,North Jersey Coast Line,618622.850527246,469173.845997654
+85,Woodcliff Lake,Bergen,41.02108,-74.04077,160,System.Byte[],PV,STATIONS,Woodcliff Lake,PV,NO,Pascack Valley Line,Pascack Valley Line,618834.39898866,797208.711252071
+86,Wayne Route 23 Transit Center,Passaic,40.90026,-74.25697,RAIL0172,System.Byte[],MC,STATIONS,Wayne Twp,MC,YES,Montclair-Boonton Line,Montclair-Boonton Line,559302.582356997,752955.149168819
+87,Montclair St Univ,Essex,40.86978,-74.19743,RAIL0165,System.Byte[],MC,STATIONS,Little Falls Twp,MC,YES,Montclair-Boonton Line,Montclair-Boonton Line,575799.076594912,741902.150277488
+88,Asbury Park,Monmouth,40.21536,-74.01479,8,System.Byte[],NC,STATIONS,Asbury Park,NC,YES,North Jersey Coast Line,North Jersey Coast Line,627622.289549328,503731.988823488
+89,Little Silver,Monmouth,40.32671,-74.04105,73,System.Byte[],NC,STATIONS,Little Silver,NC,NO,North Jersey Coast Line,North Jersey Coast Line,620077.395190328,544255.054430738
+90,Bridgewater,Somerset,40.55991,-74.55174,24,System.Byte[],RV,STATIONS,Bridgewater Twp,RV,NO,Raritan Valley Line,Raritan Valley Line,477750.284831997,628877.264779158
+91,Garwood,Union,40.65257,-74.32483,47,System.Byte[],RV,STATIONS,Garwood,RV,NO,Raritan Valley Line,Raritan Valley Line,540724.92922366,662673.905190989
+92,Orange,Essex,40.77189,-74.23313,113,System.Byte[],ME,STATIONS,City Of Orange Twp,"ME, GL",NO,Morristown Line,"Morristown Line, Gladstone Branch",566036.087590747,706206.657692239
+93,New York Penn Station,"New York, NY",40.75005,-73.99236,106,System.Byte[],NE,STATIONS,New York,"NE, NC, RV, ME, GL, MC",YES,Northeast Corridor,"Northeast Corridor, North Jersey Coast Line, Raritan Valley Line, Morristown Line, Gladstone Branch, Montclair-Boonton Line",632765.70544358,698546.228787407
+94,Mountain View-Wayne,Passaic,40.91398,-74.26781,99,System.Byte[],MC,STATIONS,Wayne Twp,MC,YES,Montclair-Boonton Line,Montclair-Boonton Line,556295.403331995,757942.989258736
+95,Bay Street-Montclair,Essex,40.80818,-74.20868,14,System.Byte[],MC,STATIONS,Montclair Twp,MC,YES,Montclair-Boonton Line,Montclair-Boonton Line,572764.175840579,719448.580355324
+96,Bay Head,Ocean,40.07719,-74.04618,13,System.Byte[],NC,STATIONS,Bay Head,NC,NO,North Jersey Coast Line,North Jersey Coast Line,619112.506700162,453355.211624488
+97,Rutherford,Bergen,40.8283,-74.10058,135,System.Byte[],BC,STATIONS,Rutherford,BC,NO,Bergen County Line,Bergen County Line,602653.229251329,726896.032323904
+98,Hillsdale,Bergen,41.00241,-74.04103,61,System.Byte[],PV,STATIONS,Hillsdale,PV,NO,Pascack Valley Line,Pascack Valley Line,618799.976813413,790406.168754824
+99,River Edge,Bergen,40.93515,-74.02914,134,System.Byte[],PV,STATIONS,River Edge,PV,NO,Pascack Valley Line,Pascack Valley Line,622213.06611583,765920.030391239
+100,Roselle Park,Union,40.66711,-74.2664,31,System.Byte[],LV,STATIONS,Roselle Park,RV,NO,Lehigh Valley Line,Raritan Valley Line,556922.765266247,668008.514600486
+101,Netherwood,Union,40.62916,-74.40344,103,System.Byte[],RV,STATIONS,Plainfield,RV,NO,Raritan Valley Line,Raritan Valley Line,518925.27466033,654113.149018571
+102,Newark Broad Street,Essex,40.74762,-74.1719,107,System.Byte[],ME,STATIONS,Newark,"ME, GL, MC",YES,Morristown Line,"Morristown Line, Gladstone Branch, Montclair-Boonton Line",583027.48799108,697422.78484007
+103,Bradley Beach,Monmouth,40.20378,-74.01896,22,System.Byte[],NC,STATIONS,Neptune Twp,NC,NO,North Jersey Coast Line,North Jersey Coast Line,626480.961123329,499505.650819488
+104,High Bridge,Hunterdon,40.66689,-74.89586,59,System.Byte[],RV,STATIONS,High Bridge,RV,NO,Raritan Valley Line,Raritan Valley Line,382317.769004494,668089.081040405
+105,Raritan,Somerset,40.57099,-74.63437,130,System.Byte[],RV,STATIONS,Raritan,RV,NO,Raritan Valley Line,Raritan Valley Line,454800.034800828,632938.637561902
+106,Bound Brook,Somerset,40.56093,-74.53061,21,System.Byte[],RV,STATIONS,Bound Brook,RV,NO,Raritan Valley Line,Raritan Valley Line,483620.067055661,629245.012075156
+107,Gladstone,Somerset,40.72006,-74.66607,49,System.Byte[],GL,STATIONS,Gladstone,GL,YES,Gladstone Branch,Gladstone Branch,446095.023667578,687255.772037655
+108,Summit,Union,40.71654,-74.35775,146,System.Byte[],ME,STATIONS,Summit,"ME, GL",YES,Morristown Line,"Morristown Line, Gladstone Branch",531554.63129133,685961.929152906
+109,Mountain Station,Essex,40.75542,-74.25299,98,System.Byte[],ME,STATIONS,South Orange Twp,"ME, GL",NO,Morristown Line,"Morristown Line, Gladstone Branch",560553.995536581,700189.911523655
+110,Highland Avenue,Essex,40.76688,-74.24372,60,System.Byte[],ME,STATIONS,City Of Orange Twp,"ME, GL",NO,Morristown Line,"Morristown Line, Gladstone Branch",563107.466151413,704374.36837782
+111,Madison,Morris,40.75707,-74.41513,77,System.Byte[],ME,STATIONS,Madison,ME,YES,Morristown Line,Morristown Line,515635.45053133,700708.043361403
+112,Upper Montclair,Essex,40.84202,-74.20936,151,System.Byte[],MC,STATIONS,Montclair Twp,MC,NO,Montclair-Boonton Line,Montclair-Boonton Line,572534.997821245,731775.037001573
+113,Glen Ridge,Essex,40.80059,-74.20465,50,System.Byte[],MC,STATIONS,Glen Ridge,MC,NO,Montclair-Boonton Line,Montclair-Boonton Line,573889.845177162,716688.455626242
+114,Cherry Hill,Camden,39.92845,-75.04166,28,System.Byte[],AC,STATIONS,Cherry Hill Twp,AC,YES,Atlantic City Line,Atlantic City Line,340228.794127494,399314.03919524
+115,Passaic,Passaic,40.84943,-74.13393,116,System.Byte[],ML,STATIONS,Passaic,ML,NO,Main Line,Main Line,593391.349153079,734555.360181071
+116,Lyndhurst,Bergen,40.8141225,-74.12274657,75,System.Byte[],ML,STATIONS,Lyndhurst Twp,ML,YES,Main Line,Main Line,596541.25919183,721704.667706653
+117,Spring Valley,"Rockland, NY",41.11197,-74.04399,143,System.Byte[],PV,STATIONS,Spring Valley,PV,YES,Pascack Valley Line,Pascack Valley Line,617772.635036077,830319.153889321
+118,Wood-Ridge,Bergen,40.84387,-74.07879,160,System.Byte[],PV,STATIONS,Wood-Ridge,PV,NO,Pascack Valley Line,Pascack Valley Line,608654.193955414,732596.656749405
+119,Metuchen,Middlesex,40.54077,-74.36042,85,System.Byte[],NE,STATIONS,Metuchen,NE,YES,Northeast Corridor,Northeast Corridor Line,530917.190308996,621931.36397282
+120,Campbell Hall,"Orange, NY",41.45103,-74.2664,26,System.Byte[],ST,STATIONS,"Hamptonburgh, Town Of",ST,YES,Southern Tier,Port Jervis Line,556159.696254328,953605.44537399
+121,Tuxedo,"Orange, NY",41.19419,-74.18511,150,System.Byte[],ST,STATIONS,"Tuxedo, Town Of",ST,NO,Southern Tier,Port Jervis Line,578782.301599577,860100.477200575
+122,Union,Union,40.68377,-74.23843,RAIL0166,System.Byte[],LV,STATIONS,Union Twp,RV,YES,Lehigh Valley Line,Raritan Valley Line,564663.38889258,674100.703859657
+123,Secaucus Junction,Hudson,40.76119,-74.07582,RAIL0168,System.Byte[],NE,STATIONS,Secaucus,"NE, NC, RV, ME, GL, MC, ML, BC, PV",YES,Northeast Corridor,"Northeast Corridor, North Jersey Coast Line, Raritan Valley Line, Morristown Line, Gladstone Branch, Montclair-Boonton Line, Main Line, Bergen County Line, Pascack Valley Line",609623.41248941,702480.934828736
+124,East Orange,Essex,40.76104,-74.21096,37,System.Byte[],ME,STATIONS,East Orange,"ME, GL",YES,Morristown Line,"Morristown Line, Gladstone Branch",572189.031977747,702272.223960072
+125,Gillette,Morris,40.67826,-74.46829,48,System.Byte[],GL,STATIONS,Long Hill Twp,GL,NO,Gladstone Branch,Gladstone Branch,500919.146958746,671987.421668902
+126,Spring Lake,Monmouth,40.15057,-74.03546,142,System.Byte[],NC,STATIONS,Spring Lake,NC,NO,North Jersey Coast Line,North Jersey Coast Line,621972.99572983,480099.145013154
+127,Belmar,Monmouth,40.18059,-74.0273,15,System.Byte[],NC,STATIONS,Belmar,NC,NO,North Jersey Coast Line,North Jersey Coast Line,624196.750796746,491047.220885992
+128,Elberon,Monmouth,40.26532,-73.99759,40,System.Byte[],NC,STATIONS,Long Branch,NC,YES,North Jersey Coast Line,North Jersey Coast Line,632321.851672497,521958.782750405
+129,Woodbridge,Middlesex,40.55661,-74.27775,159,System.Byte[],NC,STATIONS,Woodbridge Twp,NC,YES,North Jersey Coast Line,North Jersey Coast Line,553877.553508911,627747.70043724
+130,Linden,Union,40.62949,-74.25177,70,System.Byte[],NE,STATIONS,Linden,"NE, NC",YES,Northeast Corridor,"Northeast Corridor Line, North Jersey Coast Line",561020.596965577,654315.616461404
+131,Newark Airport,Essex,40.70442,-74.19071,RAIL0164,System.Byte[],NE,STATIONS,Newark,"NE, NC",YES,Northeast Corridor,"Northeast Corridor Line, North Jersey Coast Line",577870.149224412,681664.838993825
+132,Stirling,Morris,40.67458,-74.49378,144,System.Byte[],GL,STATIONS,Long Hill Twp,GL,NO,Gladstone Branch,Gladstone Branch,493850.70669933,670643.972584158
+133,Denville,Morris,40.8839,-74.48151,34,System.Byte[],ME,STATIONS,Denville Twp,"ME, MC",YES,Morristown Line,"Morristown Line, Montclair-Boonton Line",497237.084112912,746899.173747987
+134,Mount Tabor,Morris,40.87587,-74.48193,95,System.Byte[],ME,STATIONS,Denville Twp,ME,NO,Morristown Line,Morristown Line,497122.832372911,743974.917129323
+135,Waldwick,Bergen,41.0128,-74.12342,152,System.Byte[],ML,STATIONS,Waldwick,"ML, BC",NO,Main Line,"Main Line, Bergen County Line",596043.409137663,794082.551165819
+136,Glen Rock-Boro Hall,Bergen,40.96133,-74.12929,51,System.Byte[],BC,STATIONS,Glen Rock,BC,YES,Bergen County Line,Bergen County Line,594502.587088078,775325.972209238
+137,Garfield,Bergen,40.86667,-74.10556,46,System.Byte[],BC,STATIONS,Garfield,BC,NO,Bergen County Line,Bergen County Line,601212.067107413,740868.78128124
+138,Montvale,Bergen,41.04088,-74.02915,91,System.Byte[],PV,STATIONS,Montvale,PV,YES,Pascack Valley Line,Pascack Valley Line,622002.841470663,804440.692194909
+139,Lyons,Somerset,40.68488,-74.5495,76,System.Byte[],GL,STATIONS,Bernards Twp,GL,YES,Gladstone Branch,Gladstone Branch,478398.156239662,674400.316121325
+140,Fanwood,Union,40.64092,-74.38522,44,System.Byte[],RV,STATIONS,Fanwood,RV,NO,Raritan Valley Line,Raritan Valley Line,523975.55294558,658404.935382485
+141,Murray Hill,Union,40.69503,-74.40322,100,System.Byte[],GL,STATIONS,New Providence,GL,NO,Gladstone Branch,Gladstone Branch,518959.457662828,678108.993743323
+142,Bloomfield,Essex,40.79271,-74.20006,19,System.Byte[],MC,STATIONS,Bloomfield Twp,MC,NO,Montclair-Boonton Line,Montclair-Boonton Line,575167.769786663,713820.782555819
+143,Hazlet,Monmouth,40.41538,-74.19039,58,System.Byte[],NC,STATIONS,Hazlet Twp,NC,YES,North Jersey Coast Line,North Jersey Coast Line,578328.62468541,576373.766767986
+144,Allenhurst,Monmouth,40.23766,-74.00676,4,System.Byte[],NC,STATIONS,Allenhurst,NC,NO,North Jersey Coast Line,North Jersey Coast Line,629819.023672912,511866.494864158
+145,Dunellen,Middlesex,40.59087,-74.46304,36,System.Byte[],RV,STATIONS,Dunellen,RV,NO,Raritan Valley Line,Raritan Valley Line,502389.526563913,640151.875103906
+146,Brick Church,Essex,40.76549,-74.21927,23,System.Byte[],ME,STATIONS,East Orange,"ME, GL",NO,Morristown Line,"Morristown Line, Gladstone Branch",569882.690461829,703889.18923007
+147,Netcong,Morris,40.89756,-74.70726,102,System.Byte[],ME,STATIONS,Netcong,"ME, MC",NO,Morristown Line,"Morristown Line, Montclair-Boonton Line",434830.836878411,751944.635769904
+148,Morris Plains,Morris,40.82872,-74.4782,92,System.Byte[],ME,STATIONS,Morris Plains,ME,NO,Morristown Line,Morristown Line,498157.514686745,726797.960997738
+149,Morristown,Morris,40.79722,-74.47416,93,System.Byte[],ME,STATIONS,Morristown,ME,YES,Morristown Line,Morristown Line,499279.906470828,715322.554158568
+150,Boonton,Morris,40.90338,-74.40773,20,System.Byte[],MC,STATIONS,Boonton,MC,YES,Montclair-Boonton Line,Montclair-Boonton Line,517629.099759247,754011.669693574
+151,Egg Harbor City,Atlantic,39.52655,-74.64815,39,System.Byte[],AC,STATIONS,Egg Harbor City,AC,YES,Atlantic City Line,Atlantic City Line,450336.674304996,252501.342663735
+152,Ridgewood,Bergen,40.98067,-74.12057,132,System.Byte[],ML,STATIONS,Ridgewood,"ML, BC",NO,Main Line,"Main Line, Bergen County Line",596881.215860996,782382.595563158
+153,Clifton,Passaic,40.86799,-74.15317,29,System.Byte[],ML,STATIONS,Clifton,ML,NO,Main Line,Main Line,588042.170218911,741293.317833737
+154,Delawanna,Passaic,40.83137,-74.13126,33,System.Byte[],ML,STATIONS,Clifton,ML,NO,Main Line,Main Line,594159.255097579,727976.677144237
+155,Westwood,Bergen,40.99086,-74.03272,157,System.Byte[],PV,STATIONS,Westwood,PV,YES,Pascack Valley Line,Pascack Valley Line,621114.971527245,786212.478323326
+156,Emerson,Bergen,40.97508,-74.02746,42,System.Byte[],PV,STATIONS,Emerson,PV,NO,Pascack Valley Line,Pascack Valley Line,622598.063705411,780470.831013985
+157,New Bridge Landing,Bergen,40.91084,-74.03505,111,System.Byte[],PV,STATIONS,River Edge,PV,NO,Pascack Valley Line,Pascack Valley Line,620626.999077994,757057.356515571
+158,Edison,Middlesex,40.51915,-74.41097,38,System.Byte[],NE,STATIONS,Edison Twp,NE,YES,Northeast Corridor,Northeast Corridor Line,516874.87817058,614036.110406406
+159,Sloatsburg,"Rockland, NY",41.15715,-74.19107,138,System.Byte[],ST,STATIONS,Sloatsburg,ST,NO,Southern Tier,Port Jervis Line,577188.677490246,846600.917257488
+160,North Elizabeth,Union,40.68027,-74.20616,110,System.Byte[],NE,STATIONS,Elizabeth,"NE, NC",YES,Northeast Corridor,"Northeast Corridor Line, North Jersey Coast Line",573617.577677079,672853.881878242
+161,Otisville,"Orange, NY",41.47176,-74.52923,114,System.Byte[],ST,STATIONS,"Mt Hope, Town Of",ST,NO,Southern Tier,Port Jervis Line,484116.51160083,961073.692904659
+162,Monmouth Park,Monmouth,40.31339,-74.01519,RAIL0162,System.Byte[],NC,STATIONS,Oceanport,NC,NO,North Jersey Coast Line,North Jersey Coast Line,627314.568051912,539442.008282572
+163,Port Jervis,"Orange, NY",41.37461,-74.69511,124,System.Byte[],ST,STATIONS,Port Jervis,ST,NO,Southern Tier,Port Jervis Line,438579.121048495,925737.584771238
+164,Pennsauken Transit Center,Camden,39.97777,-75.06179,RAIL0183,System.Byte[],AC,STATIONS,Pennsauken Twp,AC,YES,Atlantic City Line,Atlantic City Line,334695.835049078,417313.859494738
+165,Red Bank,Monmouth,40.34831,-74.07455,131,System.Byte[],NC,STATIONS,Red Bank,NC,YES,North Jersey Coast Line,North Jersey Coast Line,610700.534678996,552076.81076882

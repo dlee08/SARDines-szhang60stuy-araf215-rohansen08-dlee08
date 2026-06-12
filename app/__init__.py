@@ -16,6 +16,8 @@ mkey = env.readline().strip()
 
 stops = pd.read_csv("static/MTA_Subway_Stations_20260515.csv")
 railroads = pd.read_csv("static/MTA_Rail_Stations_20260604.csv")
+njlr = pd.read_csv("static/NJTransit_Light_Rail_Stations_-9081629461666608975.csv")
+njt = pd.read_csv("static/NJTransit_Rail_Stations_-8541307398820812975.csv")
 
 def merge_routes(series):
     routes = []
@@ -54,11 +56,29 @@ railroad_stations_json = railroads[
     ]
 ].to_json(orient="records")
 
+njlr_stations_json = njlr[
+    [
+        "LATITUDE",
+        "LONGITUDE",
+        "STATION",
+        "LINE_CODE"
+    ]
+].to_json(orient="records")
+
+njt_stations_json = njt[
+    [
+        "LATITUDE",
+        "LONGITUDE",
+        "STATION_ID",
+        "LINE_CODE"
+    ]
+].to_json(orient="records")
+
 @app.route("/")
 def hello():
     now = datetime.now().time()
     is_late_night = now >= time(23, 0) or now < time(5, 0)
-    return render_template("map_temp.html", api_key=key, map_key=mkey, data=stops, stations=stations_json, railroad_stations=railroad_stations_json, night=is_late_night)
+    return render_template("map_temp.html", api_key=key, map_key=mkey, data=stops, stations=stations_json, railroad_stations=railroad_stations_json, njlr=njlr_stations_json, njt=njt_stations_json, night=is_late_night)
 
 @app.route("/api/alerts")
 def api_alerts():
