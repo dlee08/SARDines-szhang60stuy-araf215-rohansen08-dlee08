@@ -260,3 +260,7 @@ rohanS -- 2026-06-11 11:50
 - completed LIRR and MNRR train view
 - fixed a TON of conflicts
 - added in NJT stops, if we get to using them then cool if not then they'll be cut
+
+arafH -- 2026-06-11 1:08
+- Finished Zoom in/Zoom out max and mins. Also finished adding regional boundries on the map via lat and long coordinates.
+- Now there's no infinite zoom or looking into unnecessary areas. We're only showing areas where there's transit lines we covered (nj, metro north, lirr,  mta)

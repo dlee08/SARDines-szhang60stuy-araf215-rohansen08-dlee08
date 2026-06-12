@@ -14,25 +14,29 @@ async function init() {
             google.maps.importLibrary('maps'),
             google.maps.importLibrary('marker'),
         ]);
-      /*  const center = new google.maps.LatLng({ lat: 40.728474975408446, lng: -73.96241785378106 });
-        const zoom = 4;
-        google.maps.Map(document.getElementById("gmp-map"), {
-          zoom,
-          center,
-          minZoom: zoom - 3,
-          maxZoom: zoom + 3,
-          restriction: {
-            latLngBounds: {
-              north: -10,
-              south: -40,
-              east: 160,
-              west: 100,
-            },
-          },
-      }); */
+
 
         const mapElement = document.querySelector('gmp-map');
         const innerMap = mapElement.innerMap;
+
+        const center = { lat: 40.82, lng: -73.75 };
+        const zoom = 8;
+
+        innerMap.setOptions({
+            center,
+            zoom,
+            minZoom: 2,
+            maxZoom: 16,
+            restriction: {
+                latLngBounds: {
+                    north: 42.50,   // Metro-North upper area
+                    south: 38.90,   // farther south to include South Jersey
+                    east: -71.80,   // Long Island / LIRR east side
+                    west: -75.70,   // farther west to include NJ Transit area
+                },
+                strictBounds: true,
+            },
+        });
 
         innerMap.setOptions({
             // Disable the default UI.
